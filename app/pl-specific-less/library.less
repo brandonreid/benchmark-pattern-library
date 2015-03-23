@@ -1,12 +1,30 @@
 // Styles specific to the pattern library
+@import "../less/_variables.less";
+
+
+// HEADER
+.hb-logo {
+	span {
+		color: @clr-active;
+		font-weight: 400;
+	}
+}
 
 // ICONS
 .icon-samples {
+	h1 {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+	}
 	.sample {
 		font-size: 1.5em;
+		display: inline-block;
+		width: 10em;
 		span {
 			font-family: 'benchmark';
-			margin-right: 0.25em;
+			display: inline-block;
+			width: 1.5em;
+			text-align: center;
 		}
 	}
 }
