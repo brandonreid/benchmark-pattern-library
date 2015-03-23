@@ -1,0 +1,49 @@
+.sidebar {
+	background-color: @clr-white;
+	height: @content-height;
+	width: 20em;
+	float: left;
+	a {
+		display: block;
+		background-color: @clr-white;
+		color: @clr-text;
+		font-size: 1.688em;
+		text-decoration: none;
+		transition: background-color 100ms ease;
+		span {
+			display: block;
+			border-top: 1px solid @clr-frame;
+			padding: 0.25em 0;
+			margin-left: 1em;
+		}
+		&:first-child span {
+			border-top: none;
+		}
+		&:last-child {
+			border-bottom: 1px solid @clr-frame;
+			span {
+				border-bottom: 0;
+			}
+		}
+		&:hover, &:focus {
+			background-color: lighten(@clr-frame, 20);
+		}
+		&.active {
+			background-color: @clr-active;
+			color: @clr-white;
+			position: relative;
+			span {
+				border-top-color: transparent;
+			}
+			&:after {
+				content: ">";
+				position: absolute;
+				right: 0.25em;
+				top: 0.3em;
+			}
+			+ a span {
+				border-top-color: transparent;
+			}
+		}
+	}
+}

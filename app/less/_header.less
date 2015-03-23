@@ -1,0 +1,62 @@
+.header-bar {
+  background-color: @clr-white;
+  border-bottom: 1px solid @clr-frame;
+  padding: 1em 1em;
+  height: 4em;
+  .hb-logo {
+    a {
+      color: @clr-text;
+      font-size: 1.75em;
+      line-height: 1.1em;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+    h1 {
+      font-size: inherit;
+      line-height: inherit;
+      padding-top: 0.1em;
+      margin: 0;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    svg {
+      vertical-align: middle;
+      width: 25px;
+      height: 25px;
+      margin-right: 0.25em;
+      margin-top: -0.25em;
+      .logo-line-clr {
+        fill: @clr-text;
+      }
+    }
+  }
+  .hb-location-selector {
+    width: 80%;
+    margin-left: 10%;
+  }
+  .hb-buttons {
+    text-align: right;
+    .logout-btn {
+      color: @clr-text;
+      padding-right: 0;
+      &:hover, &:focus {
+        color: @clr-active;
+      }
+    }
+  }
+  .settings-btn {
+    height: 29px;
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: @clr-text;
+      transition: fill 100ms ease;
+    }
+    &:hover, &:focus {
+      svg {
+        fill: @clr-active;
+      }
+    }
+  }
+}

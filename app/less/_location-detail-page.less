@@ -1,0 +1,119 @@
+.location-detail-page.cmh-container {
+  right: 75%;
+  background-color: #252525;
+  .ldp-left.cmh-1 {
+    color: #e7e7e7;
+    width: 25%;
+    left: 75%;
+    padding: 0 1em;
+    h3 {}
+    dl {
+      dt {
+        margin-top: 1em;
+      }
+      dd {}
+    }
+  }
+  .ldp-left-indent {
+    margin-left: 0.5em;
+  }
+  .ldp-stage.cmh-2 {
+    width: 75%;
+    left: 75%;
+    padding: 0 1em;
+    background-color: #f5f5f5;
+    h2 {
+      border-bottom: 1px solid @clr-frame;
+      padding-bottom: 0.25em;
+    }
+  }
+}
+
+.google-review {
+  position: relative;
+  max-width: 60em;
+  &.row {
+    margin: 0 0 0.5em;
+  }
+  .gr-google-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: @clr-gplus;
+    color: @clr-white;
+    -moz-text-shadow: 0 1px 0 darken(@clr-gplus, 12);
+    -webkit-text-shadow: 0 1px 0 darken(@clr-gplus, 12);
+    text-shadow: 0 1px 0 darken(@clr-gplus, 12);
+    padding: 0.25em 0.5em 0.5em 0.25em;
+    -moz-border-radius: 0 0 90% 0;
+    -webkit-border-radius: 0 0 90% 0;
+    border-radius: 0 0 90% 0;
+  }
+  .gr-ratings {
+    border-right: 1px solid @clr-frame;
+    padding: 0.25em 1.5em;
+    margin-right: 2.5em;
+    float: left;
+    .gr-rating {
+      margin-left: 0.6em;
+      .glyphicon-star-empty {
+        opacity: 0.4;
+      }
+      .gr-rating-title {
+        margin-left: 0.5em;
+        text-transform: capitalize;
+      }
+      &.gr-overall {
+        font-size: 1.125em;
+        margin-left: 0;
+        margin-bottom: 0.25em;
+        .gr-rating-title {
+          margin-left: 0.333em;
+        }
+      }
+    }
+  }
+  .gr-comment-quote {
+    font-size: 1.5em;
+    font-family: @font-family-serif;
+    margin-bottom: 0;
+    &:before {
+      content: '“';
+      color: fadeOut(@clr-text, 70);
+      font-size: 2.5em;
+      line-height: 0.25em;
+      position: relative;
+      top: 0.35em;
+      margin-right: 0.25rem;
+      margin-left: -0.5em;
+    }
+    &:after {
+      content: '”';
+      color: fadeOut(@clr-text, 70);
+      font-size: 2.5em;
+      line-height: 0.25em;
+      position: relative;
+      top: 0.4em;
+      margin-left: 0.25rem;
+    }
+  }
+  .gr-comment-by {
+    padding-left: 2em;
+    margin-bottom: 0;
+    font-style: italic;
+  }
+  .gr-comment-more-btn {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    padding: 2px 4px;
+  }
+}
+
+.panel.ldp-chart {
+  max-width: 60em;
+  padding: 1.5em 1.5em 0.5em;
+  svg {
+    overflow: visible !important;
+  }
+}

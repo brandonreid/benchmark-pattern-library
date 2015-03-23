@@ -1,0 +1,11 @@
+.main-content {
+	float: right;
+	height: @content-height;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: ~"calc(100% - 20em)";
+	box-shadow: inset 6px 0px 3px -3px fadeOut(@clr-shadow, 25);
+	&.benchmark-view {
+		background-color: #f9fafc;
+	}
+}

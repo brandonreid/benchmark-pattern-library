@@ -1,0 +1,32 @@
+{
+  "name": "benchmark-pattern-library",
+  "main": "app.js",
+  "version": "0.0.0",
+  "authors": [
+    "Brandon Reid <brandon@usebenchmark.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "angular": "~1.3.11",
+    "ngstorage": "~0.3.0",
+    "angular-ui-router": "~0.2.13",
+    "angulartics": "~0.17.2",
+    "angular-sanitize": "~1.3.11",
+    "angular-ui-select": "~0.9.6",
+    "angular-moment": "~0.9.0",
+    "angular-truncate": "*",
+    "c3": "~0.4.9",
+    "angular-cookie": "~4.0.6",
+    "angular-google-maps": "~2.0.12"
+  },
+  "resolutions": {
+    "angular": "~1.3.11"
+  }
+}

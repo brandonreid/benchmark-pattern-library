@@ -1,0 +1,63 @@
+// Flex Content with gutters
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-between;
+  .flex-item {
+    display: flex-item;
+    width: 100%;
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+
+// no-gutters modifyer for bootstrap grid
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+// set min-height of content so footer stays at the bootom of viewport
+.content-fill-hight {
+  min-height: 80vh;
+}
+
+// make two columns have the same height (for full height background color reasons)
+// be sure to clear the container directly after.
+.container-matched-height {
+  clear:left;
+  float:left;
+  width:100%;
+  overflow:hidden;
+  .cmh-container {
+    float:left;
+    width:100%;
+    position:relative;
+    right:50%;
+    background-color: @clr-white; // sets left col bg color when using 'container matched height'
+    .cmh-1 {
+      float:left;
+      width:46%;
+      position:relative;
+      left:52%;
+      overflow:hidden;
+    }
+    .cmh-2 {
+      float:left;
+      width:46%;
+      position:relative;
+      left:56%;
+      overflow:hidden;
+    }
+  }
+}

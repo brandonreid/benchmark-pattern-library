@@ -1,0 +1,81 @@
+.suggestions-view {
+	padding: 0.5em 1.5em;
+	h2 {
+		font-size: 1.5em;
+		margin-top: 0.5em;
+	}
+	.suggestion { 
+		position: relative;
+		padding-left: 1em;
+		padding-bottom: 1em;
+		margin-bottom: 0.5em;
+		.sug-color {
+			background-color: @clr-frame-lt;
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 0.25em;
+		}
+		.action-btns {
+			float: right;
+			.trash-btn {
+				padding: 0;
+				&:before {
+					margin: 0;
+				}
+			}
+			.restore-btn { display: none; }
+		}
+		h3 {
+			margin: 0 2em 0 0;
+			padding: 0.25em 0;
+		}
+		p {
+			font-size: 1.125em;
+			margin-bottom: 0;
+			+ p {
+				margin-bottom: 0.5em;
+			}
+			&:first-letter {
+				margin-left: 1em;
+			}
+		}
+		time {
+			font-weight: 300;
+			font-size: 0.75em;
+		}
+		.done-btn {
+			margin-bottom: 0.25em;
+			&.active {
+				background-color: @clr-green;
+				border-color: lighten(@clr-green, 5);
+				color: @clr-white;
+			}
+		}
+	} // end .suggestion
+	.sug-trashed-done {
+		button.btn-text {
+			padding: 0;
+			margin-left: 0.5em;
+		}
+		.suggestion {
+			box-shadow: none;
+			opacity: 0.333;
+			transition: opacity 200ms ease, box-shadow 50ms ease;
+			&:hover, &:focus {
+				opacity: 0.9;
+				box-shadow: 0 1px 1px 0 @clr-shadow;
+			}
+		}
+		.sug-trashed-items {
+			.trash-btn {
+				display: none;
+			}
+			.restore-btn {
+				display: inline-block;
+			}
+		}
+		.sug-done-items {}
+	}
+}
