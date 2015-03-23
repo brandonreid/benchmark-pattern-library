@@ -7,6 +7,13 @@
 	}
 }
 
+.card {
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+	}
+}
+
 // HEADER
 .hb-logo {
 	span {
@@ -37,6 +44,8 @@
 	border: 3px solid @clr-frame;
 	height: 30em;
 	margin-bottom: 1em;
+	position: relative;
+	overflow: hidden;
 	.header-bar {
 		a {
 			font-weight: 300;
@@ -44,6 +53,9 @@
 	}
 	.sidebar {
 		height: 25.5em;
+		@media @bp {
+			position: absolute;
+		}
 	}
 	.main-content {
 		height: 25.5em;
@@ -51,11 +63,7 @@
 }
 
 // ICONS
-.icon-samples {
-	h1 {
-		margin-top: 0;
-		margin-bottom: 0.5em;
-	}
+.library-icon-samples {
 	.sample {
 		font-size: 1.5em;
 		display: inline-block;

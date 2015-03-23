@@ -1,9 +1,19 @@
 angular.module('controllers', [])
-    .controller('HomeCtrl', ['$scope', function($scope) {
-
+    .controller('MainCtrl', ['$scope', function($scope) {
+        $scope.toggleMenu = function() {
+            $scope.menuOpen = !$scope.menuOpen;
+        }
+        $scope.closeMenu = function() {
+            if ($scope.menuOpen) {
+                $scope.menuOpen = !$scope.menuOpen;
+            }
+        }
     }])
     .controller('HeaderCtrl', ['$scope', function($scope) {
-    	
+
+    }])
+    .controller('HomeCtrl', ['$scope', function($scope) {
+
     }])
     .controller('SideCtrl', ['$scope', '$state', function($scope, $state) {
         $scope.state = $state;

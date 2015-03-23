@@ -1,11 +1,8 @@
-<div class="sidebar">
+<div class="sidebar" data-ng-class="{'show' : menuOpen}">
+	<button class="btn btn-icon icon-close" data-ng-click="toggleMenu()"></button>
 	<nav>
-		<a data-ui-sref="home" data-ui-sref-active="active"><span>Home</span></a>
-		<a data-ui-sref="framework" data-ui-sref-active="active"><span>Framework</span></a>
-		<a data-ui-sref="icons" data-ui-sref-active="active"><span>Icons</span></a>
-		<ul>
-			<li>colors</li>
-			<li>modular scale</li>
-		</ul>
+		<a data-ng-click="closeMenu()" data-ui-sref="home" data-ui-sref-active="active"><span>Home</span></a>
+		<a data-ng-click="closeMenu()" data-ui-sref="framework" data-ui-sref-active="active"><span>Framework</span></a>
+		<a data-ng-click="closeMenu()" data-ui-sref="icons" data-ui-sref-active="active"><span>Icons</span></a>
 	</nav>
 </div>

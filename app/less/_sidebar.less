@@ -17,7 +17,7 @@
 			margin-left: 1em;
 		}
 		&:first-child span {
-			border-top: none;
+			border-top-width: 0;
 		}
 		&:last-child {
 			border-bottom: 1px solid @clr-frame;
@@ -43,6 +43,34 @@
 			}
 			+ a span {
 				border-top-color: transparent;
+			}
+		}
+	}
+	button.btn-icon {
+		display: none;
+	}
+	@media @bp {
+		height: 100vh;
+		position: fixed;
+		left: -21em;
+		top: 0;
+		z-index: 1;
+		box-shadow: 4px 0 4px 0 @clr-shadow;
+		transition: left 100ms ease;
+		&.show {
+			left: 0;
+		}
+		button.btn-icon {
+			display: block;
+			font-size: 1.5em;
+			margin: 0.75rem 1.5rem;
+      &:hover, &:focus {
+        color: @clr-active;
+      }
+		}
+		a {
+			&:first-child span {
+				border-top-width: 1px;
 			}
 		}
 	}

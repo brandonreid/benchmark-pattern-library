@@ -59,4 +59,16 @@
       }
     }
   }
+  .mobile-menu {
+    display: none;
+    button.btn-icon {
+      font-size: 1.5em;
+      &:hover, &:focus {
+        color: @clr-active;
+      }
+    }
+    @media @bp {
+      display: block;
+    }
+  }
 }
