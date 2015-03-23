@@ -1,6 +1,11 @@
 // Styles specific to the pattern library
 @import "../less/_variables.less";
 
+.library-code {
+	span {
+		color: @clr-orange;
+	}
+}
 
 // HEADER
 .hb-logo {
@@ -10,12 +15,30 @@
 	}
 }
 
-// GRID
+// FRAMEWORK
 .library-grid-demo {
 	div {
 		background-color: @clr-frame-lt;
 		border: 1px solid @clr-frame;
 		text-align: center;
+	}
+}
+
+.library-layout-demo {
+	background-color: @clr-bg;
+	border: 3px solid @clr-frame;
+	height: 30em;
+	margin-bottom: 1em;
+	.header-bar {
+		a {
+			font-weight: 300;
+		}
+	}
+	.sidebar {
+		height: 25.5em;
+	}
+	.main-content {
+		height: 25.5em;
 	}
 }
 
