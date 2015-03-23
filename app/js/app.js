@@ -18,6 +18,11 @@ angular.module('benchmark', [
               templateUrl: 'templates/home.html',
               controller: 'HomeCtrl'
             })
+            .state('framework', {
+              url: '/framework',
+              templateUrl: 'templates/framework.html',
+              controller: 'FrameworkCtrl'
+            })
             .state('icons', {
               url: '/icons',
               templateUrl: 'templates/icons.html',

@@ -8,6 +8,9 @@ angular.module('controllers', [])
     .controller('SideCtrl', ['$scope', '$state', function($scope, $state) {
         $scope.state = $state;
     }])
+    .controller('FrameworkCtrl', ['$scope', '$state', function($scope, $state) {
+
+    }])
     .controller('IconsCtrl', ['$scope', '$state', function($scope, $state) {
 
     }]);
