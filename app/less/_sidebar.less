@@ -49,29 +49,45 @@
 	button.btn-icon {
 		display: none;
 	}
+	.mobile-overlay {
+		display: none;
+	}
 	@media @bp {
-		height: 100vh;
+		height: auto;
 		position: fixed;
 		left: -21em;
 		top: 0;
-		z-index: 1;
-		box-shadow: 4px 0 4px 0 @clr-shadow;
-		transition: left 100ms ease;
+		bottom: 0;
+		z-index: 5;
+		box-shadow: 3px 0 6px 0 @clr-shadow;
+		transition: left 200ms cubic-bezier(.67,0,0,.99);
+		.mobile-overlay {
+			display: block;
+			background-color: @clr-shadow;
+			position: fixed;
+			top: 0;
+			right: 100%;
+			left: 0;
+			bottom: 0;
+			opacity: 0;
+			transition: opacity 200ms cubic-bezier(.67,0,0,.99), left 200ms cubic-bezier(.67,0,0,.99);
+			z-index: -1;
+		}
 		&.show {
 			left: 0;
+			.mobile-overlay {
+				opacity: 1;
+				left: 20em;
+				right: 0;
+			}
 		}
 		button.btn-icon {
 			display: block;
 			font-size: 1.5em;
-			margin: 0.75rem 1.5rem;
+			margin: 0.75rem 1rem;
       &:hover, &:focus {
         color: @clr-active;
       }
-		}
-		a {
-			&:first-child span {
-				border-top-width: 1px;
-			}
 		}
 	}
 }

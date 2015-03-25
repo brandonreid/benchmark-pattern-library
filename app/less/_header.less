@@ -8,6 +8,7 @@
       color: @clr-text;
       font-size: 1.75em;
       line-height: 1.1em;
+      white-space: nowrap;
       &:hover, &:focus {
         text-decoration: none;
       }
@@ -67,8 +68,24 @@
         color: @clr-active;
       }
     }
-    @media @bp {
-      display: block;
+  }
+  @media @bp {
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    box-shadow: 0 -1px 1px 0 @clr-shadow;
+    .mobile-menu {
+      display: block;      
+    }
+    .hb-logo {
+      display: none;
+    }
+    .hb-location-selector {
+      width: 100%;
+      margin-left: 0;
     }
   }
 }

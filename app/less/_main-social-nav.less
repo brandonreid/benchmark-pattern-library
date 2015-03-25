@@ -10,10 +10,29 @@
 		width: ~"calc(100% - 23.5em)";
 		box-shadow: none;
 	}
+	.btn {
+		border-color: @clr-frame;
+		font-size: 1.2em;
+		&:before {
+			font-size: 1.4em;
+			margin: 0;
+			line-height: 1.2em;
+		}
+		&.active {
+			color: @clr-white;
+			background-color: @clr-active;
+			box-shadow: inset 0 0 2px 2px darken(@clr-active, 10);
+			&:hover, &:focus {
+				background-color: @clr-active;
+				cursor: default;
+			}
+		}
+		&:hover, &:focus {
+			background-color: lighten(@clr-frame, 20);
+		}
+	}
 	.btn-group-vertical {
 		.btn {
-			border-color: @clr-frame;
-			font-size: 1.2em;
 			width: 2.5em;
 			padding: 0.5em 0 0.3em;
 			border-left: none;
@@ -24,23 +43,24 @@
 			&:last-child {
 				border-bottom-width: 0px;
 				box-shadow: 0 1px 1px 0 @clr-shadow;
-			}
-			&:before {
-				font-size: 1.4em;
-				margin: 0;
-				line-height: 1.2em;
-			}
-			&.active {
-				color: @clr-white;
-				background-color: @clr-active;
-				box-shadow: inset 0 0 2px 2px darken(@clr-active, 10);
-				&:hover, &:focus {
-					background-color: @clr-active;
-					cursor: default;
+				&.active {
+					box-shadow: inset 0 0 2px 2px darken(@clr-active, 10);
 				}
 			}
-			&:hover, &:focus {
-				background-color: lighten(@clr-frame, 20);
+		}
+	}
+	@media @bp {
+		box-shadow: none;
+		width: 100%;
+		height: auto;
+		text-align: center;
+		+ .main-content:not(.map-view) {
+			width: 100%;
+		}
+		.btn-group-vertical {
+			.btn {
+				position: relative;
+				float: left;
 			}
 		}
 	}
