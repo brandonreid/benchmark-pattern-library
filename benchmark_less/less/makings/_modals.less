@@ -1,0 +1,66 @@
+.modal {
+  background-color: fadeOut(black, 50);
+  transition: background-color 200ms ease;
+  .modal-dialog {
+    transition: margin-top 300ms ease, opacity 300ms ease;
+  }
+  .modal-content {
+    border-radius: 0;
+    border: none;
+  }
+	.modal-header {
+    padding: 0.5em 1em;
+    background-color: @clr-title-bg;
+    color: @clr-white;
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: 400;
+		}
+    .close {
+      color: @clr-white;
+      opacity: 0.7;
+      margin-top: 0;
+      &:hover, &:focus {
+        opacity: 1;
+      }
+      &:before {
+        margin-right: 0;
+      }
+    }
+	}
+  .modal-footer {
+    padding-top: 0.25em;
+    padding-bottom: 0.75em;
+    border-top: none;
+    .btn-remove {
+      margin-right: 1em;
+    }
+  }
+  &.ng-enter {
+    background-color: transparent;
+    .modal-dialog {
+      margin-top: 0;
+      opacity: 0;
+    }
+    &.ng-enter-active {
+      background-color: fadeOut(black, 50);
+      .modal-dialog {
+        margin-top: 30px;
+        opacity: 1
+      }
+    }
+  }
+  &.ng-leave {
+    background-color: fadeOut(black, 50);
+    .modal-dialog {
+      margin-top: 30px;
+      opacity: 1;
+    }
+    &.ng-leave-active {
+      background-color: transparent;
+      .modal-dialog {
+        margin-top: 0;
+        opacity: 0;
+      }
+    }
+  }
+}

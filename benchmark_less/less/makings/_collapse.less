@@ -1,0 +1,37 @@
+.panel-heading {
+  &:hover, &:focus {
+    background-color: #f9f9f9;
+  }
+}
+
+.collapse.am-collapse {
+  animation-duration: .296s;
+  animation-timing-function: cubic-bezier(.34,.01,.36,.99);
+  animation-fill-mode: backwards;
+  overflow: hidden;
+  &.in-remove {
+    animation-name: collapse;
+    display: block;
+  }
+  &.in-add {
+    animation-name: expand;
+  }
+}
+
+@-webkit-keyframes collapse {
+  from {
+    max-height: 500px;
+  }
+  to {
+    max-height: 0px;
+  }
+}
+
+@-webkit-keyframes expand {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 500px;
+  }
+}

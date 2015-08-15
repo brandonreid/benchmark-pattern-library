@@ -1,0 +1,36 @@
+html, body {
+	height:100%;
+	overflow:auto
+}
+
+.main-content {
+	float: right;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: ~"calc(100% - 13em)";
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	&.animate {
+		transition: @sidebar-animation;
+	}
+	h1.main-title {
+		margin-top: 0;
+		font-size: 1.25rem;
+		.btn {
+			font-size: 1.25rem;
+		}
+	}
+	&.expand {
+		width: ~"calc(100% - 3.25em)";
+	}
+	@media @sm-bp {
+		width: 100%;
+		height: ~"calc(100vh - 3rem)";
+		box-shadow: none;
+		padding-bottom: 4em;
+		&.expand {
+			width: 100%;
+		}
+	}
+}

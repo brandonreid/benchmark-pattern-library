@@ -1,0 +1,52 @@
+svg.loading-logo {
+  animation: loading-spin 1.5s infinite;
+  .circle {
+	  fill: transparent;
+	  stroke: @clr-title-bg;
+	}
+}
+
+@keyframes loading-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+	line-height: 0;
+	.loading-icon svg {
+		width: 1.5em;
+		height: 1.5em;
+		line-height: 1em;
+		vertical-align: middle;
+		.circle {
+			stroke-width: 0.066em;
+			stroke: @clr-title-bg;
+		}
+	}
+	.loading-message {
+		color: @clr-title-bg;
+		font-style: normal;
+		vertical-align: middle;
+		margin-left: -0.333em;
+		vertical-align: middle;
+	}
+	&.hairline {
+		svg .circle { stroke-width: 0.75px; }
+		.loading-message { font-weight: 300; }
+	}
+}
+
+.load {
+	.wait {
+		opacity: 0;
+		transition: opacity 200ms ease;
+	}
+	&.loaded {
+		.wait {
+			opacity: 1;
+		}
+		.loading {
+			display: none;
+		}
+	}
+}

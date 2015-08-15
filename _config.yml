@@ -7,6 +7,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
+exclude: ['bower_components', 'icon-font-backups', 'README.md', 'LICENSE']
 
 #Plugins
 gems: ['jekyll-less', 'octopress-autoprefixer']
