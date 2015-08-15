@@ -1,0 +1,5 @@
+The less folder in here is a direct copy of app/less in benchmark-client. The reason it's placed in this benchmark_less subfolder is so that the file paths that import from bootstrap or the fonts folder are maintained.
+
+It must remain up to date with the app's less folder, so feel free to just delete this one and replace it with a copy from benchmark-client at any time.
+
+Library specific styles are in the css/main.less file in this repo's root folder.
