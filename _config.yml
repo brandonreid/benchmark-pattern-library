@@ -1,0 +1,12 @@
+# Site settings
+title: Benchmark Pattern Library
+email: brandon@usebenchmark.com
+description: Front-end UI patterns and best practices for Benchmark Intelligence.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+
+#Plugins
+gems: ['jekyll-less', 'octopress-autoprefixer']
