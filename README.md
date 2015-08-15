@@ -18,4 +18,4 @@ For Jekyll Less, you'll also need:
 ### Starting Dev Environment
 `cd` into the pattern library repo after you clone it.  
 Run `jekyll serve` to start your local server and initiate watches.  
-Go to `http://localhost:4000/`. When you make a change, updates will display right away.
+Go to `http://localhost:4000/`. When you make a change, Jekyll will recompile automatically, but you will have to refresh your browser to see the changes.
