@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% sorted_for post in site.posts sort_by:card_order %}
+{% for post in site.posts %}
   <a name="{{post.id}}"></a> <!-- anchor -->
   <div class="card lib-topic-card">
     <h2 class="card-title">{{ post.title }} <span>Updated: <span>{{ post.date | date: "%b %-d, %Y" }}</span></span></h2>
@@ -10,4 +10,4 @@ layout: default
       {{post.content}}
     </article>
   </div>
-{% endsorted_for %}
+{% endfor %}

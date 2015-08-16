@@ -7,9 +7,9 @@
   <nav class="nav">
     <p class="admin-sidebar-title">Topics</p>
     <div>
-      {% sorted_for post in site.posts sort_by:card_order %}
+      {% for post in site.posts %}
         <a href="#{{post.id}}">{{post.title}}</a>
-      {% endsorted_for %}
+      {% endfor %}
     </div>
   </nav>
 </div>
