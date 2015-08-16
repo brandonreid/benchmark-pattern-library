@@ -3,10 +3,10 @@
   <channel>
     <title>Benchmark Pattern Library</title>
     <description>Front-end UI patterns and best practices for Benchmark Intelligence.</description>
-    <link>http://usebenchmark.github.io/benchmark-pattern-library//_site//</link>
-    <atom:link href="http://usebenchmark.github.io/benchmark-pattern-library//_site//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 15 Aug 2015 21:57:23 -0600</pubDate>
-    <lastBuildDate>Sat, 15 Aug 2015 21:57:23 -0600</lastBuildDate>
+    <link>http://usebenchmark.github.io/benchmark-pattern-library//</link>
+    <atom:link href="http://usebenchmark.github.io/benchmark-pattern-library//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 16 Aug 2015 17:03:39 -0600</pubDate>
+    <lastBuildDate>Sun, 16 Aug 2015 17:03:39 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -14,8 +14,8 @@
         <description>&lt;p&gt;Allow me to introduce myself..&lt;/p&gt;
 </description>
         <pubDate>Sat, 15 Aug 2015 00:00:00 -0600</pubDate>
-        <link>http://usebenchmark.github.io/benchmark-pattern-library//_site//2015/08/15/introduction.html</link>
-        <guid isPermaLink="true">http://usebenchmark.github.io/benchmark-pattern-library//_site//2015/08/15/introduction.html</guid>
+        <link>http://usebenchmark.github.io/benchmark-pattern-library//2015/08/15/introduction.html</link>
+        <guid isPermaLink="true">http://usebenchmark.github.io/benchmark-pattern-library//2015/08/15/introduction.html</guid>
         
         
       </item>
@@ -25,8 +25,8 @@
         <description>&lt;p&gt;Here it is… The grid framework.&lt;/p&gt;
 </description>
         <pubDate>Fri, 14 Aug 2015 00:00:00 -0600</pubDate>
-        <link>http://usebenchmark.github.io/benchmark-pattern-library//_site//2015/08/14/grid_framework.html</link>
-        <guid isPermaLink="true">http://usebenchmark.github.io/benchmark-pattern-library//_site//2015/08/14/grid_framework.html</guid>
+        <link>http://usebenchmark.github.io/benchmark-pattern-library//2015/08/14/grid_framework.html</link>
+        <guid isPermaLink="true">http://usebenchmark.github.io/benchmark-pattern-library//2015/08/14/grid_framework.html</guid>
         
         
       </item>

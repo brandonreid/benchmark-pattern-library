@@ -2,7 +2,7 @@
 title: Benchmark Pattern Library
 email: brandon@usebenchmark.com
 description: Front-end UI patterns and best practices for Benchmark Intelligence.
-baseurl: "/_site/" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://usebenchmark.github.io/benchmark-pattern-library/" # the base hostname & protocol for your site
 
 # Build settings
