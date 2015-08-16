@@ -6,10 +6,8 @@
   </a>
   <nav class="nav">
     <div>
-      {% for page in site.pages %}
-        {% if page.title %}
-        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-        {% endif %}
+      {% for post in site.posts %}
+        <a href="#{{post.id}}">{{post.title}}</a>
       {% endfor %}
     </div>
   </nav>

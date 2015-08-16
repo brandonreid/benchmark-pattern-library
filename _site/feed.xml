@@ -5,9 +5,20 @@
     <description>Front-end UI patterns and best practices for Benchmark Intelligence.</description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 15 Aug 2015 17:14:04 -0600</pubDate>
-    <lastBuildDate>Sat, 15 Aug 2015 17:14:04 -0600</lastBuildDate>
+    <pubDate>Sat, 15 Aug 2015 18:35:04 -0600</pubDate>
+    <lastBuildDate>Sat, 15 Aug 2015 18:35:04 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Grid Framework</title>
+        <description>&lt;p&gt;Here it is… The grid framework.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 15 Aug 2015 10:13:16 -0600</pubDate>
+        <link>http://yourdomain.com/2015/08/15/grid_framework.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/08/15/grid_framework.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Introduction</title>
