@@ -5,6 +5,7 @@ A library of UI patterns for use in the Benchmark Intelligence analytics platfor
 ### Install Dependencies
 #### Jekyll
 To do this you'll need Ruby installed and some other stuff, follow the [Jekyll Documentation](http://jekyllrb.com/docs/installation/).
+
 #### Jekyll Less
 `[sudo] gem install jekyll-less`  
 
