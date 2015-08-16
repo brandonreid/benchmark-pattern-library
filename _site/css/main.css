@@ -7977,3 +7977,14 @@ table.c3-tooltip tr td {
 .add-location-modal .alf-result tr p {
   margin-bottom: 0;
 }
+.lib-topic-card span {
+  font-size: 1rem;
+  color: #6B8FA7;
+  float: right;
+  margin-right: 0.25em;
+}
+.lib-topic-card span span {
+  margin-left: 0.25em;
+  font-size: 1rem;
+  color: #ffffff;
+}
