@@ -7,7 +7,7 @@ url: "http://usebenchmark.github.io/benchmark-pattern-library/" # the base hostn
 
 # Build settings
 markdown: kramdown
-exclude: ['bower_components', 'icon-font-backups', 'README.md', 'LICENSE']
+exclude: ['bower_components', 'bower.json', 'icon-font-backups', 'benchmark_less', 'README.md', 'LICENSE']
 
 #Plugins
 gems: ['jekyll-less', 'octopress-autoprefixer']
