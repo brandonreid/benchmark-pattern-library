@@ -1,0 +1,39 @@
+Stuff needing documentation...
+
+Intro
+	• Less with bootstrap imports
+	• File structure
+	• Browser Support
+		• Try to build smart, but worry most about modern browsers
+		• We use an autoprefixer
+		• SVG is used without fallbacks
+
+Grid Framework
+	• Sidebar and main are custom
+	• 24 col grid
+		• no-gutters modifyer (use when reducing div nesting for quick grids)
+	• Flexbox grid overlay
+	• Tables
+
+Cards
+	• Markup
+	• Flag modifyers
+	• link to loading docs
+
+Colors
+
+Icons
+
+Buttons
+
+Bits
+	• Tooltips
+	• Dropdowns
+	• Collapse Accordians
+
+Modals
+
+Loading Indicators
+
+Typography Notes
+	• When to use different weights
