@@ -24,7 +24,6 @@ For Jekyll Less, you'll also need:
 3. Go to `http://localhost:4000/`. When you make a change, Jekyll will recompile automatically, but you will have to refresh your browser to see the changes.
 
 ### Deploying
-This is what I've got for now, not perfect but it will do.  
-1. Delete the gh-pages branch in this repo.  
-2. Make sure you push whatever changes to master after running `jekyll serve` and have made sure the files in `_site` are updated, we'll be pushing that folder to a subtree branch.  
-3. Run `git subtree push --prefix _site origin gh-pages` to push the _site folder to a new gh-pages branch.  
+1. Delete the gh-pages branch in this repo.
+2. Make sure you push whatever changes to master after running `jekyll serve` and have made sure the files in `_site` are updated, we'll be pushing that folder to a subtree branch.
+3. Run `git subtree push --prefix _site origin gh-pages` to push the _site folder to a new gh-pages branch.
