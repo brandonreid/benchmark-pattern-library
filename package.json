@@ -1,0 +1,26 @@
+{
+  "name": "benchmark-patterns",
+  "version": "0.0.1",
+  "description": "UI Patterns for Benchmark Intelligence",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usebenchmark/pattern-library.git"
+  },
+  "author": "Brandon Reid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usebenchmark/pattern-library/issues"
+  },
+  "homepage": "https://github.com/usebenchmark/pattern-library",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "gulp-livingcss": "^1.0.0",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1"
+  }
+}
