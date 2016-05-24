@@ -6,12 +6,12 @@ var LessAutoprefix = require('less-plugin-autoprefix'),
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
     cleanCSSPlugin = new LessPluginCleanCSS({advanced: true});
 
-// example livingcss task
-// gulp.task('default', function () {
-//   gulp.src('src/styles.css')
-//     .pipe(livingcss())
-//     .pipe(gulp.dest('dist'))
-// });
+
+gulp.task('patterns', function () {
+  gulp.src('test/*.less')
+    .pipe(livingcss())
+    .pipe(gulp.dest('pattern_library'))
+});
 
 gulp.task('less', function () {
   gulp.src(['./less/app.less'])
