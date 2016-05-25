@@ -1,91 +1,90 @@
 .overview-view {
-	padding-top: 0.5em;
-	.card {
-		position: relative;
-		&.benchmark-card {
-			min-height: 335
-		}
-		&.average-rating-card {
-			padding-top: 28px;
-			padding-bottom: 0;
-			.arc-row {
-				position: relative;
-				border-bottom: 1px solid @clr-frame-lt;
-				padding-top: 0.75em;
-				padding-bottom: 0.5em;
-				&:last-child {
-					border-bottom: 0;
-				}
-			}
-			.arc-big-soc-icon {
-				position: absolute;
-				top: 0;
-				left: 0;
-				display: inline-block;
-				font-size: 1.125em;
-				width: 30px;
-				height: 30px;
-				text-align: center;
-				text-shadow: 0px 1px 1px @clr-shadow;
-				&:before {
-					margin: 0;
-					color: @clr-white;
-					line-height: 30px;
-				}
-				&.icon-gplus {
-					background-color: @clr-gplus;
-				}
-				&.icon-yelp {
-					background-color: @clr-yelp;
-				}
-				&.icon-foursquare {
-					background-color: @clr-foursquare;
-				}
-			}
-			.arc-chart-desc {
-				margin-bottom: 0;
-				text-align: center;
-				font-weight: 300;
-				font-size: 1.5em;
-				padding-left: 30px;
-				padding-right: 30px;
-				strong {
-					font-size: 1.125em;
-				}
-			}
-		} // end average-rating-card
-		.c3 {
-			path.domain {
-				stroke: @clr-frame;
-			}
-			.tick {
-				line {
-					stroke: @clr-frame;
-				}
-				font-weight: 300;
-			}
-			&.stacked-bar-chart {
-				.c3-legend-background {
-					rect {
-						stroke: transparent;
-					}
-				}
-				.c3-axis-y {
-					.tick:nth-last-child(2) {
-						font-weight: bold;
-						font-size: 0.75rem;
-					}
-				}
-			}
-		} // end .c3
-	} // end .card
-	@media @sm-bp {
-		.card {
-			.overview-select {
-				position: static;
-				display: block;
-				margin-bottom: 0.5em;
-			}
-		}
-	}
+  padding-top: 0.5em;
+  .card {
+    position: relative;
+    &.average-rating-card {
+      padding-bottom: 0;
+      .arc-row {
+        position: relative;
+        border-bottom: 1px solid @clr-frame-lt;
+        padding-top: 1.25em;
+        padding-bottom: 0.9em;
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+      .arc-big-soc-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        font-size: 1.125em;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        text-shadow: 0px 1px 1px @clr-shadow;
+        &:before {
+          margin: 0;
+          color: @clr-white;
+          line-height: 30px;
+        }
+        &.icon-gplus {
+          background-color: @clr-gplus;
+        }
+        &.icon-yelp {
+          background-color: @clr-yelp;
+        }
+        &.icon-foursquare {
+          background-color: @clr-foursquare;
+        }
+      }
+      .arc-chart-desc {
+        margin-bottom: 0;
+        text-align: center;
+        font-weight: 300;
+        font-size: 1.5em;
+        padding-left: 30px;
+        padding-right: 30px;
+        strong {
+          font-size: 1.125em;
+        }
+      }
+    }
+    // end average-rating-card
+    .c3 {
+      path.domain {
+        stroke: @clr-frame;
+      }
+      .tick {
+        line {
+          stroke: @clr-frame;
+        }
+        font-weight: 300;
+      }
+      &.stacked-bar-chart {
+        .c3-legend-background {
+          rect {
+            stroke: transparent;
+          }
+        }
+        .c3-axis-y {
+          .tick:nth-last-child(2) {
+            font-weight: bold;
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+    // end .c3
+  }
+  // end .card
+  @media @sm-bp {
+    .card {
+      .overview-select {
+        position: static;
+        display: block;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
 }

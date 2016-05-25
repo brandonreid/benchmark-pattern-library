@@ -1,174 +1,208 @@
 .admin-sidebar-title {
-	font-size: 1.5em;
-	color: #587588;
-	font-weight: 300;
-	padding: 0 0.5em;
+  font-size: 1.5em;
+  color: #587588;
+  font-weight: 300;
+  padding: 0 0.5em;
 }
 
 .admin-content {
-	position: relative;
+  position: relative;
 }
 
 .locations-table {
-	width: 100%;
-	margin-top: 0.75em;
-	margin-bottom: 0.75em;
-	th.lt-action-btns {
-		width: 4.333em;
-		border-top-color: transparent;
-		border-left-color: transparent;
-	}
-	button.lt-btn-text {
-		padding: 0 0 0 0.25em;
-	}
-	th:not(.lt-soc), td:not(.lt-soc) {
-		padding: 0.25em 0.5em;
-	}
-	thead tr th {
-		background-color: @clr-shade;
-		&.lt-empty-header {
-			background-color: @clr-white;
-		}
-	}
-	tbody tr {
-		&:hover, &:focus {
-			background-color: @clr-shade;
-		}
-	}
-	.lt-soc {
-		width: 2em;
-		text-align: center;
-		.icon-check {
-			color: @clr-green;
-			&:before {
-				margin: 0;
-			}
-		}
-		&.lt-na {
-			background-color: fadeOut(@clr-red, 25);
-		}
-	}
-} // end .location-table
+  th.lt-action-btns {
+    width: 4.333em;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  button.lt-btn-text {
+    padding: 0 0 0 0.25em;
+  }
+  th:not(.lt-soc), td:not(.lt-soc) {
+    padding: 0.25em 0.5em;
+  }
+  tbody tr {
+    &:hover, &:focus {
+      background-color: @clr-shade;
+    }
+  }
+  .lt-soc {
+    width: 2em;
+    text-align: center;
+    .icon-check {
+      color: @clr-green;
+      &:before {
+        margin: 0;
+      }
+    }
+    &.lt-na {
+      background-color: fadeOut(@clr-red, 25);
+    }
+  }
+}
+
+// end .location-table
 
 .manage-companies {
-	.mc-company-dropdown { margin-bottom: 0.5em; }
-	.card { margin-top: 0.5em; }
-	.user-list-item {
-		line-height: 1.2em;
-		.btn-remove {
-			padding: 0;
-		}
-	}
-	.add-locations-btn {
-		margin-bottom: 0.25em;
-	}
-	.admin-modal-btns {
-		margin-bottom: 0;
-	}
-	.provide-area-code {
-		text-align: left;
-		float: right;
-		max-width: 20em;
-		.form-group {
-			white-space: nowrap;
-			width: 15em;
-			margin-bottom: 0;
-			input {
-				display: inline-block;
-				max-width: 5em;
-			}
-			button {
-				display: inline-block;
-			}
-		}
-		p.error {
-			color: @clr-red;
-			margin: 0;
-			padding: 0;
-		}
-	}
-} // end .manage-companies
+  .mc-company-dropdown {
+    margin-bottom: 0.5em;
+  }
+  .card {
+    margin-top: 0.5em;
+  }
+  .accounts {
+    border-left: 1px solid @clr-frame;
+  }
+  .user-list-item {
+    line-height: 1.2em;
+    .btn-remove {
+      padding: 0;
+    }
+  }
+  .new-insight-btn {
+    margin-bottom: 0.5em;
+  }
+  .more-btn {
+    margin-bottom: 1em;
+    position: relative;
+    &:after {
+      content: '\e805';
+      font-family: 'benchmark';
+      transform: rotate(90deg) translateY(25%);
+      position: absolute;
+      left: 50%;
+      top: 1em;
+    }
+  }
+  .add-locations-btn {
+    margin-bottom: 0.5em;
+  }
+  .admin-modal-btns {
+    margin-bottom: 0;
+  }
+  .provide-area-code {
+    text-align: left;
+    float: right;
+    max-width: 20em;
+    .form-group {
+      white-space: nowrap;
+      width: 15em;
+      margin-bottom: 0;
+      input {
+        display: inline-block;
+        max-width: 5em;
+      }
+      button {
+        display: inline-block;
+      }
+    }
+    p.error {
+      color: @clr-red;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
 
-.manage-locations {}
+// end .manage-companies
+
+.manage-locations {
+}
 
 .connect-location-modal {
-	p {
-		margin-top: 0.5em;
-	}
+  p {
+    margin-top: 0.5em;
+  }
 }
 
 .add-location-modal {
-	.find-location-dropdown {
-		min-width: 300px;
-		margin-bottom: 1em;
-	}
-	.add-form {
-		.alf-provider-list {
-			p {
-				margin: 0;
-			}
-			.alf-pl-summary {
-				margin-bottom: 1.5em;
-				label {
-					font-weight: normal;
-					display: block;
-					margin-bottom: 0;
-				}
-				p {
-					font-weight: bold;
-					margin-bottom: .75em;
-				}
-			}
-			table {
-				tr {
-					&:last-child {
-						border-bottom: 1px solid @clr-frame-lt;
-					}
-					td {
-						width: 50%;
-						vertical-align: middle;
-						&:first-child {
-							width: 4em;
-						}
-					}
-					.btn-default:before {
-						margin: 0;
-					}
-				}
-			}
-			button.btn-primary {
-				margin: 1em 0;
-			}
-		}
-	}
-	.form-control {
-		margin-bottom: 0.5em;
-		&.btn {
-			margin-bottom: 0;
-		}
-	}
-	.alf-result {
-		tr {
-			background-color: @clr-active;
-			color: @clr-white;
-			position: relative;
-			min-height: 36px;
-			td:first-child { // name field
-				width: 30%;
-				padding-left: 1.75em;
-			}
-			.btn-remove {
-				padding: 0;
-				color: @clr-white;
-				position: absolute;
-				left: 1.75em;
-			}
-			&:hover, &:focus {
-				background-color: @clr-active;
-			}
-			p {
-				margin-bottom: 0;
-			}
-		}
-	}
+  .find-location-dropdown {
+    min-width: 300px;
+    margin-bottom: 1em;
+  }
+  .add-form {
+    .alf-provider-list {
+      p {
+        margin: 0;
+      }
+      .alf-pl-summary {
+        margin-bottom: 1.5em;
+        label {
+          font-weight: normal;
+          display: block;
+          margin-bottom: 0;
+        }
+        p {
+          font-weight: bold;
+          margin-bottom: .75em;
+        }
+      }
+      table {
+        tr {
+          &:last-child {
+            border-bottom: 1px solid @clr-frame-lt;
+          }
+          td {
+            width: 50%;
+            vertical-align: middle;
+            &:first-child {
+              width: 4em;
+            }
+          }
+          .btn-default:before {
+            margin: 0;
+          }
+        }
+      }
+      button.btn-primary {
+        margin: 1em 0;
+      }
+    }
+  }
+  .form-control {
+    margin-bottom: 0.5em;
+    &.btn {
+      margin-bottom: 0;
+    }
+  }
+  .alf-result {
+    tr {
+      background-color: @clr-active;
+      color: @clr-white;
+      position: relative;
+      min-height: 36px;
+      td:first-child { // name field
+        width: 30%;
+        padding-left: 1.75em;
+      }
+      .btn-remove {
+        padding: 0;
+        color: @clr-white;
+        position: absolute;
+        left: 1.75em;
+      }
+      &:hover, &:focus {
+        background-color: @clr-active;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.add-insights-modal {
+  .modal-dialog {
+    width: 720px;
+  }
+  label {
+    display: block;
+  }
+  .form-control {
+    margin-bottom: 0.5em;
+  }
+  .add-location-btn {
+    display: block;
+    margin-top: 1em;
+  }
 }

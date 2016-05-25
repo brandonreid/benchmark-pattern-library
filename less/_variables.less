@@ -18,7 +18,7 @@
 @clr-remove: #777777;
 
 @clr-red: #c21a15;
-@clr-yellow: #eac000;
+@clr-yellow: #ffef3d;
 @clr-blue: #15a3c2;
 @clr-green: #1fa015;
 @clr-orange: #ffbc1a;
@@ -30,27 +30,24 @@
 @clr-foursquare: #2f7fc2;
 @clr-twitter: #55acee;
 
+@grade-a: @clr-green;
+@grade-b: #b4bf00;
+@grade-c: #e3cd00;
+@grade-d: average(@clr-yellow, @clr-red);
+@grade-f: @clr-red;
+
 // breakpoints
 @md-bp: ~"(max-width: 800px)";
 @sm-bp: ~"(max-width: 480px)";
 
-// typography
-@font-family-base: "Lato", "Helvetica Neue", Arial, sans-serif;
-@font-family-headers: "Lato", "Helvetica Neue", Arial, sans-serif;
-@font-family-serif: Georgia, "Times New Roman", Times, serif; // used for quotes on details page and such.
-
 // sidebar
 @sidebar-animation: width 300ms ease;
 
-// bootstrap grid
-@grid-columns: 24;
-@grid-gutter-width: 16px;
+// breadcrumbs
+@breadcrumb-separator: ">";
+@breadcrumb-color: @clr-text;
 
 // bootstrap tooltips
 @clr-tooltip: #151407;
 @tooltip-bg: @clr-tooltip;
 @tooltip-arrow-color: @clr-tooltip;
-
-// breadcrumbs
-@breadcrumb-separator: ">";
-@breadcrumb-color: @clr-text;

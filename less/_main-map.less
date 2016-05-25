@@ -3,234 +3,243 @@
 }
 
 .map-view {
-	position: absolute;
-	padding: 0;
-	right: 0;
-	.g-map {
-		opacity: 0;
-		transition: opacity 200ms ease 200ms;
-		&.show {
-			opacity: 1;
-		}
-	}
-	.g-map-loading {
-		display: block;
-		z-index: 1;
-		text-align: center;
-		margin-top: 30vh;
-		margin-top: ~"calc(50vh - 50px)";
-	}
-	.evm-info-window {
-		h4 {
-			margin: 0;
-			white-space: nowrap;
-		}
-		p {
-			white-space: nowrap;
-			margin: 0;
-		}
-	}
-	.cluster div {
-		color: white !important;
-		font-weight: 300 !important;
-		&:hover, &:focus {
-			position: relative;
-			&:before {
-				content: "Click to zoom into location cluster.";
-				background-color: fadeOut(@clr-text, 20);
-				padding: 0.5em 0.25em;
-				line-height: 1rem;
-				border-radius: 3px;
-				font-weight: 400;
-				width: 10em;
-				position: absolute;
-				left: -55%;
-				top: -3.25em;
-				z-index: 800;
-			}
-			&:after {
-				content: " ";
-				width: 0;
-				height: 0;
-				border-left: 7px solid transparent;
-				border-right: 7px solid transparent;
-				border-top: 14px solid fadeOut(@clr-text, 20);
-				position: absolute;
-				left: 35%;
-				top: 7px;
-				z-index: 700;
-			}
-		}
-	}
-	.labels {
-		svg {
-			fill: fadeOut(@clr-orange, 10);
-			&.competitor {
-				fill: fadeOut(@clr-competitors, 30);
-			}
-			&.not-available, &.competitor.not-available {
-				fill: fadeOut(@clr-red, 60);
-			}
-			.circle-pulse {
-				fill: transparent;
-  			stroke: fadeOut(#ff8800, 30);
-			}
-		}
-		p {
-			color: @clr-white;
-			font-weight: 700;
-			text-align: center;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-55%);
-			transform-style: preserve-3d;
-			width: 100%;
-			margin-bottom: 0;
-		}
-	}
-	.gm-style-mtc {
-		// styles for map/satilite views
-		> div:last-child {
-			top: -26px !important;
-			label {
-				margin-bottom: 0;
-			}
-		}
-	}
+  position: absolute;
+  padding: 0;
+  right: 0;
+  .g-map {
+    opacity: 0;
+    transition: opacity 200ms ease 200ms;
+    &.show {
+      opacity: 1;
+    }
+  }
+  .g-map-loading {
+    display: block;
+    z-index: 1;
+    text-align: center;
+    margin-top: 30vh;
+    margin-top: ~"calc(50vh - 50px)";
+  }
+  .evm-info-window {
+    h4 {
+      margin: 0;
+      white-space: nowrap;
+    }
+    p {
+      white-space: nowrap;
+      margin: 0;
+    }
+  }
+  .cluster {
+    img {
+      width: 40px;
+    }
+    div {
+      color: white !important;
+      font-weight: 300 !important;
+      &:hover, &:focus {
+        position: relative;
+        &:before {
+          content: "Click to zoom into location cluster.";
+          background-color: fadeOut(@clr-text, 20);
+          padding: 0.5em 0.25em;
+          line-height: 1rem;
+          border-radius: 3px;
+          font-weight: 400;
+          width: 10em;
+          position: absolute;
+          left: -55%;
+          top: -3.25em;
+          z-index: 800;
+        }
+        &:after {
+          content: " ";
+          width: 0;
+          height: 0;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+          border-top: 14px solid fadeOut(@clr-text, 20);
+          position: absolute;
+          left: 35%;
+          top: 7px;
+          z-index: 700;
+        }
+      }
+    }
+  }
+  .labels {
+    svg {
+      fill: fadeOut(@clr-orange, 10);
+      &.competitor {
+        fill: fadeOut(@clr-competitors, 30);
+      }
+      &.not-available, &.competitor.not-available {
+        fill: fadeOut(@clr-red, 60);
+      }
+      .circle-pulse {
+        fill: transparent;
+        stroke: fadeOut(#ff8800, 30);
+      }
+    }
+    p {
+      color: @clr-white;
+      font-weight: 700;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-55%);
+      transform-style: preserve-3d;
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+  .gm-style-mtc {
+    // styles for map/satilite views
+    > div:last-child {
+      top: -26px !important;
+      label {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .map-key {
-	background-color: fadeout(@clr-white, 7);
-	position: absolute;
-	top: 0.75em;
-	left: 0.75em;
-	max-width: 19.222em;
-	min-width: 8.543em;
-	box-shadow: 0px 1px 1px 0 @clr-shadow;
-	z-index: 1;
-	p {
-		margin: 0.25em 0 0 0;
-	}
-	.mk-content {
-		padding: 0.5em 0.75em;
-		.mk-check {
-			cursor: pointer;
-			font-weight: normal;
-			margin-left: 0.75em;
-			&:before {
-				vertical-align: middle;
-				margin-right: 0.333em;
-			}
-		}
-	}
-	.mk-head {
-		padding: 0.5em 0.75em;
-		background-color: @clr-title-bg;
-		color: white;
-		height: 36px;
-		h3 {
-			display: inline-block;
-			font-size: 1.125rem;
-			margin-top: 0;
-			margin-bottom: 0;
-			margin-right: 1em;
-		}
-		button {
-			float: right;
-			padding: 0;
-			font-size: 1.125em;
-			color: lighten(@clr-link, 20);
-			&.btn-remove {
-				padding: 0;
-			}
-		}
-	} // end .mk-head
-	.mk-label {
-		label {
-			margin-right: 0.25em;
-			font-weight: 300;
-		}
-		span {
-			font-weight: 700;
-		}
-	}
-	.mks-provider-toggle {
-		margin-top: 0.25em;
-		margin-bottom: 0.5em;
-		.btn:before {
-			margin-right: 0;
-		}
-	}
-	.mks-dropdown {
-		width: 10.357em;
-		margin: 0 0.5em 1em;
-	}
-	.mk-key-settings {
-		.mks-label {
-			display: block;
-			margin-top: 1em;
-			margin-bottom: 0;
-			font-weight: 300;
-			&:first-child {
-				margin-top: 0;
-			}
-		}
-		.mks-color-list {
-			label.mks-label {
-				margin-top: 0.5em;
-			}
-			p {
-				margin-bottom: 0;
-				margin-top: 0.5em;
-			}
-			.mks-color-chip {
-				display: inline-block;
-				width: 1em;
-				height: 1em;
-				margin-bottom: -2px;
-				margin-left: 0.6em;
-				margin-right: 0.5em;
-			}
-			.mks-img-chip {
-				display: inline-block;
-				width: 2em;
-				height: 2em;
-			}
-		}
-	}
-	.mk-static-key {
-		cursor: pointer;
-	}
-	@media @sm-bp {
-		position: fixed;
-		top: auto;
-		bottom: 3.3rem;
-		left: 0.25em;
-		min-width: inherit;
-		.mks-dropdown {
-			.ui-select-choices {
-				top: auto;
-				bottom: 100%;
-			}
-      .ui-select-choices-row>a {
+  background-color: fadeout(@clr-white, 7);
+  position: absolute;
+  top: 0.75em;
+  left: 0.75em;
+  max-width: 19.222em;
+  min-width: 8.543em;
+  box-shadow: 0px 1px 1px 0 @clr-shadow;
+  z-index: 1;
+  p {
+    margin: 0.25em 0 0 0;
+  }
+  .mk-content {
+    padding: 0.5em 0.75em;
+    .mk-check {
+      cursor: pointer;
+      font-weight: normal;
+      margin-left: 0.75em;
+      &:before {
+        vertical-align: middle;
+        margin-right: 0.333em;
+      }
+    }
+  }
+  .mk-head {
+    padding: 0.5em 0.75em;
+    background-color: @clr-title-bg;
+    color: white;
+    height: 36px;
+    h3 {
+      display: inline-block;
+      font-size: 1.125rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 1em;
+    }
+    button {
+      float: right;
+      padding: 0;
+      font-size: 1.125em;
+      color: lighten(@clr-link, 20);
+      &.btn-remove {
+        padding: 0;
+      }
+    }
+  }
+  // end .mk-head
+  .mk-label {
+    label {
+      margin-right: 0.25em;
+      font-weight: 300;
+    }
+    span {
+      font-weight: 700;
+    }
+  }
+  .mks-provider-toggle {
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    .btn:before {
+      margin-right: 0;
+    }
+  }
+  .mks-dropdown {
+    width: 10.357em;
+    margin: 0 0.5em 1em;
+  }
+  .mk-key-settings {
+    .mks-label {
+      display: block;
+      margin-top: 1em;
+      margin-bottom: 0;
+      font-weight: 300;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .mks-color-list {
+      label.mks-label {
+        margin-top: 0.5em;
+      }
+      p {
+        margin-bottom: 0;
+        margin-top: 0.5em;
+      }
+      .mks-color-chip {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        margin-bottom: -2px;
+        margin-left: 0.6em;
+        margin-right: 0.5em;
+      }
+      .mks-img-chip {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+      }
+    }
+  }
+  .mk-static-key {
+    cursor: pointer;
+  }
+  @media @sm-bp {
+    position: fixed;
+    top: auto;
+    bottom: 3.3rem;
+    left: 0.25em;
+    min-width: inherit;
+    .mks-dropdown {
+      .ui-select-choices {
+        top: auto;
+        bottom: 100%;
+      }
+      .ui-select-choices-row > a {
         padding: 3px 0.25em;
       }
-		}
-		.mk-static-key {
-			.mk-head {
-				border-bottom-color: transparent;
-				margin-bottom: 0;
-				h3 {
-					margin-bottom: 0;
-					display: none;
-				}
-				button {
-					padding-left: 0.2em;
-				}
-			}
-			.mk-content {
-				display: none;
-			}
-		}
-	}
-} // end .map-key
+    }
+
+    .mk-static-key {
+      .mk-head {
+        border-bottom-color: transparent;
+        margin-bottom: 0;
+        h3 {
+          margin-bottom: 0;
+          display: none;
+        }
+        button {
+          padding-left: 0.2em;
+        }
+      }
+      .mk-content {
+        display: none;
+      }
+    }
+  }
+}
+
+// end .map-key

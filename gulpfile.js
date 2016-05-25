@@ -14,7 +14,8 @@ gulp.task('library', function () {
       loadcss: false,
       template: './library-template/template.hbs',
       preprocess: function(context, template, Handlebars) {
-        context.title = 'Benchmark Styles';
+        context.title = 'Benchmark Patterns';
+        context.footerHTML = 'Application Patterns for <a href="usebenchmark.com">Benchmark Intelligence</a>';
 
         // TODO: Use this to load app.css when gulp-livingcss is updated
         // return livingcss.readFileGlobs('./css/*', function(data, file) {

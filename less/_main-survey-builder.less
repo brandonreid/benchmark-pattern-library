@@ -1,0 +1,344 @@
+.survey-builder {
+  padding: 0;
+}
+
+// ******* Sidebar
+// top options, middle build area and bottom options
+.sb-sidebar {
+  position: relative;
+  label {
+    font-size: 0.75em;
+    font-weight: 400;
+    display: block;
+  }
+  .top-options {
+    background-color: @clr-white;
+    border-bottom: 1px solid @clr-frame;
+    padding: 0.5em 0.75em 0.75em;
+    button.back-btn {
+      font-size: 1.333em;
+      line-height: 18px;
+      margin-top: 4px;
+    }
+    button.cancel-btn {
+      margin-right: 1em;
+    }
+    button.settings-btn {
+      font-size: 1.5em;
+      padding: 0px;
+      margin-right: 0.5em;
+    }
+    button.save-btn {
+    }
+    .last-saved {
+      font-size: 0.8em;
+      font-weight: 300;
+      margin-top: 0.55em;
+      margin-top: 0.75em;
+      margin-bottom: -0.5em;
+    }
+  }
+  .survey-build {
+    padding: 0.5em 0.75em;
+    height: ~"calc(100vh - 180.5px)"; // height minus top-options and bot-options.
+    overflow-y: auto;
+    input, textarea {
+      margin-bottom: 1em;
+      resize: none;
+    }
+
+  }
+  .bottom-options {
+    background-color: @clr-white;
+    border-top: 1px solid @clr-frame;
+    padding: 0.5em 0.75em 0.25em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    button {
+      font-size: 0.8em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+    [class^="col-"] {
+      padding-left: 4px;
+      padding-right: 4px;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+// survey tree
+.survey-tree, .angular-ui-tree-drag {
+  list-style: none;
+  .tree-text {
+    white-space: nowrap;
+    max-width: 75%;
+    max-width: ~"calc(100% - 3em)";
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .page {
+    background-color: @clr-white;
+    margin-bottom: 0.5em;
+    box-shadow: 0 1px 2px 0 @clr-shadow;
+    .icon-drag {
+      opacity: 0.5;
+      &:hover {
+        cursor: move;
+        opacity: 1;
+      }
+    }
+    .page-title {
+      background-color: @clr-title-bg;
+      color: @clr-white;
+      font-weight: 300;
+      font-size: 1.125em;
+      padding: 0.25em;
+      button.btn-remove {
+        color: @clr-white;
+        opacity: 0.5;
+        &:hover, &:focus {
+          color: lighten(@clr-red, 15);
+          opacity: 1;
+        }
+      }
+      &:hover, &:focus {
+        cursor: pointer;
+        background-color: darken(@clr-title-bg, 10);
+      }
+    }
+    button.add-section-btn {
+      font-size: 0.75em;
+      margin: 4px;
+      &:active {
+        top: 1px;
+        margin: 5px 4px 4px;
+      }
+    }
+    .question {
+      border-left: none;
+    }
+    &.info-page {
+      .page-title {
+        background-color: darken(@clr-orange, 20);
+        &:hover, &:focus {
+          background-color: darken(@clr-orange, 15);
+        }
+      }
+      &.active {
+        .page-title {
+          background-color: darken(@clr-orange, 10);
+        }
+      }
+    }
+    &.active {
+      .page-title {
+        background-color: @clr-blue;
+      }
+    }
+  }
+  // end .page
+  .section {
+    background-color: lighten(@clr-title-bg, 70);
+    border-bottom: 1px solid lighten(@clr-title-bg, 60);
+    padding-left: 0.25em;
+    padding-bottom: 0.25em;
+    .section-title {
+      padding: 0.25em 0.25em 0.25em 0;
+    }
+    &:hover, &:focus {
+      cursor: pointer;
+      background-color: lighten(@clr-title-bg, 65);
+    }
+    .empty {
+      margin-bottom: 0.5em;
+      em {
+        font-weight: 300;
+        color: @clr-disabled;
+      }
+      span.icon-info {
+        color: @clr-disabled;
+        margin-left: 0.25em;
+      }
+    }
+    .question {
+      border-left: 1px solid @clr-frame-lt;
+    }
+    &.active {
+      background-color: @clr-blue;
+      border-color: darken(@clr-blue, 8);
+      .section-title {
+        color: @clr-white;
+        button.btn-remove {
+          color: fadeOut(@clr-white, 40);
+          &:hover, &:focus {
+            color: @clr-red;
+          }
+        }
+        &:hover, &:focus {
+          background-color: @clr-blue;
+        }
+      }
+      .empty {
+        em {
+          color: fadeOut(@clr-white, 30);
+        }
+        span.icon-info {
+          color: lighten(@clr-blue, 50);
+        }
+      }
+    }
+  }
+  // end .section
+  .question {
+    background-color: @clr-white;
+    padding: 0.25em;
+    border: 1px solid @clr-frame-lt;
+    border-right: 0;
+    + .question {
+      border-top: none;
+    }
+    .question-title {
+    }
+    &:hover, &:focus {
+      cursor: pointer;
+      background-color: #f9f9f9;
+    }
+    &.active {
+      background-color: @clr-blue;
+      color: @clr-white;
+      border-color: darken(@clr-blue, 8);
+      .question-title {
+        button.btn-remove {
+          color: fadeOut(@clr-white, 40);
+          &:hover, &:focus {
+            color: @clr-red;
+          }
+        }
+      }
+    }
+  }
+  button.add-page-btn {
+    background-color: #f9f9f9;
+  }
+  > ol > .angular-ui-tree-placeholder {
+    margin-bottom: 0.5em;
+  }
+}
+
+.angular-ui-tree-nodes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+}
+
+.angular-ui-tree-drag {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
+  opacity: .8
+}
+
+.angular-ui-tree-placeholder {
+  background-color: @clr-frame;
+  display: block;
+  position: relative;
+  padding: 0;
+  min-height: 20px;
+  line-height: 20px;
+}
+
+.angular-ui-tree-hidden {
+  display: none
+}
+
+.angular-ui-tree-empty {
+  border: 1px dashed #bbb;
+  min-height: 20px;
+  background-color: #e5e5e5;
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px
+}
+
+// ******* Main Stage
+.sb-main-stage {
+  padding: 1em;
+  .card .card-title.info-page {
+    background-color: darken(@clr-orange, 10);
+  }
+  label {
+    em {
+      font-weight: 300;
+      font-style: normal;
+    }
+  }
+  .answers {
+    margin-bottom: 0.5em;
+    .answer {
+      margin-bottom: 0.25em;
+      white-space: nowrap;
+      input {
+        max-width: 20em;
+        max-width: ~"calc(100% - 3em)";
+        display: inline-block;
+        &[type="text"] {
+          margin-left: 0.15em;
+        }
+      }
+    }
+    input.value-weight-input {
+      max-width: 5em;
+    }
+  }
+  .btn-group.answer-sentiment {
+    margin-top: 2px;
+    .positive.active {
+      background-color: @clr-green;
+    }
+    .neutral.active {
+      background-color: darken(@clr-button, 40);
+    }
+    .negative.active {
+      background-color: @clr-red;
+    }
+  }
+  .question-description {
+    background-color: @clr-shade;
+    border: 2px solid @clr-frame-lt;
+    padding: 0.5em;
+    display: inline-block;
+    img {
+      width: 100%;
+    }
+  }
+  .intro-message {
+    background-color: @clr-white;
+    padding: 0.75em 1em;
+    display: inline-block;
+    box-shadow: 0 1px 1px 0 @clr-shadow;
+    h2 {
+      margin: 0 0 0.5em;
+    }
+  }
+  // range question
+  .set-range {
+    label {
+      display: block;
+    }
+    input {
+      display: inline-block;
+      max-width: 4em;
+      text-align: center;
+      margin-left: 0.125em;
+      margin-right: 0.5em;
+    }
+  }
+}

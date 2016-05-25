@@ -8,13 +8,13 @@
     border-radius: 0;
     border: none;
   }
-	.modal-header {
+  .modal-header {
     padding: 0.5em 1em;
     background-color: @clr-title-bg;
     color: @clr-white;
-		h1, h2, h3, h4, h5, h6 {
-			font-weight: 400;
-		}
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 400;
+    }
     .close {
       color: @clr-white;
       opacity: 0.7;
@@ -26,7 +26,7 @@
         margin-right: 0;
       }
     }
-	}
+  }
   .modal-footer {
     padding-top: 0.25em;
     padding-bottom: 0.75em;
@@ -61,6 +61,14 @@
         margin-top: 0;
         opacity: 0;
       }
+    }
+  }
+  .modal-dialog.modal-alert {
+    .modal-header {
+      background-color: @clr-red;
+    }
+    .modal-body p {
+      font-size: 1.25em;
     }
   }
 }

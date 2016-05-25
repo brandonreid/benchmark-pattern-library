@@ -1,0 +1,157 @@
+/**
+* Cards are used to create area separation on the main stage of the app.
+*
+* @section Cards
+*/
+
+/**
+* Basic Card Markup
+*
+* @section Basic Card Markup
+* @sectionof Cards
+* @example
+*  <div class="card">
+*    <div class="card-header">
+*      <h2 class="card-title">Card Header</h2>
+*    </div>
+*    <div class="card-body">
+*      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+*      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+*    </div>
+*  </div>
+*/
+
+.card {
+  background-color: white;
+  box-shadow: 0 1px 1px 0 @clr-shadow;
+  margin-bottom: 1em;
+  min-height: 4em;
+  width: 100%;
+
+  .card-header {
+    background-color: @clr-title-bg;
+    color: @clr-white;
+    font-size: 1.2rem;
+    font-weight: 300;
+    .card-title {
+      font-size: 1.2rem;
+      margin: 0;
+      padding: 0.25em 0.5em 0.37em;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      a {
+        color: @clr-white;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        span:before {
+          font-size: 0.667em;
+          opacity: 0.5;
+          vertical-align: middle;
+        }
+        &:hover, &:focus {
+          span:before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    &.flag {
+      position: relative;
+      &:before {
+        content: " ";
+        font-family: "benchmark";
+        font-size: 1.125em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 1.5em;
+        padding-top: 0.125em;
+        text-align: center;
+        text-shadow: 0px 1px 1px @clr-shadow;
+      }
+      &.flag-benchmark:before {
+        content: '\e826';
+        background-color: lighten(@clr-title-bg, 10);
+        color: @clr-white;
+      }
+      &.flag-google:before {
+        content: "\e802";
+        background-color: @clr-gplus;
+        color: @clr-white;
+      }
+      &.flag-yelp:before {
+        content: "\e80f";
+        background-color: @clr-yelp;
+        color: @clr-white;
+      }
+      &.flag-facebook:before {
+        content: "\e811";
+        background-color: @clr-facebook;
+        color: @clr-white;
+      }
+      &.flag-foursquare:before {
+        content: "\e810";
+        background-color: @clr-foursquare;
+        color: @clr-white;
+      }
+      &.flag-twitter:before {
+        content: "\e828";
+        background-color: @clr-twitter;
+        color: @clr-white;
+      }
+      .card-title {
+        padding-left: 2.125em;
+      }
+    }
+    &.w-dropdown {
+      .card-title {
+        line-height: 27px;
+        width: 75%;
+        display: inline-block;
+        margin-bottom: -5px;
+      }
+      .ui-select-container {
+        width: 100%;
+        max-width: 25%;
+        float: right;
+        padding-top: 0.2em;
+        padding-right: 0.5em;
+      }
+    }
+  } // end card-header
+
+  .card-body {
+    padding: 0.5em 0.75em;
+    &.flush {
+      padding: 0;
+    }
+  }
+
+  .card-footer {
+    border-top: 1px solid @clr-frame;
+    padding: 1em 0;
+  }
+  label.key-label {
+    font-weight: 400;
+    display: block;
+    font-size: 0.75em;
+  }
+  .key {
+    border: 1px dashed @clr-frame-lt;
+    background-color: @clr-shade;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    margin-bottom: 0.5em;
+    p {
+      margin-bottom: 0;
+      display: inline-block;
+      margin-right: 1.125em;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

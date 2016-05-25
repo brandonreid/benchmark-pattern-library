@@ -1,0 +1,24 @@
+.tooltip {
+  .tooltip-arrow {
+  }
+  .tooltip-inner {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 1px @clr-shadow;
+  }
+  &.warning-tooltip { // make a tooltip a warning tooltip by adding data-animation="warning-tooltip"
+    .tooltip-inner {
+      background-color: @clr-red;
+    }
+    .tooltip-arrow {
+      border-top-color: @clr-red;
+    }
+  }
+}
+
+.radio-checkbox-tooltip {
+  background-color: @clr-title-bg;
+  color: @clr-white;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px @clr-title-bg;
+}

@@ -1,0 +1,18 @@
+.ui-select-bootstrap {
+  .ui-select-placeholder, .ui-select-match-text {
+    width: 90%;
+    width: ~"calc(100% - 1em)";
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+  .ui-select-choices-row {
+    & > a {
+      padding: 0.25em 0.5em;
+    }
+    &.active > a {
+      background-color: @clr-active;
+    }
+  }
+}

@@ -1,52 +1,64 @@
-svg.loading-logo {
-  animation: loading-spin 1.5s infinite;
-  .circle {
-	  fill: transparent;
-	  stroke: @clr-title-bg;
-	}
-}
-
-@keyframes loading-spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+@loading-animation-time: 2s;
 
 .loading {
-	line-height: 0;
-	.loading-icon svg {
-		width: 1.5em;
-		height: 1.5em;
-		line-height: 1em;
-		vertical-align: middle;
-		.circle {
-			stroke-width: 0.066em;
-			stroke: @clr-title-bg;
-		}
-	}
-	.loading-message {
-		color: @clr-title-bg;
-		font-style: normal;
-		vertical-align: middle;
-		margin-left: -0.333em;
-		vertical-align: middle;
-	}
-	&.hairline {
-		svg .circle { stroke-width: 0.75px; }
-		.loading-message { font-weight: 300; }
-	}
+  font-size: 2em;
+  text-align: center;
+  white-space: nowrap;
+  .loading-spinner {
+    display: inline-block;
+    margin-right: 0.667em;
+    span {
+      margin-right: -0.9em;
+      animation: spinner-fade @loading-animation-time infinite;
+      opacity: 0;
+      &:before {
+        margin: 0;
+        padding: 0;
+        color: @clr-logo;
+      }
+      &:nth-child(2) {
+        animation-delay: @loading-animation-time / 3;
+      }
+      &:last-child {
+        animation-delay: (@loading-animation-time / 3) * 2;
+      }
+    }
+  }
+  .loading-message {
+    font-style: italic;
+  }
 }
 
 .load {
-	.wait {
-		opacity: 0;
-		transition: opacity 200ms ease;
-	}
-	&.loaded {
-		.wait {
-			opacity: 1;
-		}
-		.loading {
-			display: none;
-		}
-	}
+  &.card {
+    .card-body {
+      & > * {
+        opacity: 0;
+        transition: opacity 200ms ease;
+      }
+      .loading {
+        opacity: 1;
+      }
+    }
+    &.loaded {
+      .card-body {
+        & > * {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &.loaded .loading {
+    display: none;
+  }
+}
+
+@keyframes spinner-fade {
+  0% {
+    opacity: 0;
+  } 50% {
+    opacity: 1;
+  } 100% {
+    opacity: 0;
+  }
 }

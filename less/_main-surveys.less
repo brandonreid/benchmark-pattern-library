@@ -1,0 +1,75 @@
+.surveys-view {
+}
+
+p.no-surveys-msg {
+  margin-top: 1em;
+}
+
+table.surveys-table {
+	tbody {
+		td {
+			vertical-align: middle;
+		}
+	}
+	th.st-status {
+		width: 6em;
+	}
+	.st-name {
+		font-weight: bold;
+		width: 20em;
+	}
+	.st-name, .st-description {
+		.icon-edit {
+			opacity: 0;
+			transition: opacity 100ms ease;
+		}
+		&:hover, &:focus {
+			.icon-edit {
+				opacity: 1;
+			}
+		}
+	}
+	.st-edit-description {
+		textarea {
+			margin-bottom: 0.25em;
+		}
+	}
+	.reports-col {
+		width: 15%;
+		p {
+			margin: 0;
+		}
+	}
+	.st-options {
+		text-align: right;
+		width: 15.5em;
+		button {
+			margin-left: 0.5em;
+		}
+	}
+}
+
+.survey-deploy-modal {
+  .alert {
+    margin: 0;
+    background-color: @clr-yellow;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+  }
+  .sdm-deploying {
+    margin-top: 2.25em;
+    font-size: 1.5em;
+    font-weight: 300;
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+
+.preview-link, .preview-link:hover, .preview-link:focus {
+  text-decoration: initial;
+  color: inherit;
+}

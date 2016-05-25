@@ -1,71 +1,65 @@
-/**
- * A short description or lengthy explanation about the style. Will be parsed
- * using `markdown`.
- *
- * Descriptions can be multiple lines and end at the first encountered tag.
- * Tags can be in any order and can be multiple lines long as well.
- *
- * @section Section Name
- * @example
- * <button class="btn btn-text">Test</button>
- */
-@bootstrap-prefix: '../node_modules/bootstrap/less/';
-
 // bootstrap imports
-@import "@{bootstrap-prefix}variables.less";
-@import "@{bootstrap-prefix}mixins.less";
-@import "@{bootstrap-prefix}normalize.less";
-@import "@{bootstrap-prefix}scaffolding.less";
-@import "@{bootstrap-prefix}type.less";
-@import "@{bootstrap-prefix}code.less";
-@import "@{bootstrap-prefix}grid.less";
-@import "@{bootstrap-prefix}tables.less";
-@import "@{bootstrap-prefix}forms.less";
-@import "@{bootstrap-prefix}buttons.less";
-@import "@{bootstrap-prefix}component-animations.less";
-@import "@{bootstrap-prefix}dropdowns.less";
-@import "@{bootstrap-prefix}button-groups.less";
-@import "@{bootstrap-prefix}input-groups.less";
-@import "@{bootstrap-prefix}breadcrumbs.less";
-@import "@{bootstrap-prefix}pagination.less";
-@import "@{bootstrap-prefix}pager.less";
-@import "@{bootstrap-prefix}alerts.less";
-@import "@{bootstrap-prefix}progress-bars.less";
-@import "@{bootstrap-prefix}list-group.less";
-@import "@{bootstrap-prefix}panels.less";
-@import "@{bootstrap-prefix}responsive-embed.less";
-@import "@{bootstrap-prefix}wells.less";
-@import "@{bootstrap-prefix}close.less";
-@import "@{bootstrap-prefix}modals.less";
-@import "@{bootstrap-prefix}tooltip.less";
-@import "@{bootstrap-prefix}popovers.less";
-@import "@{bootstrap-prefix}utilities.less";
-@import "@{bootstrap-prefix}responsive-utilities.less";
+@bootstrap-path: '../node_modules/bootstrap/less/';
 
-
+@import "@{bootstrap-path}/variables.less";
+@import "@{bootstrap-path}/mixins.less";
+@import "@{bootstrap-path}/normalize.less";
+// @import "@{bootstrap-path}/scaffolding.less";
+@import "@{bootstrap-path}/type.less";
+// @import "@{bootstrap-path}/code.less";
+@import "@{bootstrap-path}/grid.less";
+// @import "@{bootstrap-path}/tables.less";
+// @import "@{bootstrap-path}/forms.less";
+// @import "@{bootstrap-path}/buttons.less";
+// @import "@{bootstrap-path}/component-animations.less";
+// @import "@{bootstrap-path}/dropdowns.less";
+// @import "@{bootstrap-path}/button-groups.less";
+// @import "@{bootstrap-path}/input-groups.less";
+// @import "@{bootstrap-path}/breadcrumbs.less";
+// @import "@{bootstrap-path}/pagination.less";
+// @import "@{bootstrap-path}/pager.less";
+// @import "@{bootstrap-path}/alerts.less";
+// @import "@{bootstrap-path}/progress-bars.less";
+// @import "@{bootstrap-path}/list-group.less";
+// @import "@{bootstrap-path}/panels.less";
+// @import "@{bootstrap-path}/responsive-embed.less";
+// @import "@{bootstrap-path}/wells.less";
+// @import "@{bootstrap-path}/close.less";
+// @import "@{bootstrap-path}/modals.less";
+// @import "@{bootstrap-path}/tooltip.less";
+// @import "@{bootstrap-path}/popovers.less";
+// @import "@{bootstrap-path}/utilities.less";
+// @import "@{bootstrap-path}/responsive-utilities.less";
 // benchmark
 @import "_variables.less";
-@import "_login.less";
 @import "_global.less";
-@import "makings/_typography.less";
-@import "makings/_logo.less";
-@import "makings/_buttons.less";
-@import "makings/_icons.less";
-@import "makings/_inputs.less";
-@import "makings/_grid-stuff.less";
-@import "makings/_ui-select-overrides.less";
-@import "makings/_tooltips.less";
-@import "makings/_modals.less";
-@import "makings/_collapse.less";
-@import "makings/_panels-and-tables.less";
-@import "makings/_breadcrumb.less";
+
+@import "_cards.less";
+@import "_typography.less";
+@import "_logo.less";
+@import "_buttons.less";
+@import "_icons.less";
+@import "_inputs.less";
+@import "_grid-stuff.less";
+@import "_tables.less";
+@import "_ui-select-overrides.less";
+@import "_tooltips.less";
+@import "_modals.less";
+@import "_collapse.less";
+@import "_panels.less";
+@import "_wysiwyg.less";
 @import "_loading.less";
 @import "_sidebar.less";
 @import "_main.less";
 @import "_c3-overrides.less";
+@import "_insights.less";
+@import "_main-dashboard.less";
 @import "_main-overview.less";
 @import "_main-map.less";
 @import "_main-reviews.less";
 @import "_main-locations.less";
+@import "_main-surveys.less";
+@import "_main-survey-builder.less";
+@import "_main-reports.less";
 @import "_account-settings-modal.less";
 @import "_admin.less";
