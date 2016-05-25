@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/usebenchmark/pattern-library",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
     "gulp-livingcss": "^1.0.0",

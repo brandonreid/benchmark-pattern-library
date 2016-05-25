@@ -8,8 +8,11 @@ var LessPluginCleanCSS = require('less-plugin-clean-css'),
 
 
 gulp.task('patterns', function () {
-  gulp.src('test/*.less')
-    .pipe(livingcss())
+  gulp.src('less/*.less')
+    .pipe(livingcss({
+      loadcss: false,
+      template: './library-template/template.hbs'
+    }))
     .pipe(gulp.dest('pattern_library'))
 });
 
