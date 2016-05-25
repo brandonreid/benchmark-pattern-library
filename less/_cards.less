@@ -5,21 +5,46 @@
 */
 
 /**
-* Basic Card Markup
-*
 * @section Basic Card Markup
 * @sectionof Cards
 * @example
-*  <div class="card">
-*    <div class="card-header">
-*      <h2 class="card-title">Card Header</h2>
-*    </div>
-*    <div class="card-body">
-*      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
-*      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
-*    </div>
-*  </div>
+* <div class="card">
+*   <div class="card-header">
+*     <h2 class="card-title">Card Header</h2>
+*   </div>
+*   <div class="card-body">
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+*   </div>
+* </div>
 */
+
+/**
+* When card content is related to a provider, add a flag to make this context clear.
+* 
+* __Provider Flags Available:__
+* - `flag-benchmark`
+* - `flag-google`
+* - `flag-yelp`
+* - `flag-facebook`
+* - `flag-foursquare`
+* - `flag-twitter`
+*
+* @section Card Header with Flag
+* @sectionof Cards
+* @example
+* <div class="card">
+*   <div class="card-header flag flag-benchmark">
+*     <h2 class="card-title">Card Header</h2>
+*   </div>
+*   <div class="card-body">
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+*   </div>
+* </div>
+*/
+
+@card-header-line-height: 27px;
 
 .card {
   background-color: white;
@@ -63,6 +88,7 @@
         content: " ";
         font-family: "benchmark";
         font-size: 1.125em;
+        line-height: @card-header-line-height;
         position: absolute;
         top: 0;
         left: 0;
@@ -108,7 +134,7 @@
     }
     &.w-dropdown {
       .card-title {
-        line-height: 27px;
+        line-height: @card-header-line-height;
         width: 75%;
         display: inline-block;
         margin-bottom: -5px;
