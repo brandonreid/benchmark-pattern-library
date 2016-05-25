@@ -20,7 +20,7 @@ gulp.task('library', function () {
 gulp.task('less', function () {
   gulp.src(['./less/app.less'])
     .pipe(less({
-      plugins: [autoprefix, cleanCSSPlugin]
+      plugins: [autoprefix, cleanCSSPlugin],
     }))
     .pipe(gulp.dest('./pattern_library/css/'));
 });
@@ -42,7 +42,7 @@ gulp.task('server', function () {
 
 gulp.task('watch', function () {
   gulp.watch([
-    'pattern_library/index.html',
+    './pattern_library/index.html'
   ], function (event) {
     return gulp
       .src(event.path)

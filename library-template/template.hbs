@@ -19,9 +19,8 @@
   <!-- webcomponent -->
   <template id="livingcssExampleTemplate">
     <style>
-    {{#each stylesheets}}
-    @import "{{this}}";
-    {{/each}}
+    /* Import Benchmark Styles */
+    @import "./css/app.css";
 
     :host {
       display: block;
