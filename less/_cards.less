@@ -5,6 +5,10 @@
 */
 
 /**
+* Basic markup for a card.
+*
+* The `card-footer` is optional and meant for supportive information disclaimers and related info links.
+*
 * @section Basic Card Markup
 * @sectionof Cards
 * @example
@@ -15,6 +19,9 @@
 *   <div class="card-body">
 *     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
 *     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+*   </div>
+*   <div class="card-footer">
+*     <p><em>Some footer text.</em></p>
 *   </div>
 * </div>
 */
@@ -157,8 +164,9 @@
   }
 
   .card-footer {
-    border-top: 1px solid @clr-frame;
-    padding: 1em 0;
+    background-color: @clr-shade;
+    border-top: 1px solid @clr-frame-lt;
+    padding: 0.25em 0.75em;
   }
   label.key-label {
     font-weight: 400;
