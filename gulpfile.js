@@ -51,7 +51,7 @@ gulp.task('fonts', function () {
 gulp.task('server', function () {
   connect.server({
     root: './pattern_library/',
-    port: '9000',
+    port: '7000',
     livereload: true
   });
 });
