@@ -12,15 +12,30 @@ gulp.task('library', function () {
   gulp.src('less/*.less')
     .pipe(livingcss({
       loadcss: false,
-      template: './library-template/template.hbs'
+      template: './library-template/template.hbs',
+      preprocess: function(context, template, Handlebars) {
+        context.title = 'Benchmark Styles';
+
+        // TODO: Use this to load app.css when gulp-livingcss is updated
+        // return livingcss.readFileGlobs('./css/*', function(data, file) {
+        //   context.stylesheets.push(file);
+        // });
+      }
     }))
     .pipe(gulp.dest('./pattern_library/'))
 });
 
 gulp.task('less', function () {
+  // App Styles
   gulp.src(['./less/app.less'])
     .pipe(less({
-      plugins: [autoprefix, cleanCSSPlugin],
+      plugins: [autoprefix, cleanCSSPlugin]
+    }))
+    .pipe(gulp.dest('./pattern_library/css/'));
+  // Pattern Library Styles
+  gulp.src(['./library-template/less/library.less'])
+    .pipe(less({
+      plugins: [autoprefix, cleanCSSPlugin]
     }))
     .pipe(gulp.dest('./pattern_library/css/'));
 });
@@ -49,6 +64,7 @@ gulp.task('watch', function () {
       .pipe(connect.reload());
   });
   gulp.watch(['./less/**/*.less'], ['less', 'library']);
+  gulp.watch(['./library-template/less/**/*.less'], ['less', 'library']);
   gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
 });
 

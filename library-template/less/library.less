@@ -1,0 +1,140 @@
+// APP.LESS IMPORTS
+@import '../../less/_variables.less';
+
+// BOOTSTRAP IMPORTS
+@bootstrap-prefix: '../../node_modules/bootstrap/less/';
+@import '@{bootstrap-prefix}normalize.less';
+
+// LIBRARY IMPORTS
+@import '_global.less';
+@import '_typography.less';
+@import '_grid.less';
+@import '_header.less';
+@import '_content-area.less';
+@import '_nav.less';
+@import '_footer.less';
+
+
+/*
+ * MOBILE BREAKPOINT
+ */
+@media (max-width: 992px) {
+  .livingcss__main-nav {
+    position: fixed;
+    top: 0;
+    right: -14rem;
+    bottom: 0;
+    width: 13rem;
+    background: #fdfdfd;
+    border-left: 1px solid #B6B6B6;
+    transition: right 0.2s;
+    padding: 0;
+  }
+
+  .livingcss__main-nav--open .livingcss__wrapper {
+    right: 13rem;
+  }
+
+  .livingcss__main-nav--open .livingcss__main-nav {
+    right: 0;
+    box-shadow: -2px 0px 6px rgba(0,0,0,0.2);
+  }
+
+  .livingcss__main-nav-container {
+    padding: 0;
+  }
+
+  .livingcss__nav-link {
+    border-bottom: 1px solid #B6B6B6;
+  }
+
+  .livingcss__nav {
+    display: none;
+  }
+}
+
+/*
+ * DESKTOP BREAKPOINT
+ */
+@media (min-width: 993px) {
+  html{
+    font-size: 16px;
+  }
+
+  .livingcss__content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .livingcss__container {
+    max-width: 964px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .livingcss__nav {
+    flex: 0 0 13rem;
+    padding-right: 0.8125rem;
+  }
+
+  .livingcss__main-nav-container {
+    border-bottom: 1px solid #B6B6B6;
+  }
+
+  .livingcss__main {
+    flex: 1;
+    max-width: 729px;
+    padding-left: 0.8125rem;
+  }
+
+  .livingcss__nav-link--main {
+    display: inline-block;
+  }
+
+  .livingcss__nav--fixed .livingcss__nav-container {
+    position: fixed;
+    top: 0;
+    width: 13rem;
+  }
+
+  .livingcss__menu {
+    display: none;
+  }
+
+  .livingcss__nav-link--main {
+    font-size: 0.875rem;
+    line-height: 1rem
+  }
+}
+
+/**
+ * DESKTOP HD BREAKPOINT
+ */
+@media (min-width: 1200px) {
+  .livingcss__container {
+    max-width: 1170px;
+  }
+
+  .livingcss__main {
+    max-width: 935px;
+  }
+}
+
+/*
+ * HELPERS
+ */
+.livingcss__inverse-text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+}
+
+.livingcss__inverse-text a {
+  color: white;
+}
+
+.livingcss__inverse-text a:hover,
+.livingcss__inverse-text a:active,
+.livingcss__inverse-text a:focus {
+  color: white;
+}

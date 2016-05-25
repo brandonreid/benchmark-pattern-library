@@ -3,15 +3,13 @@
 <head>
   <title>{{title}}</title>
 
-  <!-- critical path css -->
-  {{> mainStylesheet}}
-  <!-- /critical path css -->
+  <!-- Library CSS -->
+  <link rel="stylesheet" href="./css/library.css">
 
   <!-- user styles -->
   {{#each globalStylesheets}}
   <link rel="stylesheet" href="{{this}}">
   {{/each}}
-  <!-- /user styles -->
 
   <script src="https://cdn.jsdelivr.net/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
 </head>
@@ -19,8 +17,14 @@
   <!-- webcomponent -->
   <template id="livingcssExampleTemplate">
     <style>
-    /* Import Benchmark Styles */
-    @import "./css/app.css";
+
+    /* IMPORT BENCHMARK STYLES */
+    /* TODO: Import these via gulp livingcss build */
+    @import './css/app.css';
+
+    {{#each stylesheets}}
+    @import "{{this}}";
+    {{/each}}
 
     :host {
       display: block;
