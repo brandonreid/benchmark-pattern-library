@@ -18,10 +18,6 @@
   <template id="livingcssExampleTemplate">
     <style>
 
-    /* IMPORT BENCHMARK STYLES */
-    /* TODO: Import these via gulp livingcss build */
-    @import './css/app.css';
-
     {{#each stylesheets}}
     @import "{{this}}";
     {{/each}}

@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var runSequence = require('run-sequence');
 var livingcss = require('gulp-livingcss');
 var less = require('gulp-less');
 var LessAutoprefix = require('less-plugin-autoprefix'),
@@ -16,14 +17,12 @@ gulp.task('library', function () {
       preprocess: function(context, template, Handlebars) {
         context.title = 'Benchmark Patterns';
         context.footerHTML = 'Application Patterns for <a href="usebenchmark.com">Benchmark Intelligence</a>';
-
-        // TODO: Use this to load app.css when gulp-livingcss is updated
-        // return livingcss.readFileGlobs('./css/*', function(data, file) {
-        //   context.stylesheets.push(file);
-        // });
+        return livingcss.utils.readFileGlobs('./dist/app.css', function(data, file) {
+          context.stylesheets.push(file);
+        });
       }
     }))
-    .pipe(gulp.dest('./pattern_library/'))
+    .pipe(gulp.dest('./pattern_library/'));
 });
 
 gulp.task('less', function () {
@@ -32,7 +31,8 @@ gulp.task('less', function () {
     .pipe(less({
       plugins: [autoprefix, cleanCSSPlugin]
     }))
-    .pipe(gulp.dest('./pattern_library/css/'));
+    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./pattern_library/dist/'));
   // Pattern Library Styles
   gulp.src(['./library-template/less/library.less'])
     .pipe(less({
@@ -69,4 +69,9 @@ gulp.task('watch', function () {
   gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
 });
 
-gulp.task('dev', ['less', 'library', 'fonts', 'server', 'watch']);
+gulp.task('dev', function(callback) {
+  runSequence('less',
+              ['library', 'fonts'],
+              ['server', 'watch'],
+              callback);
+});
