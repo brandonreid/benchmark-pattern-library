@@ -1,253 +1,280 @@
-.btn {
+/**
+* @section Buttons
+*/
+
+/**
+* __Usage:__ For general actions and secondary actions.
+*
+* @section Default Button
+* @sectionof Buttons
+* @example
+* <button>Default Button</button>
+* <button class="disabled">Disabled Default Button</button>
+*/
+button {
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  background-color: @clr-button;
+  color: @clr-text;
+  border: 1px solid @clr-frame;
+  box-shadow: 0 1px 0 @clr-frame;
+  border-radius: 4px;
+  line-height: 1.6em;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin-bottom: 0; // For input.btn
   padding: 0.25em 0.75em;
-  outline: 0;
-  &:active, &:focus {
-    outline: 0 !important;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  .user-select(none);
+  & + button {
+    margin-left: 0.75em;
   }
-  &.btn-svg, &.btn-icon {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-  }
-  &.btn-default {
-    background-color: @clr-button;
-    border-color: @clr-frame;
-    border-bottom-width: 2px;
-    &.ui-select-toggle {
-      text-align: left;
-      background-color: @clr-white;
-      height: auto;
-      &:hover, &:focus {
-        background-color: @clr-white;
-        border-color: darken(@clr-frame, 15);
-      }
-    }
-    &:hover, &:focus {
-      background-color: darken(@clr-button, 7);
-    }
-    &:active {
-      border-bottom-width: 1px;
-      margin-top: 1px;
-    }
-    &.active {
-      background-color: @clr-active;
-      color: @clr-white;
-      border-bottom-width: 1px;
-      margin-top: 1px;
-    }
-    &.btn-danger {
-      color: @clr-red;
-    }
-    &.disabled,
-    &[disabled],
-    fieldset[disabled] & {
-      border-bottom-width: 1px;
-      margin-top: 1px;
-      &:hover, &:focus, &:active {
-        background-color: @clr-button;
-      }
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      .tab-focus();
     }
   }
-  &.btn-primary {
-    background-color: #325099;
-    border-radius: 3px;
-    border: 0;
-    border-bottom: 2px solid #14388b;
-    &:hover, &:focus {
-      background-color: #2961b0;
-    }
-    &:active {
-      background-color: #364987;
-      margin-top: 1px;
-      border-bottom-width: 1px;
-      outline: 0;
-    }
-    &.btn-danger {
-      background-color: @clr-red;
-      border-color: darken(@clr-red, 9);
-      color: lighten(@clr-title-bg, 80);
-    }
-  }
-  &.btn-special {
-    background-color: @clr-orange;
-    border-bottom: 2px solid darken(@clr-orange, 12);
-    color: @clr-white;
-    font-weight: bold;
-    text-shadow: 0 0.5px 1px darken(@clr-orange, 25);
-    &:hover, &:focus {
-      background-color: lighten(@clr-orange, 5);
-    }
-    &:active {
-      background-color: darken(@clr-orange, 5);
-      margin-top: 1px;
-      border-bottom-width: 1px;
-    }
-  }
-  &.btn-text {
-    background-color: transparent;
-    border: 0;
-    border-radius: 0;
-    color: @clr-link;
+  &:hover,
+  &:focus,
+  &.focus {
+    color: @clr-text;
     text-decoration: none;
-    &:hover, &:focus {
-      color: lighten(@clr-link, 10);
-      box-shadow: none;
-    }
-    &.flush {
-      padding: 0;
-    }
-    &.flush-sides {
-      padding-left: 0;
-      padding-right: 0;
+  }
+  &:active {
+    outline: 0;
+    background-image: none;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.25);
+    transform: translateY(1px);
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    .opacity(.65);
+    &:active {
+      box-shadow: 0 1px 0 @clr-frame;
+      transform: none;
     }
   }
-  &.btn-icon {
-    color: @clr-orange;
-    font-size: 1rem;
-    &:before {
-      margin: 0;
-    }
-    &:hover, &:focus {
-      color: lighten(@clr-orange, 5);
-    }
-    &:active {
-      background-color: transparent;
-      color: darken(@clr-orange, 5);
-      box-shadow: none;
-    }
+  a& {
     &.disabled,
-    &[disabled],
     fieldset[disabled] & {
-      color: @clr-disabled;
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
-  }
-  &.btn-remove {
-    background: transparent;
-    color: @clr-remove;
-    padding-left: 0;
-    padding-right: 0;
-    &:hover, &:focus {
-      color: @clr-red;
-      box-shadow: none;
-    }
-    &:active {
-      color: darken(@clr-red, 15);
-    }
-    &.flush {
-      padding: 0;
-    }
-    &.flush-sides {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-  &.btn-inline {
-    margin-left: 0.125em;
-    margin-right: 0.125em;
   }
 }
 
-.ui-select-search { // override for ui-select dropdowns
-  height: auto;
-  padding: 0.25em 0.75em;
+/**
+* __Usage:__ Only for the "next logical step", such as "save", "next", etc. Only one per view.
+*
+* The user should expect that they can reliably click this to progress without having to really read it.
+*
+* @section Primary Button
+* @sectionof Buttons
+* @example
+* <button class="primary">Primary Button</button>
+* <button class="primary disabled">Disabled Primary Button</button>
+*/
+button.primary {
+  background-color: @clr-primary;
+  border-color: @clr-primary-border;
+  color: white;
+  box-shadow: 0 1px 0 @clr-primary-border;
 }
 
-.btn-group {
-  .btn {
-    border-bottom-width: 2px;
+/**
+* __Usage:__ Rarely used. Only for actions that trigger a journey, such as "+ New Survey". Only 1 per view (if any).
+*
+* @section Special Action Button
+* @sectionof Buttons
+* @example
+* <button class="special-action">Special Action Button</button>
+* <button class="special-action disabled">Disabled Special Action Button</button>
+*/
+button.special-action {
+  background-color: @clr-orange;
+  border-color: darken(@clr-orange, 12);
+  color: white;
+  box-shadow: 0 1px 0 darken(@clr-orange, 12);
+  text-shadow: 0 0.5px 2px darken(@clr-orange, 30);
+}
+
+/**
+* __Usage:__ Indicates a supporting action, typically inside of a tab or accordion menu.
+*
+* This may also be used for an icon only button, otherwise always accompany a text button with an icon to differentiate from a standard link.
+*
+* Add the class `flush` to remove button padding.
+*
+* Add the class `flush-icon` to remove the icon's default margin.
+*
+* @section Text Button
+* @sectionof Buttons
+* @example
+* <button class="text icon-add">Text Button</button>
+* <button class="text icon-add disabled">Disabled Text Button</button>
+* <button class="text icon-add flush">Button Without Padding</button>
+* <button class="text icon-add flush-icon"><span class="sr-only">Add</span></button>
+*/
+button.text {
+  background-color: transparent;
+  border: none;
+  color: @clr-link;
+  box-shadow: none;
+  &.flush {
+    padding: 0;
+  }
+  &.flush-icon:before {
     margin: 0;
-    + .btn {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    &:not(:last-child) {
-      border-right: 0;
-    }
-    &.active {
-      margin-top: 1px;
-      &:first-child {
-        box-shadow: inset -7px 0 5px -2px fadeout(@clr-shadow, 25);
-      }
-    }
   }
-  &.bg-icons {
-    .btn {
-      &:before, & span:before {
-        margin: 0;
-      }
-    }
+  &:active {
+    color: darken(@clr-link, 10);
+    box-shadow: none;
+    transform: none;
   }
 }
 
-.btn-group-vertical {
-  .btn-default {
-    border-bottom-width: 1px;
-    background-color: #fff;
-    &:active {
-      border-top-width: 0;
-    }
-    &.active:active {
-      border-top-width: 1px;
-    }
-    &:first-child {
-      &:active {
-        margin-top: 0;
-        border-bottom-width: 0
-      }
-      &.active:active {
-        margin-top: 1px;
-        border-bottom-width: 1px;
-      }
-    }
+/**
+* __Usage:__ For "remove" or "cancel" actions.
+*
+* Add the class `flush` to remove button padding and remove the icon's margin.
+*
+* Add the class `flush-icon` to remove the icon's default margin.
+*
+* @section Clear Button
+* @sectionof Buttons
+* @example
+* <button class="clear">Cancel</button>
+* <button class="clear disabled">Cancel</button>
+* <button class="clear icon-remove flush-icon"><span class="sr-only">Remove</span></button>
+*/
+button.clear {
+  background-color: transparent;
+  border: none;
+  color: @clr-remove;
+  box-shadow: none;
+  &.flush {
+    padding: 0;
+  }
+  &.flush-icon:before {
+    margin: 0;
+  }
+  &:active {
+    color: darken(@clr-link, 10);
+    box-shadow: none;
+    transform: none;
   }
 }
 
-.input-group {
-  .input-group-btn {
-    .btn-default {
-      border-width: 1px;
-      height: 34px;
-      padding: 6px 8px;
-      &:before {
-        margin-right: 0;
-      }
-      &:active {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-    }
-  }
-}
 
-.sentament-btns {
-  float: right;
-  margin-left: 1em;
-  z-index: 2;
-  .btn {
-    font-weight: 700;
-    &.positive {
-      color: @clr-green;
-      &.active {
-        background-color: @clr-green;
-        border-color: darken(@clr-green, 7);
-        color: @clr-white;
-      }
-    }
-    &.neutral {
-      color: @clr-blue;
-      &.active {
-        background-color: @clr-blue;
-        border-color: darken(@clr-blue, 7);
-        color: @clr-white;
-      }
-    }
-    &.negative {
-      color: @clr-red;
-      &.active {
-        background-color: @clr-red;
-        border-color: darken(@clr-red, 7);
-        color: @clr-white;
-      }
-    }
-  }
-}
+// OLD ************************************************
+
+// .ui-select-search { // override for ui-select dropdowns
+//   height: auto;
+//   padding: 0.25em 0.75em;
+// }
+
+// .btn-group {
+//   .btn {
+//     border-bottom-width: 2px;
+//     margin: 0;
+//     + .btn {
+//       margin-left: 0;
+//       margin-right: 0;
+//     }
+//     &:not(:last-child) {
+//       border-right: 0;
+//     }
+//     &.active {
+//       margin-top: 1px;
+//       &:first-child {
+//         box-shadow: inset -7px 0 5px -2px fadeout(@clr-shadow, 25);
+//       }
+//     }
+//   }
+//   &.bg-icons {
+//     .btn {
+//       &:before, & span:before {
+//         margin: 0;
+//       }
+//     }
+//   }
+// }
+
+// .btn-group-vertical {
+//   .btn-default {
+//     border-bottom-width: 1px;
+//     background-color: #fff;
+//     &:active {
+//       border-top-width: 0;
+//     }
+//     &.active:active {
+//       border-top-width: 1px;
+//     }
+//     &:first-child {
+//       &:active {
+//         margin-top: 0;
+//         border-bottom-width: 0
+//       }
+//       &.active:active {
+//         margin-top: 1px;
+//         border-bottom-width: 1px;
+//       }
+//     }
+//   }
+// }
+
+// .input-group {
+//   .input-group-btn {
+//     .btn-default {
+//       border-width: 1px;
+//       height: 34px;
+//       padding: 6px 8px;
+//       &:before {
+//         margin-right: 0;
+//       }
+//       &:active {
+//         margin-top: 0;
+//         margin-bottom: 0;
+//       }
+//     }
+//   }
+// }
+
+// .sentament-btns {
+//   float: right;
+//   margin-left: 1em;
+//   z-index: 2;
+//   .btn {
+//     font-weight: 700;
+//     &.positive {
+//       color: @clr-green;
+//       &.active {
+//         background-color: @clr-green;
+//         border-color: darken(@clr-green, 7);
+//         color: @clr-white;
+//       }
+//     }
+//     &.neutral {
+//       color: @clr-blue;
+//       &.active {
+//         background-color: @clr-blue;
+//         border-color: darken(@clr-blue, 7);
+//         color: @clr-white;
+//       }
+//     }
+//     &.negative {
+//       color: @clr-red;
+//       &.active {
+//         background-color: @clr-red;
+//         border-color: darken(@clr-red, 7);
+//         color: @clr-white;
+//       }
+//     }
+//   }
+// }

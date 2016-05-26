@@ -68,6 +68,10 @@ h1, h2, h3, h4, h5, h6 {
 a {
   cursor: pointer;
   color: #5d95c2;
+  &:hover,
+  &:focus {
+    color: darken(@clr-link, 10);
+  }
 }
 
 p, time, a, em, strong {
