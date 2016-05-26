@@ -70,6 +70,41 @@ button {
 }
 
 /**
+* __Usage:__ Add an associated color to a button. For use with graph controls, where the button's color is associated with the color of a data point.
+*
+* Add the class `active` if the button is activated.
+*
+* __To set a color__, name-space the button and style the `border-top-color` and `.active` `background-color`.
+* You may also need to set the `.active` color to `#333` (or `@clr-text`) if the color you're using is too light for white text.
+*
+* _Example:_
+* ```
+* button.my-button-class {
+*   border-top-color: green;
+*   &.active {
+*     background-color: green;
+*   }
+* }
+* ```
+*
+* @section Key Button
+* @sectionof Buttons
+* @example
+* <button class="key">Show Data Point</button>
+* <button class="key active">Data Point Showing</button>
+*/
+button.key {
+  border-top: 3px solid darken(@clr-frame, 25);
+  padding-top: 0.2em;
+  &.active {
+    background-color: darken(@clr-frame, 25);
+    color: white;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.25);
+    transform: translateY(1px);
+  }
+}
+
+/**
 * __Usage:__ Only for the "next logical step", such as "save", "next", etc. Only one per view.
 *
 * The user should expect that they can reliably click this to progress without having to really read it.
@@ -168,6 +203,117 @@ button.clear {
     color: darken(@clr-link, 10);
     box-shadow: none;
     transform: none;
+  }
+}
+
+/**
+* __Usage:__ For toggle controls.
+*
+* Add class `active` to the activated button option.
+*
+* @section Button Group
+* @sectionof Buttons
+* @example
+* <style>
+*   button.option-one {border-top-color: blue;}
+*   button.option-two.active {
+*     background-color: purple;
+*     border-top-color: purple;
+*   }
+*   button.option-three {border-top-color: forestgreen;}
+*   button.option-four {border-top-color: brown;}
+* </style>
+* <div class="btn-group">
+*   <button>Option 1</button>
+*   <button>Option 2</button>
+*   <button class="active">Option 3</button>
+*   <button>Option 4</button>
+* </div>
+* <div style="margin-top: 1em;"></div>
+* <div class="btn-group">
+*   <button class="key option-one">Option 1</button>
+*   <button class="key option-two active">Option 2</button>
+*   <button class="key option-three">Option 3</button>
+*   <button class="key option-four">Option 4</button>
+* </div>
+*
+* @code
+* <div class="btn-group">
+*   <button>Option 1</button>
+*   <button>Option 2</button>
+*   <button class="active">Option 3</button>
+*   <button>Option 4</button>
+* </div>
+* <div class="btn-group">
+*   <button class="key option-one">Option 1</button>
+*   <button class="key option-two active">Option 2</button>
+*   <button class="key option-three">Option 3</button>
+*   <button class="key option-four">Option 4</button>
+* </div>
+*/
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  button {
+    margin: 0;
+    position: relative;
+    float: left;
+    & + button {
+      margin-left: -1px;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+    &:first-child:not(:last-child) {
+      margin-left: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &.active {
+      background-color: @clr-blue;
+      color: white;
+      box-shadow: inset 0 3px 5px rgba(0,0,0,.25);
+      transform: translateY(1px);
+    }
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+/**
+* @section Button Sizes
+* @sectionof Buttons
+* @example
+* <button class="small">Small Button</button>
+* <button>Normal</button>
+* <button class="large">Large Button</button>
+* <div style="margin-top: 1em;">
+* <button class="block">Block Button</button>
+* </div>
+* @code
+* <button class="small">Small Button</button>
+* <button>Normal</button>
+* <button class="large">Large Button</button>
+* <button class="block">Block Button</button>
+*/
+button {
+  &.small {}
+  &.large {
+    padding-bottom: 0.333em;
+  }
+  &.block {
+    display: block;
+    margin: 0;
+    width: 100%;
   }
 }
 
