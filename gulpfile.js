@@ -82,16 +82,9 @@ gulp.task('dev', function(callback) {
 
 // DEPLOYMENT TASKS
 
-gulp.task('d-runDeploy', function(callback) {
-  runSequence('less',
-              ['library', 'fonts'],
-              'd-mkBranch',
-              'd-removeIgnore',
-              'd-deployCode',
-              callback)
-});
 gulp.task('d-mkBranch', shell.task([
-  'git checkout -b temp-deploy',
+  'git push origin --delete',
+  'git checkout -b temp-deploy'
 ]));
 gulp.task('d-removeIgnore', function() {
   return gulp.src('./.gitignore')
@@ -104,6 +97,14 @@ gulp.task('d-deployCode', shell.task([
   'git branch -D temp-deploy',
   'git reset --hard HEAD'
 ]));
+gulp.task('d-runDeploy', function(callback) {
+  runSequence('less',
+              ['library', 'fonts'],
+              'd-mkBranch',
+              'd-removeIgnore',
+              'd-deployCode',
+              callback)
+});
 
 gulp.task('deploy', function() {
   gulp.src('gulpfile.js')
