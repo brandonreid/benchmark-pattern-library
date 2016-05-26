@@ -163,6 +163,7 @@
 * __Usage:__
 * - Add the class `w-content` to `card-header`.
 * - Add a div in `card-header` for `card-header-content`
+* - You'll likely want to override the `max-width` applied to the card-title. You want it to be as wide as possible without running into the content on the right, text that goes longer than that will be truncated with an ellipsis. To set the max-width, name-space the card and apply to the `card-title`: `max-width: ~"calc(100% - 10em)";` where "10em" is a safe width away from the content on the right.
 *
 * @section Card Header with Supporting Information
 * @sectionof Cards
