@@ -12,6 +12,10 @@ This library was built using [livingcss](https://github.com/straker/livingcss).
   * `gulp dev` to run a live reloading local instance on `localhost:7000`
 
 ## Deploying to Github Pages
+Run `gulp deploy` from a clean master branch.
+
+OR....
+
 * Delete the gh-pages branch.
 * Create a temporary deployment branch: `git checkout -b temp-deploy`
 * Make sure you've ran `gulp dev` and have a fresh build of `pattern_library`.
