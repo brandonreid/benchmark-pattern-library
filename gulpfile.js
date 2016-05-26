@@ -83,7 +83,7 @@ gulp.task('dev', function(callback) {
 // DEPLOYMENT TASKS
 
 gulp.task('d-mkBranch', shell.task([
-  'git push origin --delete',
+  'git push origin --delete gh-pages',
   'git checkout -b temp-deploy'
 ]));
 gulp.task('d-removeIgnore', function() {
