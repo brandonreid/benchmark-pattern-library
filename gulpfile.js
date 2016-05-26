@@ -7,6 +7,9 @@ var LessAutoprefix = require('less-plugin-autoprefix'),
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
     cleanCSSPlugin = new LessPluginCleanCSS({advanced: true});
 var connect = require('gulp-connect');
+var shell = require('gulp-shell');
+var clean = require('gulp-clean');
+var confirm = require('gulp-confirm');
 
 
 gulp.task('library', function () {
@@ -74,4 +77,41 @@ gulp.task('dev', function(callback) {
               ['library', 'fonts'],
               ['server', 'watch'],
               callback);
+});
+
+
+// DEPLOYMENT TASKS
+
+gulp.task('d-runDeploy', function(callback) {
+  runSequence('less',
+              ['library', 'fonts'],
+              'd-mkBranch',
+              'd-removeIgnore',
+              'd-deployCode',
+              callback)
+});
+gulp.task('d-mkBranch', shell.task([
+  'git checkout -b temp-deploy',
+]));
+gulp.task('d-removeIgnore', function() {
+  return gulp.src('./.gitignore')
+    .pipe(clean());
+});
+gulp.task('d-deployCode', shell.task([
+  'git add pattern_library && git commit -m "Deploy Pattern Library"',
+  'git subtree push --prefix pattern_library origin gh-pages',
+  'git checkout master',
+  'git branch -D temp-deploy',
+  'git reset --hard HEAD'
+]));
+
+gulp.task('deploy', function() {
+  gulp.src('gulpfile.js')
+    .pipe(confirm({
+      question: "Have you committed all your code ('y' or 'n')? \nThis process will run a `git reset --hard HEAD` on your current branch. Always deploy from master.",
+      input: '_key:y'
+    }))
+    .pipe(shell([
+      'gulp d-runDeploy'
+    ]));
 });
