@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/usebenchmark/pattern-library.git"
   },
-  "author": "Brandon Reid",
+  "author": "Brandon Reid <brandon@usebenchmark.com> (http://usebenchmark.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/usebenchmark/pattern-library/issues"

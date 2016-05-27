@@ -44,6 +44,11 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./pattern_library/css/'));
 });
 
+gulp.task('copyVariables', function() {
+  gulp.src('./less/_variables.less')
+    .pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('fonts', function () {
   gulp.src([
     './fonts/**/*'
@@ -72,8 +77,11 @@ gulp.task('watch', function () {
   gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
 });
 
+
+// Dev Mode
+
 gulp.task('dev', function(callback) {
-  runSequence('less',
+  runSequence(['less', 'copyVariables'],
               ['library', 'fonts'],
               ['server', 'watch'],
               callback);
@@ -98,7 +106,7 @@ gulp.task('d-deployCode', shell.task([
   'git reset --hard HEAD'
 ]));
 gulp.task('d-runDeploy', function(callback) {
-  runSequence('less',
+  runSequence(['less', 'copyVariables'],
               ['library', 'fonts'],
               'd-mkBranch',
               'd-removeIgnore',
