@@ -16,7 +16,7 @@
     "url": "https://github.com/usebenchmark/pattern-library/issues"
   },
   "homepage": "https://github.com/usebenchmark/pattern-library",
-  "dependencies": {
+  "devDependencies": {
     "bootstrap": "^3.3.6",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
