@@ -26,8 +26,8 @@ OR....
 * Checkout your master branch again and delete the temporary deployment branch: `git checkout master && git branch -D temp-deploy`
 
 ### Updating the NPM Package
-# Work with a clean master.
-# Update the version number in `package.json` and commit that to master.
-# Run `npm publish`.
-# Update the package in the Benchmark App or anywhere else it's deployed.
-# [Here's the page where the NPM package is.](https://www.npmjs.com/package/benchmark-patterns)
+* Work with a clean master.
+* Update the version number in `package.json` and commit that to master.
+* Run `npm publish`.
+* Update the package in the Benchmark App or anywhere else it's deployed.
+* [Here's the page where the NPM package is.](https://www.npmjs.com/package/benchmark-patterns)
