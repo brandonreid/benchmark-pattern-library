@@ -1,18 +1,63 @@
-table.table, table.table-bordered {
+// TODO: Make tables responsive.
+
+/**
+* Table markup is straight forward. You can make use of the [helper classes](#typography) for general alignment.
+*
+* @section Tables
+*
+* @example
+* <table>
+*   <thead>
+*     <tr>
+*       <th class="empty"></th>
+*       <th>Column 1</th>
+*       <th>Column 2</th>
+*       <th>Centered</th>
+*       <th class="right">Right Aligned</th>
+*     </tr>
+*   </thead>
+*   <tbody>
+*     <tr>
+*       <td>1</td>
+*       <td>2</td>
+*       <td>3</td>
+*       <td class="center">4</td>
+*       <td class="right">5</td>
+*     </tr>
+*     <tr>
+*       <td>a</td>
+*       <td>b</td>
+*       <td>c</td>
+*       <td class="center">d</td>
+*       <td class="right"><button>Button</button></td>
+*     </tr>
+*   </tbody>
+* </table>
+*/
+
+table {
   width: 100%;
-  margin-top: 0.75em;
-  margin-bottom: 0.75em;
-  thead tr th {
-    background-color: @clr-shade;
+  max-width: 100%;
+  // Cells
+  th,
+  td {
     padding: 0.25em 0.5em;
-    &.empty {
-      background-color: @clr-white;
-      border-top-color: transparent;
-    }
+    line-height: 1.4em;
+    border: 1px solid @clr-frame-lt;
+    vertical-align: middle;
   }
-  tbody {
-    td {
-      padding: 0.5em;
+  th {
+    text-align: left;
+    background-color: @clr-shade;
+    border-bottom-width: 2px;
+    &.empty {
+      background-color: transparent;
+      border-top: transparent;
     }
+    &:first-child.empty { border-left: transparent; }
+    &:last-child.empty { border-right: transparent; }
   }
 }
+
+
+
