@@ -32,7 +32,7 @@ gulp.task('less', function () {
   // App Styles
   gulp.src(['./less/app.less'])
     .pipe(less({
-      plugins: [autoprefix, cleanCSSPlugin]
+      // plugins: [autoprefix, cleanCSSPlugin]
     }))
     .pipe(gulp.dest('./dist/'))
     .pipe(gulp.dest('./pattern_library/dist/'));

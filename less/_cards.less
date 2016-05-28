@@ -36,7 +36,7 @@
 
 .card-header {
   background-color: @clr-title-bg;
-  color: @clr-white;
+  color: white;
   font-size: 1.2rem;
   font-weight: 300;
   .card-title {
@@ -47,7 +47,7 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
     a {
-      color: @clr-white;
+      color: white;
       white-space: nowrap;
       overflow-x: hidden;
       text-overflow: ellipsis;
@@ -112,6 +112,7 @@
     content: " ";
     font-family: "benchmark";
     font-size: 1.125em;
+    color: white;
     line-height: @card-header-line-height;
     text-align: center;
     position: absolute;
@@ -122,35 +123,41 @@
     padding-top: 0.125em;
     text-shadow: 0px 1px 1px @clr-shadow;
   }
-  &.flag-benchmark:before {
-    content: '\e826';
-    background-color: lighten(@clr-title-bg, 10);
-    color: @clr-white;
+  &.flag-benchmark {
+    &:extend(.icon-benchmark all);
+    &:before {
+      background-color: lighten(@clr-title-bg, 10);
+    }
   }
-  &.flag-google:before {
-    content: "\e802";
-    background-color: @clr-gplus;
-    color: @clr-white;
+  &.flag-google {
+    &:extend(.icon-gplus all);
+    &:before {
+      background-color: @clr-gplus;
+    }
   }
-  &.flag-yelp:before {
-    content: "\e80f";
-    background-color: @clr-yelp;
-    color: @clr-white;
+  &.flag-yelp {
+    &:extend(.icon-yelp all);
+    &:before {
+      background-color: @clr-yelp;
+    }
   }
-  &.flag-facebook:before {
-    content: "\e811";
-    background-color: @clr-facebook;
-    color: @clr-white;
+  &.flag-facebook {
+    &:extend(.icon-facebook all);
+    &:before {
+      background-color: @clr-facebook;
+    }
   }
-  &.flag-foursquare:before {
-    content: "\e810";
-    background-color: @clr-foursquare;
-    color: @clr-white;
+  &.flag-foursquare {
+    &:extend(.icon-foursquare all);
+    &:before {
+      background-color: @clr-foursquare;
+    }
   }
-  &.flag-twitter:before {
-    content: "\e828";
-    background-color: @clr-twitter;
-    color: @clr-white;
+  &.flag-twitter {
+    &:extend(.icon-twitter all);
+    &:before {
+      background-color: @clr-twitter;
+    }
   }
   .card-title {
     padding-left: 2.125em;

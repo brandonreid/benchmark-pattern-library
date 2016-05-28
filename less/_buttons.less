@@ -146,8 +146,6 @@ button.special-action {
 *
 * Add the class `flush` to remove button padding.
 *
-* Add the class `flush-icon` to remove the icon's default margin.
-*
 * @section Text Button
 * @sectionof Buttons
 * @example
@@ -163,9 +161,6 @@ button.text {
   box-shadow: none;
   &.flush {
     padding: 0;
-  }
-  &.flush-icon:before {
-    margin: 0;
   }
   &:active {
     color: darken(@clr-link, 10);
@@ -297,7 +292,7 @@ button.clear {
 * <button>Normal</button>
 * <button class="large">Large Button</button>
 * <div style="margin-top: 1em;">
-* <button class="block">Block Button</button>
+*   <button class="block">Block Button</button>
 * </div>
 * @code
 * <button class="small">Small Button</button>
@@ -316,111 +311,3 @@ button {
     width: 100%;
   }
 }
-
-
-// OLD ************************************************
-
-// .ui-select-search { // override for ui-select dropdowns
-//   height: auto;
-//   padding: 0.25em 0.75em;
-// }
-
-// .btn-group {
-//   .btn {
-//     border-bottom-width: 2px;
-//     margin: 0;
-//     + .btn {
-//       margin-left: 0;
-//       margin-right: 0;
-//     }
-//     &:not(:last-child) {
-//       border-right: 0;
-//     }
-//     &.active {
-//       margin-top: 1px;
-//       &:first-child {
-//         box-shadow: inset -7px 0 5px -2px fadeout(@clr-shadow, 25);
-//       }
-//     }
-//   }
-//   &.bg-icons {
-//     .btn {
-//       &:before, & span:before {
-//         margin: 0;
-//       }
-//     }
-//   }
-// }
-
-// .btn-group-vertical {
-//   .btn-default {
-//     border-bottom-width: 1px;
-//     background-color: #fff;
-//     &:active {
-//       border-top-width: 0;
-//     }
-//     &.active:active {
-//       border-top-width: 1px;
-//     }
-//     &:first-child {
-//       &:active {
-//         margin-top: 0;
-//         border-bottom-width: 0
-//       }
-//       &.active:active {
-//         margin-top: 1px;
-//         border-bottom-width: 1px;
-//       }
-//     }
-//   }
-// }
-
-// .input-group {
-//   .input-group-btn {
-//     .btn-default {
-//       border-width: 1px;
-//       height: 34px;
-//       padding: 6px 8px;
-//       &:before {
-//         margin-right: 0;
-//       }
-//       &:active {
-//         margin-top: 0;
-//         margin-bottom: 0;
-//       }
-//     }
-//   }
-// }
-
-// .sentament-btns {
-//   float: right;
-//   margin-left: 1em;
-//   z-index: 2;
-//   .btn {
-//     font-weight: 700;
-//     &.positive {
-//       color: @clr-green;
-//       &.active {
-//         background-color: @clr-green;
-//         border-color: darken(@clr-green, 7);
-//         color: @clr-white;
-//       }
-//     }
-//     &.neutral {
-//       color: @clr-blue;
-//       &.active {
-//         background-color: @clr-blue;
-//         border-color: darken(@clr-blue, 7);
-//         color: @clr-white;
-//       }
-//     }
-//     &.negative {
-//       color: @clr-red;
-//       &.active {
-//         background-color: @clr-red;
-//         border-color: darken(@clr-red, 7);
-//         color: @clr-white;
-//       }
-//     }
-//   }
-// }

@@ -3,6 +3,8 @@
 *
 * Learn more at the [Bootstrap docs](http://getbootstrap.com/css/#grid).
 *
+* Add the class `no-gutters` to the row if you need to strip all the gutter spacing.
+*
 * @section Grid
 * @example
 * <!-- Example specific styles. Min-height is to compensate for shadow-dom behavior. -->
@@ -10,7 +12,7 @@
 *   .container-fluid {
 *     min-height: 5.5em;
 *   }
-*   .row div {
+*   .row p {
 *     text-align: center;
 *     background-color: #f5f5f5;
 *     border: 1px solid #ddd;
@@ -19,44 +21,59 @@
 * <!-- Grid Markup -->
 * <div class="container-fluid">
 *   <div class="row">
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
-*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
+*     <div class="col-xs-1"><p>1</p></div>
 *   </div>
 *   <div class="row">
-*     <div class="col-sm-8">8</div>
-*     <div class="col-sm-8">8</div>
-*     <div class="col-sm-8">8</div>
+*     <div class="col-sm-8"><p>8</p></div>
+*     <div class="col-sm-8"><p>8</p></div>
+*     <div class="col-sm-8"><p>8</p></div>
 *   </div>
 *   <div class="row">
-*     <div class="col-xs-8 col-xs-offset-8">8 offset by 8</div>
+*     <div class="col-xs-8 col-xs-offset-8"><p>8 offset by 8</p></div>
+*   </div>
+*   <div class="row no-gutters">
+*     <div class="col-xs-4"><p>4</p></div>
+*     <div class="col-xs-4"><p>4</p></div>
+*     <div class="col-xs-4"><p>4</p></div>
+*     <div class="col-xs-4"><p>4</p></div>
+*     <div class="col-xs-4"><p>4</p></div>
+*     <div class="col-xs-4"><p>4</p></div>
 *   </div>
 * </div>
 */
 
 @grid-columns: 24;
 @grid-gutter-width: 16px;
+
+// Clearfix on rows
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 // no-gutters modifyer for bootstrap grid
 .row.no-gutters {
