@@ -14,6 +14,7 @@ We use [fontello](http://fontello.com/) for our custom icon font library.
 If you're lucky, there may be a font-awesome (or other font family) option that fontello provides. Make sure to select an icon that matches the general style of the current Benchmark Icon Font.
 
 If there is not a suitable icon, follow these steps to build one properly.
+
 1. In a vector graphics editor, make a 14px by 14px canvas and turn on a pixel by pixel grid.
 2. Try and design to the grid. Only work with pure black. Remember that a shape taking up half of 1px will display 50% black once rendered as a bitmap, you may want that square to be darker for more clarity, etc. Strive for a pixel perfect sharp icon and keep the shape simple and suggestive.
 3. Once your design is done, all shapes must be collapsed into a single compound path.
