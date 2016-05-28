@@ -3,6 +3,8 @@ UI Patterns for Benchmark Intelligence applications.
 
 [Live Library](http://usebenchmark.github.io/pattern-library)
 
+^ Note that this library leverages the "shadow-dom" and will only really work in the chrome browser.
+
 This library was built using [livingcss](https://github.com/straker/livingcss).
 
 ## Getting Started

@@ -1,0 +1,98 @@
+/**
+* We use a 24col Bootstrap grid.
+*
+* Learn more at the [Bootstrap docs](http://getbootstrap.com/css/#grid).
+*
+* @section Grid
+* @example
+* <!-- Example specific styles. Min-height is to compensate for shadow-dom behavior. -->
+* <style>
+*   .container-fluid {
+*     min-height: 5.5em;
+*   }
+*   .row div {
+*     text-align: center;
+*     background-color: #f5f5f5;
+*     border: 1px solid #ddd;
+*   }
+* </style>
+* <!-- Grid Markup -->
+* <div class="container-fluid">
+*   <div class="row">
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*     <div class="col-xs-1">1</div>
+*   </div>
+*   <div class="row">
+*     <div class="col-sm-8">8</div>
+*     <div class="col-sm-8">8</div>
+*     <div class="col-sm-8">8</div>
+*   </div>
+*   <div class="row">
+*     <div class="col-xs-8 col-xs-offset-8">8 offset by 8</div>
+*   </div>
+* </div>
+*/
+
+@grid-columns: 24;
+@grid-gutter-width: 16px;
+
+// no-gutters modifyer for bootstrap grid
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Flex Content with gutters
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-between;
+  .flex-item {
+    margin-right: 1em;
+    &.flex-item-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &.flex-bg {
+      flex: 2 0 0;
+    }
+    &.flex-sm {
+      flex: 1 0 0;
+    }
+  }
+  @media @md-bp {
+    display: block;
+  }
+}
