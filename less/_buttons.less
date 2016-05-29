@@ -156,11 +156,12 @@ button.special-action {
 */
 button.text {
   background-color: transparent;
-  border: none;
+  border-color: transparent;
   color: @clr-link;
   box-shadow: none;
   &.flush {
     padding: 0;
+    border: none;
   }
   &:active {
     color: darken(@clr-link, 10);
@@ -172,7 +173,7 @@ button.text {
 /**
 * __Usage:__ For "remove" or "cancel" actions.
 *
-* Add the class `flush` to remove button padding and remove the icon's margin.
+* Add the class `flush` to remove button padding.
 *
 * Add the class `flush-icon` to remove the icon's default margin.
 *
@@ -185,19 +186,30 @@ button.text {
 */
 button.clear {
   background-color: transparent;
-  border: none;
+  border-color: transparent;
   color: @clr-remove;
   box-shadow: none;
   &.flush {
     padding: 0;
+    border: none;
   }
   &.flush-icon:before {
     margin: 0;
   }
+  &:hover,
+  &:focus {
+    color: @clr-red;
+  }
   &:active {
-    color: darken(@clr-link, 10);
+    color: darken(@clr-red, 5);
     box-shadow: none;
     transform: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {color: @clr-remove;}
   }
 }
 

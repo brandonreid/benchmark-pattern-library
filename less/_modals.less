@@ -1,74 +1,361 @@
+/**
+* Basic modal markup.
+*
+* @section Modals
+*
+* @example
+* <!-- Demo Specific Styles -->
+* <style>
+*   .modal {
+*     position: static;
+*     height: auto;
+*     opacity: 1;
+*   }
+*   .modal .modal-dialog { transform: none; }
+* </style>
+* <!-- Modal Markup -->
+* <div class="modal">
+*   <div class="modal-dialog">
+*     <div class="modal-header">
+*       <h3>Modal Title</h3>
+*       <button class="clear icon-close">
+*         <span class="sr-only">Close</span>
+*       </button>
+*     </div>
+*     <div class="modal-body">
+*       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor.</p>
+*     </div>
+*     <div class="modal-footer right">
+*       <button class="clear">Cancel</button>
+*       <button>Save As</button>
+*       <button class="primary">Save</button>
+*     </div>
+*   </div>
+* </div>
+*/
+
 .modal {
-  background-color: fadeOut(black, 50);
-  transition: background-color 200ms ease;
+  background-color: fadeOut(@clr-black, 50);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -500;
+  opacity: 0;
+  transition: z-index 400ms step-end, opacity 200ms ease 200ms;
   .modal-dialog {
-    transition: margin-top 300ms ease, opacity 300ms ease;
-  }
-  .modal-content {
-    border-radius: 0;
-    border: none;
+    background-color: white;
+    box-shadow: 0 7px 20px 5px fadeOut(@clr-black, 60);
+    max-width: 60em;
+    margin: 1em;
+    max-height: 99vh;
+    transform: translateY(-100vh);
+    transition: transform 300ms cubic-bezier(1,0,0,1);
   }
   .modal-header {
-    padding: 0.5em 1em;
     background-color: @clr-title-bg;
-    color: @clr-white;
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 400;
+    color: white;
+    padding: 0.25em 0.75em;
+    white-space: nowrap;
+    h1,h2,h3,h4,h5,h6 {
+      font-size: 1.5rem;
+      line-height: 1.2em;
+      margin: 0;
+      display: inline-block;
+      vertical-align: top;
+      width: 90%;
+      width: ~"calc(100% - 1.5rem)";
+      text-overflow: ellipsis;
+      overflow-x: hidden;
     }
-    .close {
-      color: @clr-white;
-      opacity: 0.7;
-      margin-top: 0;
-      &:hover, &:focus {
-        opacity: 1;
+    .clear {
+      font-size: 1.5rem;
+      line-height: 1.2em;
+      color: lighten(@clr-remove, 20);
+      padding: 0;
+      &:before {margin: 0;}
+      &:hover,
+      &:focus {
+        color: lighten(@clr-red, 10);
       }
-      &:before {
-        margin-right: 0;
-      }
+      &:active {color: @clr-red;}
     }
+  } // end .modal-header
+  .modal-body {
+    padding: 0.5em 0.75em;
   }
   .modal-footer {
-    padding-top: 0.25em;
-    padding-bottom: 0.75em;
-    border-top: none;
-    .btn-remove {
-      margin-right: 1em;
+    padding: 0.222em 0.75em 0.667em;
+  }
+  &.show {
+    z-index: 9000;
+    opacity: 1;
+    transition: z-index 1ms step-start, opacity 100ms ease;
+    .modal-dialog {
+      transform: translateY(0%);
+      transition: transform 0.75s cubic-bezier(1,0,0,1);
     }
   }
-  &.ng-enter {
-    background-color: transparent;
-    .modal-dialog {
-      margin-top: 0;
-      opacity: 0;
-    }
-    &.ng-enter-active {
-      background-color: fadeOut(black, 50);
-      .modal-dialog {
-        margin-top: 30px;
-        opacity: 1
+}
+
+/**
+* For adding disclaimers, notices, warnings, etc. Form errors should appear above the form inputs, not in one of these.
+*
+* @section Warnings in Modals
+* @sectionof Modals
+*
+* @example
+* <!-- Demo Specific Styles -->
+* <style>
+*   .modal {
+*     position: static;
+*     height: auto;
+*     opacity: 1;
+*   }
+*   .modal .modal-dialog { transform: none; }
+* </style>
+* <!-- Modal Markup -->
+* <div class="modal">
+*   <div class="modal-dialog">
+*     <div class="modal-header">
+*       <h3>Modal Title</h3>
+*       <button class="clear icon-close">
+*         <span class="sr-only">Close</span>
+*       </button>
+*     </div>
+*     <div class="modal-warning">
+*       <p class="icon-attention">Here is a warning that you should know about.</p>
+*     </div>
+*     <div class="modal-body">
+*       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
+*     </div>
+*     <div class="modal-footer right">
+*       <button class="clear">Cancel</button>
+*       <button class="primary">Done</button>
+*     </div>
+*   </div>
+* </div>
+*/
+.modal .modal-warning {
+  background-color: @clr-yellow;
+  padding: 0.5em 0.75em;
+  font-weight: bold;
+}
+
+/**
+* For settings modals that need different internal views.
+*
+* @section Modal with a Menu
+* @sectionof Modals
+*
+* @example
+* <!-- Demo Specific Styles -->
+* <style>
+*   .modal {
+*     position: static;
+*     height: auto;
+*     opacity: 1;
+*   }
+*   .modal .modal-dialog { transform: none; }
+* </style>
+* <!-- Modal Markup -->
+* <div class="modal">
+*   <div class="modal-dialog">
+*     <div class="modal-header">
+*       <h3>Modal Title</h3>
+*       <button class="clear icon-close">
+*         <span class="sr-only">Close</span>
+*       </button>
+*     </div>
+*     <div class="modal-w-menu">
+*       <div class="modal-menu">
+*         <ul>
+*           <li><button>Option 1</button></li>
+*           <li><button class="active">Option 2</button></li>
+*           <li><button>Option 3</button></li>
+*           <li><button>Option 4</button></li>
+*         </ul>
+*       </div>
+*       <div class="modal-content">
+*         <div class="modal-body">
+*           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
+*         </div>
+*         <div class="modal-footer right">
+*           <button class="clear">Cancel</button>
+*           <button class="primary">Save</button>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+* </div>
+*/
+@clr-nav-bg: lighten(@clr-title-bg, 7);
+@clr-nav-item-hover: lighten(@clr-title-bg, 15);
+@clr-nav-item-selected: lighten(@clr-title-bg, 25);
+.modal .modal-w-menu {
+  display: flex;
+  flex-direction: row;
+  .modal-menu {
+    background-color: @clr-nav-bg;
+    min-width: 11em;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
       }
     }
-  }
-  &.ng-leave {
-    background-color: fadeOut(black, 50);
-    .modal-dialog {
-      margin-top: 30px;
-      opacity: 1;
-    }
-    &.ng-leave-active {
+    button {
       background-color: transparent;
-      .modal-dialog {
-        margin-top: 0;
-        opacity: 0;
+      color: white;
+      text-align: left;
+      border: none;
+      border-radius: 0;
+      padding: 0.5em 0.75em;
+      width: 100%;
+      opacity: 0.7;
+      box-shadow: none;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      &:active {
+        transform: none;
+      }
+      &:hover, &:focus {
+        opacity: 1;
+        background-color: @clr-nav-item-hover;
+      }
+      &.active {
+        background-color: @clr-nav-item-selected;
+        opacity: 1;
+        position: relative;
+        &:after {
+          content: ' ';
+          background-color: white;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 0.85em;
+          right: -5px;
+          transform: rotate(45deg);
+        }
       }
     }
+  } // end .modal-menu
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .modal-dialog.modal-alert {
-    .modal-header {
-      background-color: @clr-red;
-    }
-    .modal-body p {
-      font-size: 1.25em;
-    }
+  .modal-body {
+    width: 100%;
+  }
+  .modal-footer {
+    width: 100%;
+  }
+}
+
+/**
+* There are 3 modal sizes available.
+*
+* - __Small:__ Add the class `small-modal` to `.modal`.
+* - __Standard:__ This size is default.
+* - __Large:__ Add the class `large-modal` to `.modal`.
+*
+* ### Launch a test modal:
+*
+* <div id="modalTests">
+*  <button id="small">Small Modal</button>
+*  <button id="standard">Standard Modal</button>
+*  <button id="large">Large Modal</button>
+* 
+*  <div class="modal small-modal" id="smallModal">
+*    <div class="modal-dialog">
+*      <div class="modal-header">
+*        <h3>Modal Title</h3>
+*        <button class="clear icon-close closeModal">
+*          <span class="sr-only">Close</span>
+*        </button>
+*      </div>
+*      <div class="modal-body">
+*        <p>A small modal. For when you know the modal's contents are short.</p>
+*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci voluptas incidunt perspiciatis expedita non sed.</p>
+*      </div>
+*      <div class="modal-footer right">
+*        <button class="clear closeModal">Cancel</button>
+*        <button class="primary closeModal">Done</button>
+*      </div>
+*    </div>
+*  </div>
+*  <div class="modal" id="standardModal">
+*    <div class="modal-dialog">
+*      <div class="modal-header">
+*        <h3>Modal Title</h3>
+*        <button class="clear icon-close closeModal">
+*          <span class="sr-only">Close</span>
+*        </button>
+*      </div>
+*      <div class="modal-body">
+*        <p>A standard modal. For general forms and stuff.</p>
+*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quidem esse asperiores qui temporibus dolorem a odio. Pariatur, animi. Cumque id minus sapiente eos iure, reiciendis voluptatum ut ea eius fugit illo modi iusto enim at sunt saepe fuga odit!</p>
+*      </div>
+*      <div class="modal-footer right">
+*        <button class="clear closeModal">Cancel</button>
+*        <button class="primary closeModal">Done</button>
+*      </div>
+*    </div>
+*  </div>
+*  <div class="modal large-modal" id="largeModal">
+*    <div class="modal-dialog">
+*      <div class="modal-header">
+*        <h3>Modal Title</h3>
+*        <button class="clear icon-close closeModal">
+*          <span class="sr-only">Close</span>
+*        </button>
+*      </div>
+*      <div class="modal-body">
+*        <p>A large modal for bigger settings interfaces, etc.</p>
+*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quidem esse asperiores qui temporibus dolorem a odio. Pariatur, animi. Cumque id minus sapiente eos iure, reiciendis voluptatum ut ea eius fugit illo modi iusto enim at sunt saepe fuga odit!</p>
+*      </div>
+*      <div class="modal-footer right">
+*        <button class="clear closeModal">Cancel</button>
+*        <button class="primary closeModal">Done</button>
+*      </div>
+*    </div>
+*  </div>
+* </div>
+*
+* <script>
+*   $(document).ready(function() {
+*     $('#small').click(function() {
+*       $('#smallModal').addClass('show');
+*     });
+*     $('#standard').click(function() {
+*       $('#standardModal').addClass('show');
+*     });
+*     $('#large').click(function() {
+*       $('#largeModal').addClass('show');
+*     });
+*     $('.closeModal').click(function() {
+*       $('.show').removeClass('show');
+*     });
+*   }); 
+* </script>
+*
+* @section Modal Sizes
+* @sectionof Modals
+*/
+.modal {
+  &.small-modal .modal-dialog {
+    max-width: 36em;
+  }
+  &.large-modal .modal-dialog {
+    max-width: 90em;
+    width: 100%;
   }
 }
