@@ -35,7 +35,7 @@
 */
 
 .modal {
-  background-color: fadeOut(@clr-black, 50);
+  background-color: fadeOut(@clr-black, 30);
   position: fixed;
   top: 0;
   left: 0;
@@ -52,7 +52,7 @@
     box-shadow: 0 7px 20px 5px fadeOut(@clr-black, 60);
     max-width: 60em;
     margin: 1em;
-    max-height: 99vh;
+    max-height: 98vh;
     transform: translateY(-100vh);
     transition: transform 300ms cubic-bezier(1,0,0,1);
   }
@@ -87,6 +87,9 @@
   } // end .modal-header
   .modal-body {
     padding: 0.5em 0.75em;
+    max-height: ~"calc(100vh - 7.6em)";
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .modal-footer {
     padding: 0.222em 0.75em 0.667em;
@@ -94,10 +97,10 @@
   &.show {
     z-index: 9000;
     opacity: 1;
-    transition: z-index 1ms step-start, opacity 100ms ease;
+    transition: z-index 1ms step-start, opacity 0.444s ease;
     .modal-dialog {
       transform: translateY(0%);
-      transition: transform 0.75s cubic-bezier(1,0,0,1);
+      transition: transform 0.667s cubic-bezier(1,0,0,1);
     }
   }
 }
