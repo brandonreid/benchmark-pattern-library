@@ -1,9 +1,11 @@
 /**
 * Collapsers are useful for lists of items that all contain supporting content.
 *
+* The `collapser-header` is optional, but useful for defining the `c-bar-row` content and providing the ability to sort.
+*
 * Add the class `open` to the top level `collapser` container to open the supporting content.
 *
-* The `collapser-header` is optional, but useful for defining the `collapser-row` content and providing the ability to sort.
+* If you have a large amount of content in `c-content`, you may need to set a higher max-width for `.collapser.open .c-content`.
 *
 * @section Collapsers
 *
@@ -16,10 +18,10 @@
 * <!-- Open Collapser 1 -->
 * <div class="collapser open">
 *   <div class="c-bar">
-*     <button class="collapser-btn" id="collapserBtn">
+*     <button class="collapse-btn" id="collapserBtn">
 *       <span class="sr-only">Expand/Collapse</span>
 *     </button>
-*     <div class="collapser-row">
+*     <div class="c-bar-row">
 *       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
 *       <div class="col-xs-8 center"><p>Centered Content</p></div>
 *       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
@@ -32,10 +34,10 @@
 * <!-- Closed Collapser 2 -->
 * <div class="collapser">
 *   <div class="c-bar">
-*     <button class="collapser-btn" id="collapserBtn">
+*     <button class="collapse-btn" id="collapserBtn">
 *       <span class="sr-only">Expand/Collapse</span>
 *     </button>
-*     <div class="collapser-row">
+*     <div class="c-bar-row">
 *       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
 *       <div class="col-xs-8 center"><p>Centered Content</p></div>
 *       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
@@ -63,7 +65,7 @@
     background-color: @clr-shade;
     border: 1px solid @clr-frame;
     border-radius: 4px;
-    .collapser-btn {
+    .collapse-btn {
       background-color: transparent;
       color: @clr-link;
       font-size: 1.5em;
@@ -81,7 +83,7 @@
         margin: 0;
       }
     }
-    .collapser-row {
+    .c-bar-row {
       width: ~"calc(100% - 2.2rem)";
       line-height: 2.45em;
       display: inline-block;
@@ -115,14 +117,14 @@
     .c-bar {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      .collapser-btn {
+      .collapse-btn {
         transform: rotate(180deg);
       }
     }
     .c-content {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
-      max-height: 100vh;
+      max-height: 100em;
       opacity: 1;
       transition: max-height 200ms ease,
                   opacity 50ms ease;
