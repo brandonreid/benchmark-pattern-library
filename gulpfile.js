@@ -117,7 +117,7 @@ gulp.task('d-runDeploy', function(callback) {
 gulp.task('deploy', function() {
   gulp.src('gulpfile.js')
     .pipe(confirm({
-      question: "\n\nHave you committed all your code?\n\n\nThis process will run a `git reset --hard HEAD` on your current branch. Always deploy from master. \n \n",
+      question: "\n\nHave you committed all your code?\n\n\nThis process will run a `git reset --hard HEAD` on your current branch. Always deploy from master.\n\n\n(y or n)\n\n\n",
       input: '_key:y'
     }))
     .pipe(shell([

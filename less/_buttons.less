@@ -15,15 +15,15 @@ button {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   background-color: @clr-button;
   color: @clr-text;
-  border: 1px solid @clr-frame;
-  box-shadow: 0 1px 0 @clr-frame;
-  border-radius: 4px;
   line-height: 1.6em;
-  display: inline-block;
-  vertical-align: middle;
   text-align: center;
+  border: 1px solid @clr-frame;
+  border-radius: 4px;
   margin-bottom: 0; // For input.btn
   padding: 0.25em 0.75em;
+  box-shadow: 0 1px 0 @clr-frame;
+  display: inline-block;
+  vertical-align: middle;
   cursor: pointer;
   white-space: nowrap;
   touch-action: manipulation;
@@ -44,6 +44,7 @@ button {
   &.focus {
     color: @clr-text;
     text-decoration: none;
+    box-shadow: 0 1px 0 @clr-frame, inset 0 -2px 2px rgba(0,0,0,0.1);
   }
   &:active {
     outline: 0;
@@ -120,6 +121,11 @@ button.primary {
   border-color: @clr-primary-border;
   color: white;
   box-shadow: 0 1px 0 @clr-primary-border;
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: lighten(@clr-primary, 5);
+  }
 }
 
 /**
@@ -137,6 +143,11 @@ button.special-action {
   color: white;
   box-shadow: 0 1px 0 darken(@clr-orange, 12);
   text-shadow: 0 0.5px 2px darken(@clr-orange, 30);
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: lighten(@clr-orange, 5);
+  }
 }
 
 /**
