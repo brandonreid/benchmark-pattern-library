@@ -1,0 +1,134 @@
+/**
+* Collapsers are useful for lists of items that all contain supporting content.
+*
+* Add the class `open` to the top level `collapser` container to open the supporting content.
+*
+* The `collapser-header` is optional, but useful for defining the `collapser-row` content and providing the ability to sort.
+*
+* @section Collapsers
+*
+* @example
+* <div class="collapser-header">
+*   <div class="col-xs-8"><p>Title</p></div>
+*   <div class="col-xs-8 center"><p>Center Title</p></div>
+*   <div class="col-xs-8 right"><p>Right Title</p></div>
+* </div>
+* <!-- Open Collapser 1 -->
+* <div class="collapser open">
+*   <div class="c-bar">
+*     <button class="collapser-btn" id="collapserBtn">
+*       <span class="sr-only">Expand/Collapse</span>
+*     </button>
+*     <div class="collapser-row">
+*       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
+*       <div class="col-xs-8 center"><p>Centered Content</p></div>
+*       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
+*     </div>
+*   </div>
+*   <div class="c-content">
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis, laboriosam, necessitatibus, minus aperiam aliquam veniam modi et excepturi, ex iste dolorem deleniti. Nisi nulla explicabo, harum, qui voluptates a.</p>
+*   </div>
+* </div>
+* <!-- Closed Collapser 2 -->
+* <div class="collapser">
+*   <div class="c-bar">
+*     <button class="collapser-btn" id="collapserBtn">
+*       <span class="sr-only">Expand/Collapse</span>
+*     </button>
+*     <div class="collapser-row">
+*       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
+*       <div class="col-xs-8 center"><p>Centered Content</p></div>
+*       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
+*     </div>
+*   </div>
+*   <div class="c-content">
+*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis, laboriosam, necessitatibus, minus aperiam aliquam veniam modi et excepturi, ex iste dolorem deleniti. Nisi nulla explicabo, harum, qui voluptates a.</p>
+*   </div>
+* </div>
+*/
+
+.collapser-header {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+  padding-left: 2.2rem;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.collapser {
+  .c-bar {
+    background-color: @clr-shade;
+    border: 1px solid @clr-frame;
+    border-radius: 4px;
+    .collapser-btn {
+      background-color: transparent;
+      color: @clr-link;
+      font-size: 1.5em;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      width: 2rem;
+      vertical-align: top;
+      transform: rotate(0deg);
+      transition: transform 200ms ease;
+      &:active {transform: none;}
+      &:extend(.icon-dropdown-angle all);
+      &:before {
+        font-family: 'benchmark';
+        margin: 0;
+      }
+    }
+    .collapser-row {
+      width: ~"calc(100% - 2.2rem)";
+      line-height: 2.45em;
+      display: inline-block;
+      vertical-align: top;
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      button {
+        vertical-align: top;
+        margin-top: 0.125em;
+      }
+    }
+  } // .c-bar
+  .c-content {
+    border: 1px solid @clr-frame;
+    border-top-width: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 0 0.75em;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 200ms ease,
+                opacity 50ms ease 150ms,
+                padding-top 200ms step-end,
+                padding-bottom 200ms step-end;
+  }
+  &.open {
+    .c-bar {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      .collapser-btn {
+        transform: rotate(180deg);
+      }
+    }
+    .c-content {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      max-height: 100vh;
+      opacity: 1;
+      transition: max-height 200ms ease,
+                  opacity 50ms ease;
+    }
+  }
+  & + .collapser {
+    margin-top: 0.5em;
+  }
+}

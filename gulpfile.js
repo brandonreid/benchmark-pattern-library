@@ -72,7 +72,7 @@ gulp.task('watch', function () {
       .src(event.path)
       .pipe(connect.reload());
   });
-  gulp.watch(['./less/**/*.less'], ['less', 'library']);
+  gulp.watch(['./less/*.less'], ['less', 'library']);
   gulp.watch(['./library-template/less/**/*.less'], ['less', 'library']);
   gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
 });
@@ -117,7 +117,7 @@ gulp.task('d-runDeploy', function(callback) {
 gulp.task('deploy', function() {
   gulp.src('gulpfile.js')
     .pipe(confirm({
-      question: "Have you committed all your code ('y' or 'n')? \nThis process will run a `git reset --hard HEAD` on your current branch. Always deploy from master.",
+      question: "\n\nHave you committed all your code? \n \n \n This process will run a `git reset --hard HEAD` on your current branch. Always deploy from master. \n \n",
       input: '_key:y'
     }))
     .pipe(shell([
