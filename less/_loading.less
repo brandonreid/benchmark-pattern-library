@@ -1,10 +1,24 @@
+/**
+* @section Loading Indicator
+*
+* @example
+* <div class="loader">
+*   <div>
+*     <span class="icon-mark"></span>
+*     <span class="icon-mark"></span>
+*     <span class="icon-mark"></span>
+*   </div>
+*   <span>Loading</span>
+* </div>
+*/
+
 @loading-animation-time: 2s;
 
-.loading {
+.loader {
   font-size: 2em;
   text-align: center;
   white-space: nowrap;
-  .loading-spinner {
+  div {
     display: inline-block;
     margin-right: 0.667em;
     span {
@@ -24,19 +38,54 @@
       }
     }
   }
-  .loading-message {
+  & > span {
     font-style: italic;
+    &:after {
+      content: '. . .';
+    }
   }
 }
+
+/**
+* For when cards need time to load charts/data/etc. Cards with simple content do not need loading indicators as they should load on the first paint.
+*
+* The card's contents will automatically be hidden until the class `loaded` is added to the top level `.card.load`.
+*
+* @section Loading Cards
+* @sectionof Loading Indicator
+*
+* @example
+* <div class="card load"><!-- Add class .loaded to hide the loader and show content -->
+*   <div class="card-header">
+*     <h2 class="card-title">Card with Loading Indicator</h2>
+*   </div>
+*   <div class="card-body">
+*     <div class="loader">
+*       <div>
+*         <span class="icon-mark"></span>
+*         <span class="icon-mark"></span>
+*         <span class="icon-mark"></span>
+*       </div>
+*       <span>Loading</span>
+*     </div>
+*     <p style="height:200px;">Card Body Content. Forced height to show that the indicator will center into whatever height of content is in the card-body.</p>
+*   </div>
+* </div>
+*/
 
 .load {
   &.card {
     .card-body {
+      position: relative;
       & > * {
         opacity: 0;
         transition: opacity 200ms ease;
       }
-      .loading {
+      .loader {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         opacity: 1;
       }
     }

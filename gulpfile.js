@@ -66,7 +66,8 @@ gulp.task('server', function () {
 
 gulp.task('watch', function () {
   gulp.watch([
-    './pattern_library/index.html'
+    './pattern_library/index.html',
+    './dist/app.css'
   ], function (event) {
     return gulp
       .src(event.path)
