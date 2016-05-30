@@ -2,10 +2,379 @@
 * @section Inputs
 */
 
+// Input gap mixen
+.input-gap {
+  & + label,
+  & + input,
+  & + textarea,
+  & + .input-w-button,
+  & + .input-w-clear {
+    margin-top: 0.75em;
+  }
+}
+
 /**
+* These text input types are provided. Always provide a label above the input.
+*
+* Inputs are full width by default, add the class `inline` for a shorter input. Otherwise you can constrain their width using the grid or setting a `max-width`.
+*
+* For __disabled__ inputs apply the class `disabled` to the __label__ above the input, otherwise clicking the label will force focus on the disabled input. If there is no label for some reason, apply `.disabled` to the input itself.
+*
+* For error states, add the class `error` to the __label__ above the input. If there is no label, add the class to the input itself.
+*
 * @section Text Inputs
 * @sectionof Inputs
 *
 * @example
-* <input type="text" placeholder="Input Something">
+* <label for="unique-id">Text</label>
+* <input type="text" id="unique-id" placeholder="Input Text">
+* <label for="password-id">Password</label>
+* <input type="password" id="password-id" placeholder="Input Password">
+* <label for="date-id">Date</label>
+* <input type="date" id="date-id" placeholder="Input Date">
+* <label for="number-id">Number</label>
+* <input type="number" id="number-id" placeholder="Input Number">
+* <label for="email-id">Email</label>
+* <input type="email" id="email-id" placeholder="Input Email Address">
+* <label for="tel-id">Telephone Number</label>
+* <input type="tel" id="email-id" placeholder="Input Telephone Number">
+* <label for="textarea-id">Text Area</label>
+* <textarea id="textarea-id" placeholder="Input Long Text"></textarea>
+*
+* <label for="unique-id2">Inline/Shorter Input</label>
+* <input type="text" class="inline" id="unique-id2" placeholder="Input Text">
+*
+* <label for="unique-id3" class="disabled">Disabled Input</label>
+* <input type="text" id="unique-id3" placeholder="Disabled">
+*
+* <label for="unique-id4" class="error">Input with an Error</label>
+* <input type="text" id="unique-id4" placeholder="Error">
 */
+
+label {
+  line-height: 1.6em;
+  font-weight: bold;
+  display: block;
+  padding-left: 0.25em;
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: @clr-disabled;
+    pointer-events: none;
+  }
+  &.error {
+    color: @clr-red;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  line-height: 1.6em;
+  border: 1px solid @clr-frame;
+  border-radius: 4px;
+  padding: 0.25em 0.5em;
+  display: block;
+  width: 100%;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.198);
+  .input-gap;
+  &:focus {
+    outline: 0;
+    border-color: @clr-blue;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+  }
+  &.inline {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+    & + button {
+      margin-left: 0.25em;
+    }
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] &,
+  label.disabled + &,
+  label[disabled] + & {
+    background-color: @clr-shade;
+    opacity: 0.65;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  &.error,
+  label.error + & {
+    border-color: @clr-red;
+  }
+}
+
+/**
+* Two "text input with a button" types are available.
+*
+* 1. An input with a standard button that only has an icon in it. Use the parent class `input-w-button`.
+* 2. An input with a 'clear' button for clearing search/filter terms. Use the parent class `input-w-clear`. This shouldn't be used on normal form inputs, only when the text effects the view and the user may want to clear that functionality. When using this, hide the 'clear' button unless text is in place.
+*
+* When disabled, add the class `disabled` to the top level container so that the label, input and button are all made disabled.
+*
+* When there's an error, add the class `error` to the top level container, just like disabled.
+*
+* @section Inputs with Buttons
+* @sectionof Inputs
+*
+* @example
+* <div class="input-w-button">
+*   <label for="example">Input with a Button</label>
+*   <input type="text" id="example" placeholder="Text Input">
+*   <button class="icon-search">
+*     <span class="sr-only">Search</span>
+*   </button>
+* </div>
+* <div class="input-w-clear">
+*   <label for="example">Input with a Clear Button</label>
+*   <input type="text" id="example" placeholder="Text Input">
+*   <button class="clear icon-remove">
+*     <span class="sr-only">Clear Text</span>
+*   </button>
+* </div>
+*
+* <div class="input-w-button disabled">
+*   <label for="example2">Disabled Input with a Button</label>
+*   <input type="text" id="example2" placeholder="Text Input">
+*   <button class="icon-search">
+*     <span class="sr-only">Search</span>
+*   </button>
+* </div>
+*
+* <div class="input-w-button error">
+*   <label for="example3">Error on Input with a Button</label>
+*   <input type="text" id="example3" placeholder="Text Input">
+*   <button class="icon-search">
+*     <span class="sr-only">Search</span>
+*   </button>
+* </div>
+*/
+
+.input-w-button {
+  .input-gap;
+  input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: ~"calc(100% - 2.8em)";
+    display: inline-block;
+    vertical-align: top;
+    & + button {
+      margin-left: -0.25em;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      max-width: 2.8em;
+      box-shadow: none;
+      &:active {
+        transform: none;
+        box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.198);
+      }
+    }
+    &:focus + button {
+      border-top-color: @clr-blue;
+      border-right-color: @clr-blue;
+      border-bottom-color: @clr-blue;
+      box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+    }
+  }
+}
+.input-w-clear {
+  position: relative;
+  .input-gap;
+  input {
+    padding-right: 2.25em;
+  }
+  .clear {
+    font-size: 1.125em;
+    padding: 0;
+    padding-right: 0.5em;
+    padding-bottom: 0.22em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    &:before {
+      margin: 0;
+    }
+  }
+}
+.input-w-button,
+.input-w-clear {
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    label {
+      &:extend(label.disabled);
+    }
+    input {
+      &:extend(input[type="text"].disabled);
+      & + button {
+        &:extend(button.disabled);
+      }
+    }
+  }
+  &.error {
+    label {
+      &:extend(label.error);
+    }
+    input {
+      &:extend(input[type="text"].error);
+      & + button {
+        border-top-color: @clr-red;
+        border-right-color: @clr-red;
+        border-bottom-color: @clr-red;
+      }
+    }
+  }
+}
+
+/**
+* Make sure to add the class `input` to the containing label for radios & checkboxes.
+*
+* @section Radios & Checkboxes
+* @sectionof Inputs
+*
+* @example
+* <h4>Radios</h4>
+* <label class="input">
+*   <input type="radio" name="uniqueRadioGroup" id="uniqueRadio1" value="radio1">
+*   Option 1
+* </label>
+* <label class="input">
+*   <input type="radio" name="uniqueRadioGroup" id="uniqueRadio2" value="radio2">
+*   Option 1
+* </label>
+* <label class="input">
+*   <input type="radio" name="uniqueRadioGroup" id="uniqueRadio3" value="radio3">
+*   Option 1
+* </label>
+*
+* <h4>Checkboxes</h4>
+* <label class="input">
+*   <input type="checkbox" value="uniqueValue1">
+*   Option 1
+* </label>
+* <label class="input">
+*   <input type="checkbox" value="uniqueValue2">
+*   Option 2
+* </label>
+* <label class="input">
+*   <input type="checkbox" value="uniqueValue3">
+*   Option 3
+* </label>
+*
+* <h4>Disabled States</h4>
+* <label class="input disabled">
+*   <input type="checkbox" value="uniqueValue4">
+*   Disabled Option
+* </label>
+* <label class="input disabled">
+*   <input type="radio" name="uniqueRadioGroup2" id="uniqueRadio4" value="radio4">
+*   Disabled Option
+* </label>
+*
+* <h4>Error States</h4>
+* <label class="input error">
+*   <input type="checkbox" value="uniqueValue5">
+*   Option with Error
+* </label>
+* <label class="input error">
+*   <input type="radio" name="uniqueRadioGroup3" id="uniqueRadio5" value="radio5">
+*   Option with Error
+* </label>
+*/
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+label.input {
+  position: relative;
+  padding-left: 1.25em;
+  cursor: pointer;
+  input[type="radio"],
+  input[type="checkbox"] {
+    position: absolute;
+    top: 47%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  & + label {
+    margin-top: 0.25em;
+  }
+}
+
+
+
+// *****************************
+// RESETS
+// *****************************
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+  // so we reset that to ensure it behaves more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359.
+  min-width: 0;
+}
+
+input[type="file"] {
+  display: block;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+// Special styles for iOS temporal inputs
+//
+// In Mobile Safari, setting `display: block` on temporal inputs causes the
+// text within the input to become vertically misaligned. As a workaround, we
+// set a pixel line-height that matches the given height of the input, but only
+// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
+//
+// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    line-height: 1.6em;
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}

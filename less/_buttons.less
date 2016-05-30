@@ -27,7 +27,7 @@ button {
   cursor: pointer;
   white-space: nowrap;
   touch-action: manipulation;
-  .user-select(none);
+  user-select: none;
   & + button {
     margin-left: 0.75em;
   }
@@ -55,7 +55,7 @@ button {
   &[disabled],
   fieldset[disabled] & {
     cursor: not-allowed;
-    .opacity(.65);
+    opacity: 0.65;
     &:active {
       box-shadow: 0 1px 0 @clr-frame;
       transform: none;
