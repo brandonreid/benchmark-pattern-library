@@ -1,9 +1,10 @@
 /**
-* We use a 24col Bootstrap grid. We __do not use__ `container` or `container-fluid`.
+* We use a 24col Bootstrap grid. Learn more at the [Bootstrap docs](http://getbootstrap.com/css/#grid).
 *
-* Learn more at the [Bootstrap docs](http://getbootstrap.com/css/#grid).
-*
-* Add the class `no-gutters` to the row if you need to strip all the gutter spacing.
+* __Usage__:
+* - We __do not use__ `container` or `container-fluid`.
+* - Rows have a margin-top applied by default for proper spacing in the app's `<main>` container and to space cards nicely. Add the class `no-space` to the row if you need to strip this margin.
+* - Add the class `no-gutters` to the row if you need to strip all the column gutter spacing.
 *
 * @section Grid
 * @example
@@ -32,33 +33,39 @@
 *   <div class="col-xs-4"><p>4</p></div>
 *   <div class="col-xs-4"><p>4</p></div>
 * </div>
+* <div class="row no-space">
+*   <div class="col-sm-12"><p>12</p></div>
+*   <div class="col-sm-12"><p>12</p></div>
+* </div>
 */
 
 @grid-columns: 24;
-@grid-gutter-width: 16px;
+@grid-gutter-width: 14px;
 
 .row {
+  margin-top: 0.75em;
   margin-left: 0;
   margin-right: 0;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  &.no-space {
+    margin-top: 0;
+  }
+  &.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    & > [class^="col-"],
+    & > [class*=" col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
   &:after {
     content: "";
     display: table;
     clear: both;
-  }
-}
-
-// no-gutters modifyer for bootstrap grid
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-  & > [class^="col-"],
-  & > [class*=" col-"] {
-    padding-right: 0;
-    padding-left: 0;
   }
 }
 
