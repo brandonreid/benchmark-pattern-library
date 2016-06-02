@@ -1,0 +1,191 @@
+/**
+* This is a modular scale based on a [perfect 5th](https://www.youtube.com/watch?v=ZlmLSwTW9Is) harmonic. These numbers are available for you when choosing `px` or `em` unit spacing and sizes. Instead of randomly choosing `10px` or something, try using numbers from this list that have an intentional proportional relationship to something and let harmony reign in the kindom of benchmark devness.
+*
+* @section Modular Scale
+*
+* @hideCode
+* @example
+* <table>
+* 	<thead>
+* 		<tr>
+* 			<th>Pixel Units</th>
+* 			<th>Em Units</th>
+* 		</tr>
+* 	</thead>
+* 	<tbody>
+* 		<tr>
+* 		  <td>922.643</td>
+* 		  <td>57.665</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>691.983</td>
+* 		  <td>43.249</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>615.095</td>
+* 		  <td>38.443</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>461.322</td>
+* 		  <td>28.833</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>410.063</td>
+* 		  <td>25.629</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>307.548</td>
+* 		  <td>19.222</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>273.375</td>
+* 		  <td>17.086</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>205.032</td>
+* 		  <td>12.815</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>182.250</td>
+* 		  <td>11.391</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>136.688</td>
+* 		  <td>8.543</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>121.500</td>
+* 		  <td>7.594</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>91.125</td>
+* 		  <td>5.695</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>81.000</td>
+* 		  <td>5.063</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>60.750</td>
+* 		  <td>3.797</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>54.000</td>
+* 		  <td>3.375</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>40.500</td>
+* 		  <td>2.531</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>36.000</td>
+* 		  <td>2.25 </td>
+* 		</tr>
+* 		<tr>
+* 		  <td>27.000</td>
+* 		  <td>1.688</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>24.000</td>
+* 		  <td>1.5</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>18.000</td>
+* 		  <td>1.125</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>16.000</td>
+* 		  <td>1 1</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>12.000</td>
+* 		  <td>0.75 </td>
+* 		</tr>
+* 		<tr>
+* 		  <td>10.667</td>
+* 		  <td>0.667</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>8.000</td>
+* 		  <td>0.5</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>7.111  </td>
+* 		  <td>0.444</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>5.333</td>
+* 		  <td>0.333</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>4.741</td>
+* 		  <td>0.296</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>3.555</td>
+* 		  <td>0.222</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>3.161</td>
+* 		  <td>0.198</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>2.370</td>
+* 		  <td>0.148</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>2.107</td>
+* 		  <td>0.132</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>1.580</td>
+* 		  <td>0.099</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>1.405</td>
+* 		  <td>0.088</td>
+* 		</tr>
+* 		<tr>
+* 		  <td>1.053</td>
+* 		  <td>0.066</td>
+* 		</tr>
+* 	</tbody>
+* </table>
+*/
+
+
+// Pixels        Ems
+// 922.643       57.665 
+// 691.983       43.249 
+// 615.095       38.443 
+// 461.322       28.833 
+// 410.063       25.629 
+// 307.548       19.222 
+// 273.375       17.086 
+// 205.032       12.815 
+// 182.250       11.391 
+// 136.688       8.543
+// 121.500       7.594
+// 91.125        5.695
+// 81.000        5.063
+// 60.750        3.797
+// 54.000        3.375
+// 40.500        2.531
+// 36.000        2.25 
+// 27.000        1.688
+// 24.000        1.5
+// 18.000        1.125
+// 16.000        1 1
+// 12.000        0.75 
+// 10.667        0.667
+// 8.000         0.5
+// 7.111         0.444
+// 5.333         0.333
+// 4.741         0.296
+// 3.555         0.222
+// 3.161         0.198
+// 2.370         0.148
+// 2.107         0.132
+// 1.580         0.099
+// 1.405         0.088
+// 1.053         0.066
