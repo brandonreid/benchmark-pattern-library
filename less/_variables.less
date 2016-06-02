@@ -1,5 +1,202 @@
+/**
+* Leverage these color variables in the app by importing the `_variables.less` file provided in the npm benchmark-patterns package.
+*
+* @section Color Palette
+*
+* @hideCode
+* @example
+* <style>
+*   .chips:after {
+*     content: "";
+*     display: table;
+*     clear: both;
+*   }
+*   .chip {
+*     background-color: #fff;
+*     width: 100%;
+*     max-width: 20em;
+*     float: left;
+*     margin: 0 0.5em 1em;
+*     box-shadow: 0 0 1px 0 rgba(0,0,0,0.333);
+*   }
+*   .chip > div {
+*     margin-right: 0.5em;
+*     height: 5em;
+*     width: 25%;
+*     float: left;
+*   }
+*   .var:before {
+*     content: "Variable: ";
+*     font-weight: bold;
+*   }
+*   .hex {margin-top: 0;}
+*   .hex:before {
+*     content: "Hex: ";
+*     font-weight: bold;
+*   }
+*   p.desc {
+*     font-size: 0.75em;
+*     margin-top: 0;
+*     line-height: 1.2em;
+*   }
+* </style>
+* 
+* <h4>General Colors</h4>
+* <div class="chips">
+*   <div class="chip">
+*     <div style="background-color:#fff;border-right:1px solid #ddd;"></div>
+*     <p class="var">white</p>
+*     <p class="hex">#fff</p>
+*     <p class="desc">No variable for white, just use browser default.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #1a1b21;"></div>
+*     <p class="var">@clr-black</p>
+*     <p class="hex">#1a1b21</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #e5e7ec;"></div>
+*     <p class="var">@clr-bg</p>
+*     <p class="hex">#e5e7ec</p>
+*     <p class="desc">Main background color.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #f8f8f8;"></div>
+*     <p class="var">@clr-shade</p>
+*     <p class="hex">#f8f8f8</p>
+*     <p class="desc">Shaded foregrounds, table headers, etc.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #bcbcbc;"></div>
+*     <p class="var">@clr-frame</p>
+*     <p class="hex">#bcbcbc</p>
+*     <p class="desc">General borders.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #ddd;"></div>
+*     <p class="var">@clr-frame-lt</p>
+*     <p class="hex">#ddd</p>
+*     <p class="desc">Dividers and borders that need to be lighter.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #888;"></div>
+*     <p class="var">@clr-disabled</p>
+*     <p class="hex">#888</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #776E6E;"></div>
+*     <p class="var">@clr-remove</p>
+*     <p class="hex">#776E6E</p>
+*     <p class="desc">Remove/cancel/close buttons.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: rgba(0, 0, 0, 0.333);"></div>
+*     <p class="var">@clr-shadow</p>
+*     <p class="hex">rgba(0, 0, 0, 0.333)</p>
+*     <p class="desc">General shadows. It is OK to make your own shadow though.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #3b81c3;"></div>
+*     <p class="var">@clr-link</p>
+*     <p class="hex">#3b81c3</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #2c3c4b;"></div>
+*     <p class="var">@clr-title-bg</p>
+*     <p class="hex">#2c3c4b</p>
+*     <p class="desc">Card titles, modal headers, sidebar nav bg, etc.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #15a3c2;"></div>
+*     <p class="var">@clr-blue</p>
+*     <p class="hex">#15a3c2</p>
+*     <p class="desc">Activated. Neutral sentiment.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #c21a15;"></div>
+*     <p class="var">@clr-red</p>
+*     <p class="hex">#c21a15</p>
+*     <p class="desc">Error, danger, etc.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #ffef3d;"></div>
+*     <p class="var">@clr-yellow</p>
+*     <p class="hex">#ffef3d</p>
+*     <p class="desc">Warning, be careful, etc.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #1fa015;"></div>
+*     <p class="var">@clr-green</p>
+*     <p class="hex">#1fa015</p>
+*     <p class="desc">Positive. Successful.</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #ffbc1a;"></div>
+*     <p class="var">@clr-orange</p>
+*     <p class="hex">#ffbc1a</p>
+*     <p class="desc">Special buttons. Benchmark logo.</p>
+*   </div>
+* </div>
+* <h4>Social Providers</h4>
+* <div class="chips">
+*   <div class="chip">
+*     <div style="background-color: #e04a39;"></div>
+*     <p class="var">@clr-gplus</p>
+*     <p class="hex">#e04a39</p>
+*     <p class="desc">Google Plus</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #db5326;"></div>
+*     <p class="var">@clr-yelp</p>
+*     <p class="hex">#db5326</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #335dab;"></div>
+*     <p class="var">@clr-facebook</p>
+*     <p class="hex">#335dab</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #2f7fc2;"></div>
+*     <p class="var">@clr-foursquare</p>
+*     <p class="hex">#2f7fc2</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #55acee;"></div>
+*     <p class="var">@clr-twitter</p>
+*     <p class="hex">#55acee</p>
+*   </div>
+* </div>
+* <h4>Grades</h4>
+* <div class="chips">
+*   <div class="chip">
+*     <div style="background-color: #1fa015;"></div>
+*     <p class="var">@grade-a</p>
+*     <p class="hex">#1fa015 (@clr-green)</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #b4bf00;"></div>
+*     <p class="var">@grade-b</p>
+*     <p class="hex">#b4bf00</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #e3cd00;"></div>
+*     <p class="var">@grade-c</p>
+*     <p class="hex">#e3cd00</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #e18429;"></div>
+*     <p class="var">@grade-d</p>
+*     <p class="hex">#e18429</p>
+*   </div>
+*   <div class="chip">
+*     <div style="background-color: #c21a15;"></div>
+*     <p class="var">@grade-f</p>
+*     <p class="hex">#c21a15 (@clr-red)</p>
+*   </div>
+* </div>
+*/
+
 // colors
-@clr-white: #fff;
 @clr-black: #1a1b21;
 @clr-text: #200538;
 @clr-link: #3b81c3;
@@ -13,18 +210,16 @@
 @clr-title-bg: #2c3c4b; // general blue
 @clr-logo: @clr-orange;
 
-@clr-button: #f8f8f8;
+@clr-button: @clr-shade;
 @clr-primary: #325099;
 @clr-primary-border: #14388b;
-@clr-active: #4dbc89;
-@clr-remove: #777777;
+@clr-remove: #776E6E;
 
 @clr-red: #c21a15;
 @clr-yellow: #ffef3d;
 @clr-blue: #15a3c2;
 @clr-green: #1fa015;
 @clr-orange: #ffbc1a;
-@clr-competitors: #4f7be3;
 
 @clr-gplus: #e04a39;
 @clr-yelp: #db5326;

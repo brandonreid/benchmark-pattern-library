@@ -67,14 +67,15 @@ gulp.task('server', function () {
 gulp.task('watch', function () {
   gulp.watch([
     './pattern_library/index.html',
-    './dist/app.css'
+    './pattern_library/dist/app.css',
+    './pattern_library/css/library.css'
   ], function (event) {
     return gulp
       .src(event.path)
       .pipe(connect.reload());
   });
   gulp.watch(['./less/*.less'], ['less', 'library']);
-  gulp.watch(['./library-template/less/**/*.less'], ['less', 'library']);
+  gulp.watch(['./library-template/less/*.less'], ['less', 'library']);
   gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
 });
 
