@@ -1,5 +1,5 @@
 /**
-* We use a 24col Bootstrap grid.
+* We use a 24col Bootstrap grid. We __do not use__ `container` or `container-fluid`.
 *
 * Learn more at the [Bootstrap docs](http://getbootstrap.com/css/#grid).
 *
@@ -16,40 +16,45 @@
 *   }
 * </style>
 * <!-- Grid Markup -->
-* <div class="container-fluid">
-*   <div class="row">
-*     <div class="col-sm-8"><p>8</p></div>
-*     <div class="col-sm-8"><p>8</p></div>
-*     <div class="col-sm-8"><p>8</p></div>
-*   </div>
-*   <div class="row">
-*     <div class="col-xs-8 col-xs-offset-8"><p>8 offset by 8</p></div>
-*   </div>
-*   <div class="row no-gutters">
-*     <div class="col-xs-4"><p>4</p></div>
-*     <div class="col-xs-4"><p>4</p></div>
-*     <div class="col-xs-4"><p>4</p></div>
-*     <div class="col-xs-4"><p>4</p></div>
-*     <div class="col-xs-4"><p>4</p></div>
-*     <div class="col-xs-4"><p>4</p></div>
-*   </div>
+* <div class="row">
+*   <div class="col-sm-8"><p>8</p></div>
+*   <div class="col-sm-8"><p>8</p></div>
+*   <div class="col-sm-8"><p>8</p></div>
+* </div>
+* <div class="row">
+*   <div class="col-xs-8 col-xs-offset-8"><p>8 offset by 8</p></div>
+* </div>
+* <div class="row no-gutters">
+*   <div class="col-xs-4"><p>4</p></div>
+*   <div class="col-xs-4"><p>4</p></div>
+*   <div class="col-xs-4"><p>4</p></div>
+*   <div class="col-xs-4"><p>4</p></div>
+*   <div class="col-xs-4"><p>4</p></div>
+*   <div class="col-xs-4"><p>4</p></div>
 * </div>
 */
 
 @grid-columns: 24;
 @grid-gutter-width: 16px;
 
-// Clearfix on rows
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 // no-gutters modifyer for bootstrap grid
 .row.no-gutters {
   margin-right: 0;
   margin-left: 0;
+  padding-left: 1em;
+  padding-right: 1em;
   & > [class^="col-"],
   & > [class*=" col-"] {
     padding-right: 0;
