@@ -13,7 +13,7 @@ var confirm = require('gulp-confirm');
 
 
 gulp.task('library', function () {
-  gulp.src('less/*.less')
+  return gulp.src('less/*.less')
     .pipe(livingcss({
       loadcss: false,
       template: './library-template/template.hbs',
@@ -37,7 +37,7 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./dist/'))
     .pipe(gulp.dest('./pattern_library/dist/'));
   // Pattern Library Styles
-  gulp.src(['./library-template/less/library.less'])
+  return gulp.src(['./library-template/less/library.less'])
     .pipe(less({
       plugins: [autoprefix, cleanCSSPlugin]
     }))
@@ -45,15 +45,14 @@ gulp.task('less', function () {
 });
 
 gulp.task('copyVariables', function() {
-  gulp.src('./less/_variables.less')
+  return gulp.src('./less/_variables.less')
     .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('fonts', function () {
-  gulp.src([
+  return gulp.src([
     './fonts/**/*'
-  ])
-    .pipe(gulp.dest('./pattern_library/fonts/'));
+  ]).pipe(gulp.dest('./pattern_library/fonts/'));
 });
 
 gulp.task('server', function () {
@@ -64,19 +63,22 @@ gulp.task('server', function () {
   });
 });
 
+gulp.task('reload', function () {
+  return gulp.src('./pattern_library/**/*.html')
+    .pipe(connect.reload());
+});
+
+gulp.task('rebuild', function(callback) {
+  runSequence(['less', 'copyVariables'],
+              ['library', 'fonts'],
+              ['reload'],
+              callback);
+});
+
 gulp.task('watch', function () {
-  gulp.watch([
-    './pattern_library/index.html',
-    './pattern_library/dist/app.css',
-    './pattern_library/css/library.css'
-  ], function (event) {
-    return gulp
-      .src(event.path)
-      .pipe(connect.reload());
-  });
-  gulp.watch(['./less/*.less'], ['less', 'library']);
-  gulp.watch(['./library-template/less/*.less'], ['less', 'library']);
-  gulp.watch(['./library-template/**/*.hbs'], ['less', 'library']);
+  gulp.watch(['./less/**/*.less',
+              './library-template/less/**/*.less',
+              './library-template/**/*.hbs'], ['rebuild'])
 });
 
 
