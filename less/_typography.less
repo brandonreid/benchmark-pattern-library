@@ -85,11 +85,6 @@ body {
   font-size: 14px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: @font-family-headers;
-  font-weight: 300;
-}
-
 a {
   cursor: pointer;
   color: #5d95c2;
@@ -106,7 +101,7 @@ p, time, a, em, strong {
 }
 
 /**
-* Paragraphs do not have bottom margin unless they are followed by another paragraph.
+* Paragraphs & header tags do not have margin unless they are followed by another paragraph or header.
 *
 * @section Paragraph Spacing
 * @sectionof Typography
@@ -114,28 +109,50 @@ p, time, a, em, strong {
 * @hideCode
 * @example
 * <style>
-*   .box1 {
+*   .box {
 *     background-color: #f5f5f5;
 *     border: 1px solid #ddd;
 *     margin-bottom: 1em;
 *     padding: 0 0.5em;
 *   }
-*   .box2 {
-*     background-color: #f5f5f5;
-*     border: 1px solid #ddd;
-*     padding: 0 0.5em;
+*   .box:last-child {
+*     margin-bottom: 0;
 *   }
 * </style>
-* <div class="box1">
+* 
+* <div class="box">
+*   <h2>Header w/no Following Content</h2>
+* </div>
+* <div class="box">
 *   <p>Here is a paragraph in a div with no following paragraph. Notice how no margin is applied to the bottom of this &lt;p&gt; tag.</p>
 * </div>
-* <div class="box2">
+* <div class="box">
 *   <p>Here is a paragraph with another paragraph following it. Notice that natural paragraph spacing is added in the way of margin, but the bottom paragraph does not have bottom spacing.</p>
 *   <p>This spacing technique allows paragraphs to fit nicely into containers, cards, tables, modals etc. The padding of the container can create the necessary spacing, although for this example no top or bottom padding has been applied.</p>
 * </div>
+* <div class="box">
+*   <h2>Header Followed by Content</h2>
+*   <p>Here is some text after a header. It has no bottom spacing unless it's followed by another paragraph or header. Things fit nicely into boxes by themselves, but also have nice typography when written in a document.</p>
+*   <h3>Header After Content</h3>
+*   <p>Some paragraph content after the second header. Otherwise the header above would have no bottom spacing and fit flush with the bottom of this here box.</p>
+* </div>
 */
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: @font-family-headers;
+  font-weight: 300;
+  margin: 0;
+  & + p {
+    margin-top: 0.75em;
+  }
+  p + &,
+  & + & {
+    margin-top: 1em;
+  }
+}
+
 p {
+  line-height: 1.4em;
   margin: 0;
   & + p {
     margin-top: 0.5em;
