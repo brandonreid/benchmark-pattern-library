@@ -295,6 +295,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "e9107949dd6c9e8ab2b29ae07156e38c",
+      "css": "linkedin",
+      "code": 59476,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f6a2573a7b6df911ed199bb63717e27",
+      "css": "github",
+      "code": 59477,
+      "src": "fontawesome"
+    },
+    {
       "uid": "d6944e1d9af302093d43b299bbecbbbe",
       "css": "number",
       "code": 57408,
