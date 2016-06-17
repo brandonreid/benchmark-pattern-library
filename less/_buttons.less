@@ -350,3 +350,26 @@ button {
     width: 100%;
   }
 }
+
+/**
+* Remember that [links are not buttons](http://www.karlgroves.com/2013/05/14/links-are-not-buttons-neither-are-divs-and-spans/).
+*
+* Add the class `button-spacing` to add the same padding as buttons, for when links are inline with buttons.
+*
+* @section Links
+* @sectionof Buttons
+*
+* @example
+* <a href="#0">Standard Link</a>
+* <a href="#0" class="button-spacing">Link w/ Button Spacing</a>
+* <button>Button to Compare With</button>
+*/
+a {
+  &.button-spacing {
+    line-height: 1.6em;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.25em 0.75em;
+    border: 1px solid transparent;
+  }
+}
