@@ -28,7 +28,8 @@ button {
   white-space: nowrap;
   touch-action: manipulation;
   user-select: none;
-  & + button {
+  & + button,
+  & + a.button-spacing {
     margin-left: 0.75em;
   }
   &:hover,
@@ -354,7 +355,7 @@ button {
 /**
 * Remember that [links are not buttons](http://www.karlgroves.com/2013/05/14/links-are-not-buttons-neither-are-divs-and-spans/).
 *
-* Add the class `button-spacing` to add the same padding as buttons, for when links are inline with buttons.
+* Add the class `button-spacing` to add the same padding as buttons, for when links are inline with buttons. Add the class `flush-sides` to an `a.button-spacing` to flush the left and right padding.
 *
 * @section Links
 * @sectionof Buttons
@@ -363,6 +364,7 @@ button {
 * <a href="#0">Standard Link</a>
 * <a href="#0" class="button-spacing">Link w/ Button Spacing</a>
 * <button>Button to Compare With</button>
+* <a href="#0" class="button-spacing flush-sides">Link w/ Button Spacing & Flushed Sides</a>
 */
 a {
   &.button-spacing {
@@ -371,5 +373,15 @@ a {
     vertical-align: middle;
     padding: 0.25em 0.75em;
     border: 1px solid transparent;
+    &.flush-sides {
+      padding-left: 0;
+      padding-right: 0;
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+    & + button,
+    & + & {
+      margin-left: 0.75em;
+    }
   }
 }
