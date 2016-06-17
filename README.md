@@ -31,5 +31,5 @@ OR....
 * Work with a clean master.
 * Update the version number in `package.json` and commit that to master.
 * Run `npm publish`.
-* Update the package in the Benchmark App or anywhere else it's deployed.
+* Update the package in the Benchmark App or anywhere else it's deployed by running `npm update --save benchmark-patterns`.
 * [Here's the page where the NPM package is.](https://www.npmjs.com/package/benchmark-patterns)

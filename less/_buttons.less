@@ -158,12 +158,15 @@ button.special-action {
 *
 * Add the class `flush` to remove button padding.
 *
+* Add the class `flush-sides` to remove only the left/right padding.
+*
 * @section Text Button
 * @sectionof Buttons
 * @example
 * <button class="text icon-add">Text Button</button>
 * <button class="text icon-add disabled">Disabled Text Button</button>
 * <button class="text icon-add flush">Flush Text Button</button>
+* <button class="text icon-add flush-sides">Sides Flushed Text Button</button>
 * <button class="text icon-add flush-icon"><span class="sr-only">Add</span></button>
 */
 button.text {
@@ -174,6 +177,12 @@ button.text {
   &.flush {
     padding: 0;
     border: none;
+  }
+  &.flush-sides {
+    padding-left: 0;
+    padding-right: 0;
+    border-left-width: 0px;
+    border-right-width: 0px;
   }
   &:hover,
   &:focus {
