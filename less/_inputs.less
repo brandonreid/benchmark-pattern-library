@@ -8,7 +8,7 @@
   & + input,
   & + textarea,
   & + .input-w-button,
-  & + .input-w-clear {
+  & + .input-w-inlay {
     margin-top: 0.75em;
   }
 }
@@ -115,7 +115,7 @@ textarea {
 * Two "text input with a button" types are available.
 *
 * 1. An input with a standard button that only has an icon in it. Use the parent class `input-w-button`.
-* 2. An input with a 'clear' button for clearing search/filter terms. Use the parent class `input-w-clear`. This shouldn't be used on normal form inputs, only when the text effects the view and the user may want to clear that functionality. When using this, hide the 'clear' button unless text is in place.
+* 2. An input with an inlaid button for search/filter inputs, etc. Use the parent class `input-w-inlay` with an `.inlay` button. For search fields, you'll likely want to make the `.inlay` have a `.icon-search`, then switch it to `.icon-remove` when text is in there so that the text can be cleared by clicking.
 *
 * When disabled, add the class `disabled` to the top level container so that the label, input and button are all made disabled.
 *
@@ -132,10 +132,10 @@ textarea {
 *     <span class="sr-only">Search</span>
 *   </button>
 * </div>
-* <div class="input-w-clear">
+* <div class="input-w-inlay">
 *   <label for="example">Input with a Clear Button</label>
 *   <input type="text" id="example" placeholder="Text Input">
-*   <button class="clear icon-remove">
+*   <button class="inlay icon-remove">
 *     <span class="sr-only">Clear Text</span>
 *   </button>
 * </div>
@@ -184,27 +184,47 @@ textarea {
     }
   }
 }
-.input-w-clear {
+.input-w-inlay {
   position: relative;
   .input-gap;
   input {
     padding-right: 2.25em;
+    &:active,
+    &:focus {
+      & + .inlay:not(.icon-remove) {
+        transform: none;
+        color: @clr-blue;
+      }
+    }
   }
-  .clear {
+  .inlay {
+    background-color: transparent;
+    color: @clr-disabled;
+    border-color: transparent;
     font-size: 1.125em;
-    padding: 0;
-    padding-right: 0.5em;
-    padding-bottom: 0.22em;
+    padding: 0 0.5em 0 0;
     position: absolute;
     right: 0;
     bottom: 0;
+    box-shadow: none;
     &:before {
       margin: 0;
+      line-height: 1.9em;
+    }
+    &.icon-remove {
+      color: @clr-remove;
+      &:hover,
+      &:focus {
+        color: @clr-red;
+      }
+      &:active {
+        color: darken(@clr-red, 10);
+      }
     }
   }
 }
 .input-w-button,
-.input-w-clear {
+.input-w-inlay {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
