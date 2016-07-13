@@ -5,11 +5,17 @@
 /**
 * __Usage:__ For general actions and secondary actions.
 *
+* Buttons that follow other buttons automatically get left margin for nice spacing. If you don't want this behavior, add class `no-autospace` to any buttons that you don't want margin-left automatically applied.
+*
 * @section Default Button
 * @sectionof Buttons
 * @example
 * <button>Default Button</button>
 * <button class="disabled">Disabled Default Button</button>
+* <div style="margin-top: 1em;">
+*   <button>Button</button>
+*   <button class="no-autospace">Button</button>
+* </div>
 */
 button {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -28,9 +34,9 @@ button {
   white-space: nowrap;
   touch-action: manipulation;
   user-select: none;
-  & + button,
-  & + a.button-spacing,
-  & + tooltip-container + button {
+  & + button:not(.no-autospace),
+  & + a.button-spacing:not(.no-autospace),
+  & + tooltip-container + button:not(.no-autospace) {
     margin-left: 0.75em;
   }
   &:hover,
