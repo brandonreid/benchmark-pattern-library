@@ -29,7 +29,8 @@ button {
   touch-action: manipulation;
   user-select: none;
   & + button,
-  & + a.button-spacing {
+  & + a.button-spacing,
+  & + tooltip-container + button {
     margin-left: 0.75em;
   }
   &:hover,
@@ -292,7 +293,8 @@ button.clear {
     margin: 0;
     position: relative;
     float: left;
-    & + button {
+    & + button,
+    & + tooltip-container + button {
       margin-left: -1px;
     }
     &:not(:first-child):not(:last-child) {
@@ -380,7 +382,9 @@ a {
       border-right-width: 0;
     }
     & + button,
-    & + & {
+    & + &,
+    & + tooltip-container + button,
+    & + tooltip-container + & {
       margin-left: 0.75em;
     }
   }
