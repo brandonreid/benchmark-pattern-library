@@ -76,23 +76,32 @@ ng-select {
     cursor: text;
     box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.198);
   }
+  .dropdown-toggle { display: none; }
+  .caret:before,
+  .glyphicon-remove:before {
+    font-family: "benchmark";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+  }
   .caret {
     position: absolute;
     right: 0.333em;
     &:extend(.icon-dropdown-angle all);
+  }
+  .glyphicon-remove {
+    &:extend(.icon-remove all);
+    &:extend(button.clear all);
     &:before {
-      font-family: "benchmark";
-      font-style: normal;
-      font-weight: normal;
-      speak: none;
-      display: inline-block;
-      text-decoration: inherit;
-      width: 1em;
-      margin-right: .2em;
-      text-align: center;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1em;
+      vertical-align: middle;
     }
   }
   &.open {
