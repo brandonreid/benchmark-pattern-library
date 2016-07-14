@@ -17,6 +17,21 @@
 *     </div>
 *   </div>
 * </ng-select>
+* <label>Something Selected</label>
+* <ng-select>
+*   <div class="ui-select-container ui-select-bootstrap dropdown open">
+*     <div class="ui-select-match">
+*       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
+*         <span class="ui-select-match-text pull-left ui-select-allow-clear">Antwerp</span>
+*         <i class="dropdown-toggle pull-right"></i>
+*         <i class="caret pull-right"></i>
+*         <a class="btn btn-xs btn-link pull-right" style="margin-right: 10px; padding: 0;">
+*           <i class="glyphicon glyphicon-remove"></i>
+*         </a>
+*       </span>
+*     </div>
+*   </div>
+* </ng-select>
 * <label>Opened</label>
 * <ng-select>
 *   <div class="ui-select-container ui-select-bootstrap dropdown open">
@@ -38,21 +53,6 @@
 *         </div>
 *       </li>
 *     </ul>
-*   </div>
-* </ng-select>
-* <label>Something Selected</label>
-* <ng-select>
-*   <div class="ui-select-container ui-select-bootstrap dropdown open">
-*     <div class="ui-select-match">
-*       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
-*         <span class="ui-select-match-text pull-left ui-select-allow-clear">Antwerp</span>
-*         <i class="dropdown-toggle pull-right"></i>
-*         <i class="caret pull-right"></i>
-*         <a class="btn btn-xs btn-link pull-right" style="margin-right: 10px; padding: 0;">
-*           <i class="glyphicon glyphicon-remove"></i>
-*         </a>
-*       </span>
-*     </div>
 *   </div>
 * </ng-select>
 */
@@ -102,6 +102,7 @@ ng-select {
     }
   }
   ul {
+    background-color: white;
     padding: 0;
     margin: -1px 0 0;
     list-style: none;
@@ -111,6 +112,9 @@ ng-select {
     border-bottom-left-radius: 4px;
     max-height: 25.5em;
     overflow-x: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
     box-shadow: 0 4px 2px -3px fadeOut(black, 79);
     .ui-select-choices-row {
       padding: 0.25em 0.5em;
@@ -118,7 +122,12 @@ ng-select {
       &:focus {
         background-color: @clr-shade;
       }
-      &.active {}
+      &.active {
+        background-color: @clr-blue;
+        a {
+          color: white;
+        }
+      }
       a {
         text-decoration: none;
       }
