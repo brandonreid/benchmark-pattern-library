@@ -1,110 +1,189 @@
 /**
 * Basic modal markup.
 *
-* __NOTE:__ Be sure to setup JS to hide the modal when the user presses `esc`.
+* We use (ng2-modal)[https://github.com/pleerock/ng2-modal] for our modals. We use our own custom styles instead of bootstrap styles though.
 *
 * @section Modals
 *
 * @example
 * <!-- Demo Specific Styles -->
 * <style>
-*   .modal {
-*     position: static;
-*     height: auto;
-*     opacity: 1;
+*   .example-container {
+*     position: relative;
 *   }
-*   .modal .modal-dialog { transform: none; }
+*   .modal { position: relative !important; }
+*   .modal-backdrop { position: absolute !important; }
 * </style>
 * <!-- Modal Markup -->
-* <div class="modal">
-*   <div class="modal-dialog">
-*     <div class="modal-header">
-*       <h3>Modal Title</h3>
-*       <button class="clear icon-close">
-*         <span class="sr-only">Close</span>
-*       </button>
-*     </div>
-*     <div class="modal-body">
-*       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor.</p>
-*     </div>
-*     <div class="modal-footer right">
-*       <button class="clear">Cancel</button>
-*       <button>Save As</button>
-*       <button class="primary">Save</button>
+* <div class="example-container">
+*   <div class="modal in fade" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
+*       <div class="modal-content">
+*         <div class="modal-header">
+*           <button class="close"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal header</h1>
+*           </modal-header>
+*         </div>
+*         <div class="modal-body">
+*           <modal-content>
+*            Hello Modal!
+*           </modal-content>
+*         </div>
+*         <div class="modal-footer">
+*           <modal-footer>
+*             <button class="clear">Close</button>
+*             <button class="primary">Save</button>
+*           </modal-footer>
+*         </div>
+*       </div>
 *     </div>
 *   </div>
+*   <div class="modal-backdrop fade in"></div>
 * </div>
 */
 
+@zindex-modal: 1050;
+@zindex-modal-background: 1040;
+
+// Kill the scroll on the body
+.modal-open {
+  overflow: hidden;
+}
+
 .modal {
-  background-color: fadeOut(@clr-black, 30);
+  overflow: hidden;
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: -500;
-  opacity: 0;
-  transition: z-index 400ms step-end, opacity 200ms ease 200ms;
-  .modal-dialog {
-    background-color: white;
-    box-shadow: 0 7px 20px 5px fadeOut(@clr-black, 60);
-    max-width: 60em;
-    margin: 1em;
-    max-height: 98vh;
-    transform: translateY(-100vh);
-    transition: transform 300ms cubic-bezier(1,0,0,1);
-  }
-  .modal-header {
-    background-color: @clr-title-bg;
-    color: white;
-    padding: 0.25em 0.75em;
-    white-space: nowrap;
-    h1,h2,h3,h4,h5,h6 {
-      font-size: 1.5rem;
-      line-height: 1.2em;
-      margin: 0;
-      display: inline-block;
-      vertical-align: top;
-      width: 90%;
-      width: ~"calc(100% - 1.5rem)";
-      text-overflow: ellipsis;
-      overflow-x: hidden;
-    }
-    .clear {
-      font-size: 1.5rem;
-      line-height: 1.2em;
-      color: lighten(@clr-remove, 20);
-      padding: 0;
-      &:before {margin: 0;}
-      &:hover,
-      &:focus {
-        color: lighten(@clr-red, 10);
-      }
-      &:active {color: @clr-red;}
-    }
-  } // end .modal-header
-  .modal-body {
-    padding: 0.5em 0.75em;
-    max-height: ~"calc(100vh - 7.6em)";
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .modal-footer {
-    padding: 0.222em 0.75em 0.667em;
-  }
-  &.show {
-    z-index: 9000;
-    opacity: 1;
-    transition: z-index 1ms step-start, opacity 0.444s ease;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  &.fade {
+    z-index: -20;
+    transition: z-index .3s step-end;
     .modal-dialog {
-      transform: translateY(0%);
-      transition: transform 0.667s cubic-bezier(1,0,0,1);
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: transform 0.3s cubic-bezier(1,0,0,1),
+                  opacity 0.3s ease;
     }
   }
+  &.in {
+    z-index: @zindex-modal;
+    transition: z-index .3s step-start;
+    .modal-dialog {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 5vh 1em 1em;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  box-shadow: 0 7px 20px 5px fadeOut(@clr-black, 60);
+  background-clip: padding-box;
+  outline: 0;
+}
+
+.modal-header {
+  background-color: @clr-title-bg;
+  color: white;
+  padding: 0.25em 0.75em;
+  white-space: nowrap;
+  &:extend(.clearfix all);
+  h1,h2,h3,h4,h5,h6 {
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    width: ~"calc(100% - 1.5rem)";
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+  }
+  .close {
+    float: right;
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    background-color: transparent;
+    color: lighten(@clr-remove, 20);
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    &:hover,
+    &:focus {
+      color: lighten(@clr-red, 10);
+      transform: none;
+    }
+    &:active { color: @clr-red; }
+    &:extend(.icon-close all);
+    &:before {
+      font-family: 'benchmark';
+      margin: 0;
+    }
+    span { display: none; }
+  }
+}
+
+.modal-body {
+  position: relative;
+  padding: 0.5em 0.75em;
+  padding: 0.5em 0.75em;
+  max-height: ~"calc(100vh - 8.5em)";
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-footer {
+  border-top: 1px solid @clr-frame-lt;
+  padding: 0.5em 0.75em 0.667em;
+  text-align: right;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal-background;
+  background-color: fadeOut(@clr-black, 30);
+  &.fade {
+    opacity: 0;
+    z-index: -20;
+    transition: z-index .2s step-end, opacity .2s ease;
+  }
+  &.in {
+    opacity: 1;
+    z-index: @zindex-modal-background;
+    transition: z-index .4s step-start, opacity .4s ease;
+  }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
 }
 
 /**
@@ -116,37 +195,46 @@
 * @example
 * <!-- Demo Specific Styles -->
 * <style>
-*   .modal {
-*     position: static;
-*     height: auto;
-*     opacity: 1;
+*   .example-container {
+*     position: relative;
 *   }
-*   .modal .modal-dialog { transform: none; }
+*   .modal { position: relative !important; }
+*   .modal-backdrop { position: absolute !important; }
 * </style>
 * <!-- Modal Markup -->
-* <div class="modal">
-*   <div class="modal-dialog">
-*     <div class="modal-header">
-*       <h3>Modal Title</h3>
-*       <button class="clear icon-close">
-*         <span class="sr-only">Close</span>
-*       </button>
-*     </div>
-*     <div class="modal-warning">
-*       <p class="icon-attention">Here is a warning that you should know about.</p>
-*     </div>
-*     <div class="modal-body">
-*       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
-*     </div>
-*     <div class="modal-footer right">
-*       <button class="clear">Cancel</button>
-*       <button class="primary">Done</button>
+* <div class="example-container">
+*   <div class="modal in fade" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
+*       <div class="modal-content">
+*         <div class="modal-header">
+*           <button class="close"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal with a Warning</h1>
+*           </modal-header>
+*         </div>
+*         <div class="modal-body">
+*           <modal-content>
+*            <div class="modal-warning">
+*              <p class="icon-attention">Here is a warning that you should know about.</p>
+*            </div>
+*            Hello Modal!
+*           </modal-content>
+*         </div>
+*         <div class="modal-footer">
+*           <modal-footer>
+*             <button class="clear">Close</button>
+*             <button class="primary">Save</button>
+*           </modal-footer>
+*         </div>
+*       </div>
 *     </div>
 *   </div>
+*   <div class="modal-backdrop fade in"></div>
 * </div>
 */
 .modal .modal-warning {
   background-color: @clr-yellow;
+  margin: -0.5em -0.75em 0.5em;
   padding: 0.5em 0.75em;
   font-weight: bold;
 }
@@ -160,50 +248,59 @@
 * @example
 * <!-- Demo Specific Styles -->
 * <style>
-*   .modal {
-*     position: static;
-*     height: auto;
-*     opacity: 1;
+*   .example-container {
+*     position: relative;
 *   }
-*   .modal .modal-dialog { transform: none; }
+*   .modal { position: relative !important; }
+*   .modal-backdrop { position: absolute !important; }
 * </style>
 * <!-- Modal Markup -->
-* <div class="modal">
-*   <div class="modal-dialog">
-*     <div class="modal-header">
-*       <h3>Modal Title</h3>
-*       <button class="clear icon-close">
-*         <span class="sr-only">Close</span>
-*       </button>
-*     </div>
-*     <div class="modal-w-menu">
-*       <div class="modal-menu">
-*         <ul>
-*           <li><button>Option 1</button></li>
-*           <li><button class="active">Option 2</button></li>
-*           <li><button>Option 3</button></li>
-*           <li><button>Option 4</button></li>
-*         </ul>
-*       </div>
+* <div class="example-container">
+*   <div class="modal in fade" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
 *       <div class="modal-content">
-*         <div class="modal-body">
-*           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
+*         <div class="modal-header">
+*           <button class="close"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal with a Warning</h1>
+*           </modal-header>
 *         </div>
-*         <div class="modal-footer right">
-*           <button class="clear">Cancel</button>
-*           <button class="primary">Save</button>
+*         <div class="modal-body">
+*           <modal-content>
+*             <div class="modal-w-menu">
+*               <div class="modal-menu">
+*                 <ul>
+*                   <li><button>Option 1</button></li>
+*                   <li><button class="active">Option 2</button></li>
+*                   <li><button>Option 3</button></li>
+*                   <li><button>Option 4</button></li>
+*                 </ul>
+*               </div>
+*               <div class="modal-menu-stage">
+*                 <div class="modal-body">
+*                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
+*                 </div>
+*                 <div class="modal-menu-footer">
+*                   <button class="clear">Cancel</button>
+*                   <button class="primary">Save</button>
+*                 </div>
+*               </div>
+*             </div>
+*           </modal-content>
 *         </div>
 *       </div>
 *     </div>
 *   </div>
+*   <div class="modal-backdrop fade in"></div>
 * </div>
 */
 @clr-nav-bg: lighten(@clr-title-bg, 7);
 @clr-nav-item-hover: lighten(@clr-title-bg, 15);
 @clr-nav-item-selected: lighten(@clr-title-bg, 25);
-.modal .modal-w-menu {
+.modal-w-menu {
   display: flex;
   flex-direction: row;
+  margin: -0.5em -0.75em;
   .modal-menu {
     background-color: @clr-nav-bg;
     min-width: 11em;
@@ -252,16 +349,15 @@
       }
     }
   } // end .modal-menu
-  .modal-content {
+  .modal-menu-stage {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .modal-body {
-    width: 100%;
-  }
-  .modal-footer {
-    width: 100%;
+  .modal-menu-footer {
+    border-top: 1px solid @clr-frame-lt;
+    padding: 0.5em 0.75em 0.667em;
+    text-align: right;
   }
 }
 
@@ -279,75 +375,93 @@
 *  <button id="standard">Open Standard Modal</button>
 *  <button id="large">Open Large Modal</button>
 * 
-*  <div class="modal small-modal" id="smallModal">
-*    <div class="modal-dialog">
-*      <div class="modal-header">
-*        <h3>Modal Title</h3>
-*        <button class="clear icon-close closeModal">
-*          <span class="sr-only">Close</span>
-*        </button>
-*      </div>
-*      <div class="modal-body">
-*        <p>A small modal. For when you know the modal's contents are short.</p>
-*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci voluptas incidunt perspiciatis expedita non sed.</p>
-*      </div>
-*      <div class="modal-footer right">
-*        <button class="clear closeModal">Cancel</button>
-*        <button class="primary closeModal">Done</button>
-*      </div>
-*    </div>
-*  </div>
-*  <div class="modal" id="standardModal">
-*    <div class="modal-dialog">
-*      <div class="modal-header">
-*        <h3>Modal Title</h3>
-*        <button class="clear icon-close closeModal">
-*          <span class="sr-only">Close</span>
-*        </button>
-*      </div>
-*      <div class="modal-body">
-*        <p>A standard modal. For general forms and stuff.</p>
-*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quidem esse asperiores qui temporibus dolorem a odio. Pariatur, animi. Cumque id minus sapiente eos iure, reiciendis voluptatum ut ea eius fugit illo modi iusto enim at sunt saepe fuga odit!</p>
-*      </div>
-*      <div class="modal-footer right">
-*        <button class="clear closeModal">Cancel</button>
-*        <button class="primary closeModal">Done</button>
-*      </div>
-*    </div>
-*  </div>
-*  <div class="modal large-modal" id="largeModal">
-*    <div class="modal-dialog">
-*      <div class="modal-header">
-*        <h3>Modal Title</h3>
-*        <button class="clear icon-close closeModal">
-*          <span class="sr-only">Close</span>
-*        </button>
-*      </div>
-*      <div class="modal-body">
-*        <p>A large modal for bigger settings interfaces, etc.</p>
-*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quidem esse asperiores qui temporibus dolorem a odio. Pariatur, animi. Cumque id minus sapiente eos iure, reiciendis voluptatum ut ea eius fugit illo modi iusto enim at sunt saepe fuga odit!</p>
-*      </div>
-*      <div class="modal-footer right">
-*        <button class="clear closeModal">Cancel</button>
-*        <button class="primary closeModal">Done</button>
-*      </div>
-*    </div>
-*  </div>
-* </div>
-*
+*   <div class="modal small-modal fade" id="smallModal" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
+*       <div class="modal-content">
+*         <div class="modal-header">
+*           <button class="close closeModal"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal header</h1>
+*           </modal-header>
+*         </div>
+*         <div class="modal-body">
+*           <modal-content>
+*            Hello Modal!
+*           </modal-content>
+*         </div>
+*         <div class="modal-footer">
+*           <modal-footer>
+*             <button class="clear closeModal">Close</button>
+*             <button class="primary closeModal">Save</button>
+*           </modal-footer>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="modal fade" id="standardModal" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
+*       <div class="modal-content">
+*         <div class="modal-header">
+*           <button class="close closeModal"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal header</h1>
+*           </modal-header>
+*         </div>
+*         <div class="modal-body">
+*           <modal-content>
+*            Hello Modal!
+*           </modal-content>
+*         </div>
+*         <div class="modal-footer">
+*           <modal-footer>
+*             <button class="clear closeModal">Close</button>
+*             <button class="primary closeModal">Save</button>
+*           </modal-footer>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="modal large-modal fade" id="largeModal" role="dialog" style="display: block;">
+*     <div class="modal-dialog undefined">
+*       <div class="modal-content">
+*         <div class="modal-header">
+*           <button class="close closeModal"><span>×</span></button>
+*           <modal-header>
+*             <h1>Modal header</h1>
+*           </modal-header>
+*         </div>
+*         <div class="modal-body">
+*           <modal-content>
+*            Hello Modal!
+*           </modal-content>
+*         </div>
+*         <div class="modal-footer">
+*           <modal-footer>
+*             <button class="clear closeModal">Close</button>
+*             <button class="primary closeModal">Save</button>
+*           </modal-footer>
+*         </div>
+*       </div>
+*     </div>
+*   </div>
+*   <div class="modal-backdrop fade" id="m-backdrop"></div>
 * <script>
 *   $(document).ready(function() {
 *     $('#small').click(function() {
-*       $('#smallModal').addClass('show');
+*       $('#smallModal').addClass('in');
+*       $('#m-backdrop').addClass('in');
 *     });
 *     $('#standard').click(function() {
-*       $('#standardModal').addClass('show');
+*       $('#standardModal').addClass('in');
+*       $('#m-backdrop').addClass('in');
 *     });
 *     $('#large').click(function() {
-*       $('#largeModal').addClass('show');
+*       $('#largeModal').addClass('in');
+*       $('#m-backdrop').addClass('in');
 *     });
 *     $('.closeModal').click(function() {
-*       $('.show').removeClass('show');
+*       $('.in').removeClass('in');
+*       $('#m-backdrop').removeClass('in');
 *     });
 *   }); 
 * </script>
