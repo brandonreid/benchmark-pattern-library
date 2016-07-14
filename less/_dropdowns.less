@@ -1,78 +1,127 @@
-// /**
-// * We use [ng2-select](http://valor-software.com/ng2-select/) from our dropdowns.
-// *
-// * @section Dropdowns
-// *
-// * @hideCode
-// * @example
-// * <p>Clean</p>
-// * <ng-select>
-// *   <div class="ui-select-container ui-select-bootstrap dropdown open">
-// *     <div class="ui-select-match">
-// *       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
-// *         <span class="ui-select-placeholder text-muted">No city selected</span>
-// *         <i class="dropdown-toggle pull-right"></i>
-// *         <i class="caret pull-right"></i>
-// *       </span>
-// *     </div>
-// *   </div>
-// * </ng-select>
-// * <p>Opened</p>
-// * <ng-select>
-// *   <div class="ui-select-container ui-select-bootstrap dropdown open">
-// *     <input class="form-control ui-select-search" type="text" placeholder="No city selected">
-// *     <ul class="ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu">
-// *       <li class="ui-select-choices-group">
-// *         <div class="ui-select-choices-row active">
-// *           <a class="ui-select-choices-row-inner">
-// *             <div>Amsterdam</div>
-// *           </a>
-// *         </div><div class="ui-select-choices-row">
-// *           <a class="ui-select-choices-row-inner">
-// *             <div>Antwerp</div>
-// *           </a>
-// *         </div><div class="ui-select-choices-row">
-// *           <a class="ui-select-choices-row-inner">
-// *             <div>Turin</div>
-// *           </a>
-// *         </div>
-// *       </li>
-// *     </ul>
-// *   </div>
-// * </ng-select>
-// * <p>Something Selected</p>
-// * <ng-select>
-// *   <div class="ui-select-container ui-select-bootstrap dropdown open">
-// *     <div class="ui-select-match">
-// *       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
-// *         <span class="ui-select-match-text pull-left ui-select-allow-clear">Antwerp</span>
-// *         <i class="dropdown-toggle pull-right"></i>
-// *         <i class="caret pull-right"></i>
-// *         <a class="btn btn-xs btn-link pull-right" style="margin-right: 10px; padding: 0;">
-// *           <i class="glyphicon glyphicon-remove"></i>
-// *         </a>
-// *       </span>
-// *     </div>
-// *   </div>
-// * </ng-select>
-// */
+/**
+* We use [ng2-select](http://valor-software.com/ng2-select/) from our dropdowns.
+*
+* @section Dropdowns
+*
+* @hideCode
+* @example
+* <label>Clean</label>
+* <ng-select>
+*   <div class="ui-select-container ui-select-bootstrap dropdown open">
+*     <div class="ui-select-match">
+*       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
+*         <span class="ui-select-placeholder text-muted">No city selected</span>
+*         <i class="dropdown-toggle pull-right"></i>
+*         <i class="caret pull-right"></i>
+*       </span>
+*     </div>
+*   </div>
+* </ng-select>
+* <label>Opened</label>
+* <ng-select>
+*   <div class="ui-select-container ui-select-bootstrap dropdown open">
+*     <input class="form-control ui-select-search" type="text" placeholder="No city selected">
+*     <ul class="ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu">
+*       <li class="ui-select-choices-group">
+*         <div class="ui-select-choices-row active">
+*           <a class="ui-select-choices-row-inner">
+*             <div>Amsterdam</div>
+*           </a>
+*         </div><div class="ui-select-choices-row">
+*           <a class="ui-select-choices-row-inner">
+*             <div>Antwerp</div>
+*           </a>
+*         </div><div class="ui-select-choices-row">
+*           <a class="ui-select-choices-row-inner">
+*             <div>Turin</div>
+*           </a>
+*         </div>
+*       </li>
+*     </ul>
+*   </div>
+* </ng-select>
+* <label>Something Selected</label>
+* <ng-select>
+*   <div class="ui-select-container ui-select-bootstrap dropdown open">
+*     <div class="ui-select-match">
+*       <span class="btn btn-default btn-secondary form-control ui-select-toggle">
+*         <span class="ui-select-match-text pull-left ui-select-allow-clear">Antwerp</span>
+*         <i class="dropdown-toggle pull-right"></i>
+*         <i class="caret pull-right"></i>
+*         <a class="btn btn-xs btn-link pull-right" style="margin-right: 10px; padding: 0;">
+*           <i class="glyphicon glyphicon-remove"></i>
+*         </a>
+*       </span>
+*     </div>
+*   </div>
+* </ng-select>
+*/
 
-// .dropdown {
-//   position: relative;
-//   .btn {
-//     line-height: 1.6em;
-//     border: 1px solid @clr-frame;
-//     border-radius: 4px;
-//     padding: 0.25em 0.5em;
-//     display: block;
-//     width: 100%;
-//     box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.198);
-//   }
-//   .caret {
-//     float: right;
-//     &:extend(.icon-dropdown-angle all);
-//     &:before {
-//       font-family: "benchmark";
-//     }
-//   }
-// }
+
+ng-select {
+  .input-gap;
+}
+
+.dropdown {
+  position: relative;
+  span.btn {
+    background-color: white;
+    line-height: 1.6em;
+    border: 1px solid @clr-frame;
+    border-radius: 4px;
+    padding: 0.25em 2em 0.25em 0.5em;
+    display: block;
+    width: 100%;
+    min-height: 1.47em;
+    cursor: text;
+    box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.198);
+  }
+  .caret {
+    position: absolute;
+    right: 0.333em;
+    &:extend(.icon-dropdown-angle all);
+    &:before {
+      font-family: "benchmark";
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1em;
+    }
+  }
+  &.open {
+    input {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: -1px 0 0;
+    list-style: none;
+    border: 1px solid @clr-blue;
+    border-top-color: @clr-frame;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    max-height: 25.5em;
+    overflow-x: auto;
+    box-shadow: 0 4px 2px -3px fadeOut(black, 79);
+    .ui-select-choices-row {
+      padding: 0.25em 0.5em;
+      &:hover,
+      &:focus {
+        background-color: @clr-shade;
+      }
+      &.active {}
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
