@@ -58,18 +58,16 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  &.fade {
-    z-index: -20;
-    transition: z-index .3s step-end;
-    .modal-dialog {
-      opacity: 0;
-      transform: translateY(-100%);
-      transition: transform 0.3s cubic-bezier(1,0,0,1),
-                  opacity 0.3s ease;
-    }
+  z-index: -20;
+  transition: z-index .3s step-end;
+  .modal-dialog {
+    display: block !important;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(1,0,0,1),
+                opacity 0.3s ease;
   }
   &.in {
     z-index: @zindex-modal;
@@ -158,18 +156,15 @@
 }
 
 .modal-backdrop {
+  background-color: fadeOut(@clr-black, 30);
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal-background;
-  background-color: fadeOut(@clr-black, 30);
-  &.fade {
-    opacity: 0;
-    z-index: -20;
-    transition: z-index .2s step-end, opacity .2s ease;
-  }
+  opacity: 0;
+  z-index: -20;
+  transition: z-index .2s step-end, opacity .2s ease;
   &.in {
     opacity: 1;
     z-index: @zindex-modal-background;
