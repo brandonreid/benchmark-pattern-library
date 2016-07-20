@@ -1,136 +1,176 @@
 /**
-* Collapsers are useful for lists of items that all contain supporting content.
-*
-* The `collapser-header` is optional, but useful for defining the `c-bar-row` content and providing the ability to sort.
-*
-* Add the class `open` to the top level `collapser` container to open the supporting content.
-*
-* If you have a large amount of content in `c-content`, you may need to set a higher max-width for `.collapser.open .c-content`.
-*
-* @section Collapsers
-*
-* @example
-* <div class="collapser-header">
-*   <div class="col-xs-8"><p>Title</p></div>
-*   <div class="col-xs-8 center"><p>Center Title</p></div>
-*   <div class="col-xs-8 right"><p>Right Title</p></div>
-* </div>
-* <!-- Open Collapser 1 -->
-* <div class="collapser open">
-*   <div class="c-bar">
-*     <button class="collapse-btn" id="collapserBtn">
-*       <span class="sr-only">Expand/Collapse</span>
-*     </button>
-*     <div class="c-bar-row">
-*       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
-*       <div class="col-xs-8 center"><p>Centered Content</p></div>
-*       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
-*     </div>
-*   </div>
-*   <div class="c-content">
-*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis, laboriosam, necessitatibus, minus aperiam aliquam veniam modi et excepturi, ex iste dolorem deleniti. Nisi nulla explicabo, harum, qui voluptates a.</p>
-*   </div>
-* </div>
-* <!-- Closed Collapser 2 -->
-* <div class="collapser">
-*   <div class="c-bar">
-*     <button class="collapse-btn" id="collapserBtn">
-*       <span class="sr-only">Expand/Collapse</span>
-*     </button>
-*     <div class="c-bar-row">
-*       <div class="col-xs-8"><p><strong>Some Sort of Title</strong></p></div>
-*       <div class="col-xs-8 center"><p>Centered Content</p></div>
-*       <div class="col-xs-8 right"><p>Right Aligned Content</p></div>
-*     </div>
-*   </div>
-*   <div class="c-content">
-*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis, laboriosam, necessitatibus, minus aperiam aliquam veniam modi et excepturi, ex iste dolorem deleniti. Nisi nulla explicabo, harum, qui voluptates a.</p>
-*   </div>
-* </div>
+* We use the [accordion from ng2-bootstrap](https://valor-software.com/ng2-bootstrap/#/accordion) with our own custom styles.
+* @section Accordions
 */
 
-.collapser-header {
-  font-weight: bold;
-  margin-bottom: 0.25em;
-  padding-left: 2.2rem;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+/**
+* __Usage:__
+*
+* You may need to set a greater `max-width` on `.panel-collapse.in` if your accordion content is really long.
+*
+* @section Basic Accordions
+* @sectionof Accordions
+*
+* @hideCode
+* @example
+* <accordion class="panel-group">
+*   <accordion-group _ngcontent-hbp-11="" class="panel-open">
+*     <div class="panel panel-default">
+*       <div class="panel-heading">
+*         <h4 class="panel-title">
+*           <a class="accordion-toggle" href="#0" tabindex="0">
+*             <div accordion-heading="">
+*               Dynamic Group Header - 1
+*             </div>
+*           </a>
+*         </h4>
+*       </div>
+*       <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
+*         <div class="panel-body">
+*           Dynamic Group Body - 1
+*         </div>
+*       </div>
+*     </div>
+*   </accordion-group>
+*   <accordion-group>
+*     <div class="panel panel-default">
+*       <div class="panel-heading">
+*         <h4 class="panel-title">
+*           <a class="accordion-toggle" href="#0" tabindex="0">
+*             <div accordion-heading="">
+*               Dynamic Group Header - 2
+*             </div>
+*           </a>
+*         </h4>
+*       </div>
+*       <div class="panel-collapse collapse" style="display: none;">
+*         <div class="panel-body">
+*           Dynamic Group Body - 2
+*         </div>
+*       </div>
+*     </div>
+*   </accordion-group>
+* </accordion>
+*/
+
+accordion {}
+
+accordion-group {
+  display: block;
+  & + accordion-group {
+    margin-top: 0.75em;
   }
+  &.panel-open {}
 }
 
-.collapser {
-  .c-bar {
+.panel {
+  .panel-heading {
     background-color: @clr-shade;
     border: 1px solid @clr-frame;
     border-radius: 4px;
-    .collapse-btn {
-      background-color: transparent;
-      color: @clr-link;
-      font-size: 1.5em;
-      border: none;
-      box-shadow: none;
-      padding: 0;
-      width: 2rem;
-      vertical-align: top;
-      transform: rotate(0deg);
-      transition: transform 200ms ease;
-      &:active {transform: none;}
+    padding: 0.5em 0.5em 0.5em 1.75em;
+    position: relative;
+    .panel-title a {
+      // all heading text ends up in here
+      font-size: 1rem;
+      font-weight: normal;
+      color: @clr-text;
+      text-decoration: none;
       &:extend(.icon-dropdown-angle all);
       &:before {
         font-family: 'benchmark';
-        margin: 0;
+        color: @clr-link;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 0.5em;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 200ms ease;
+        .panel-open & {
+          transform: translateY(-50%) rotate(-180deg;)
+        }
       }
     }
-    .c-bar-row {
-      width: ~"calc(100% - 2.2rem)";
-      line-height: 2.45em;
-      display: inline-block;
-      vertical-align: top;
-      &:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-      button {
-        vertical-align: top;
-        margin-top: 0.125em;
-      }
-    }
-  } // .c-bar
-  .c-content {
-    border: 1px solid @clr-frame;
-    border-top-width: 0;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    padding: 0 0.75em;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 200ms ease,
-                opacity 50ms ease 150ms,
-                padding-top 200ms step-end,
-                padding-bottom 200ms step-end;
-  }
-  &.open {
-    .c-bar {
+    .panel-open & {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      .collapse-btn {
-        transform: rotate(180deg);
-      }
-    }
-    .c-content {
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-      max-height: 100em;
-      opacity: 1;
-      transition: max-height 200ms ease,
-                  opacity 50ms ease;
     }
   }
-  & + .collapser {
-    margin-top: 0.5em;
+  .panel-collapse {
+    border: 1px solid @clr-frame;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-top: -1px;
+    max-height: 0em;
+    opacity: 0;
+    transition: max-height 0.3s cubic-bezier(1,0,0,1),
+                opacity 0.1s ease 0.2s;
+    // override inline styles from ng2-bootstrap
+    overflow: hidden !important;
+    display: block !important;
+    .panel-body {
+      padding: 0.5em;
+    }
+    &.in {
+      max-height: 25em;
+      opacity: 1;
+      transition: max-height 0.3s cubic-bezier(1,0,0,1),
+                  opacity 0.1s ease;
+    }
+  }
+}
+
+/**
+* For accordions with buttons, add a custom `accordion-heading` inside the `<accordion-group>` element. Add the `.w-controls` class and the `.accordion-controls` container for your button controls.
+*
+*     <div accordion-heading class="w-controls">
+*       <p>Header Text</p>
+*       <div class="accordion-controls">
+*         <button class="clear icon-remove flush">
+*           <span class="sr-only">Delete Item</span>
+*         </button>
+*       </div>
+*     </div>
+*
+* @section Accordions with Buttons
+* @sectionof Accordions
+*
+* @hideCode
+* @example
+* <accordion class="panel-group">
+*   <accordion-group _ngcontent-hbp-11="" class="panel-open">
+*     <div class="panel panel-default">
+*       <div class="panel-heading">
+*         <h4 class="panel-title">
+*           <a class="accordion-toggle" href="#0" tabindex="0">
+*             <div accordion-heading="" class="w-controls">
+*               <p>Header Text</p>
+*               <div class="accordion-controls">
+*                 <button class="clear icon-remove flush">
+*                   <span class="sr-only">Delete Item</span>
+*                 </button>
+*               </div>
+*             </div>
+*           </a>
+*         </h4>
+*       </div>
+*       <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
+*         <div class="panel-body">
+*           Dynamic Group Body - 1
+*         </div>
+*       </div>
+*     </div>
+*   </accordion-group>
+* </accordion>
+*/
+
+.w-controls {
+  display: flex;
+  & > *:not(.accordion-controls) {
+    flex-basis: 9999em;
+  }
+  .accordion-controls {
+    white-space: nowrap;
+    padding-left: 1em;
   }
 }
