@@ -6,7 +6,7 @@
 /**
 * __Usage:__
 *
-* You may need to set a greater `max-width` on `.panel-collapse.in` if your accordion content is really long.
+* You may need to set a greater `max-height` (defaults to 25em) on `.panel-collapse.in` and `.panel-body` if your accordion content is really long.
 *
 * @section Basic Accordions
 * @sectionof Accordions
@@ -123,6 +123,8 @@ accordion-group {
     display: block !important;
     .panel-body {
       padding: 0.5em;
+      max-height: 25em;
+      overflow-y: auto;
     }
     &.in {
       max-height: 25em;
