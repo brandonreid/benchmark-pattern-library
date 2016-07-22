@@ -72,7 +72,10 @@ accordion-group {
     position: relative;
     &:hover,
     &:focus {
-      box-shadow: inset 0 -0.5px 2px rgba(0,0,0,0.2);
+      box-shadow: inset 0 -0.5px 2px 0 fadeOut(black, 80);
+      .panel-open & {
+        box-shadow: 0 5px 2px -4px fadeOut(black, 80);
+      }
     }
     .panel-title a {
       // all heading text ends up in here
