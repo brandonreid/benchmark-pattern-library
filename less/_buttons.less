@@ -7,6 +7,8 @@
 *
 * Buttons that follow other buttons automatically get left margin for nice spacing. If you don't want this behavior, add class `no-autospace` to any buttons that you don't want margin-left automatically applied.
 *
+* Add the class `danger` for buttons with irreversible/dangerous actions.
+*
 * @section Default Button
 * @sectionof Buttons
 * @example
@@ -15,6 +17,7 @@
 * <div style="margin-top: 1em;">
 *   <button>Button</button>
 *   <button class="no-autospace">Button</button>
+*   <button class="danger">Danger button</button>
 * </div>
 */
 button {
@@ -34,6 +37,16 @@ button {
   white-space: nowrap;
   touch-action: manipulation;
   user-select: none;
+  &.danger {
+    color: @clr-red;
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      color: @clr-red;
+    }
+  }
   & + button:not(.no-autospace),
   & + a.button-spacing:not(.no-autospace),
   & + tooltip-container + button:not(.no-autospace) {
@@ -112,17 +125,31 @@ button.key {
 *
 * The user should expect that they can reliably click this to progress without having to really read it.
 *
+* Add the class `danger` to make a red primary button. For when an action is irreversible/dangerous.
+*
 * @section Primary Button
 * @sectionof Buttons
 * @example
 * <button class="primary">Primary Button</button>
 * <button class="primary disabled">Disabled Primary Button</button>
+* <button class="primary danger">Dangerous Primary Button</button>
 */
 button.primary {
   background-color: @clr-primary;
   border-color: @clr-primary-border;
   color: white;
   box-shadow: 0 1px 0 @clr-primary-border;
+  &.danger {
+    background-color: @clr-red;
+    border-color: darken(@clr-red, 10);
+    box-shadow: 0 1px 0 darken(@clr-red, 10);
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: lighten(@clr-red, 10);
+      color: white;
+    }
+  }
   &:hover,
   &:focus,
   &.focus {
