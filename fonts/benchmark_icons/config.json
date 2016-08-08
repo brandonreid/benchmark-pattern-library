@@ -265,6 +265,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "f06fe7ff18d1c591bc1183cb3ab105e9",
+      "css": "gplus",
+      "code": 61856,
+      "src": "fontawesome"
+    },
+    {
       "uid": "8e04c98c8f5ca0a035776e3001ad2638",
       "css": "facebook",
       "code": 57397,
@@ -274,12 +280,6 @@
       "uid": "a32d12927584e3c8a3dff23eb816d360",
       "css": "foursquare",
       "code": 57398,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "b8d0c7d76e87b94882329a88e8e43d3d",
-      "css": "gplus",
-      "code": 57399,
       "src": "fontawesome"
     },
     {
