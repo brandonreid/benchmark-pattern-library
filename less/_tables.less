@@ -61,5 +61,43 @@ table {
   }
 }
 
-
-
+/**
+* Add a div container `.responsive-header` to make tables scrollable left & right on small screens.
+*
+* @section Responsive Tables
+* @sectionof Tables
+*
+* @example
+* <div class="responsive-header">
+*   <table>
+*     <thead>
+*       <tr>
+*         <th class="empty"></th>
+*         <th>Column 1</th>
+*         <th>Column 2</th>
+*         <th>Centered</th>
+*         <th class="right">Right Aligned</th>
+*       </tr>
+*     </thead>
+*     <tbody>
+*       <tr>
+*         <td>1</td>
+*         <td>2</td>
+*         <td>3</td>
+*         <td class="center">4</td>
+*         <td class="right">5</td>
+*       </tr>
+*       <tr>
+*         <td>a</td>
+*         <td>b</td>
+*         <td>c</td>
+*         <td class="center">d</td>
+*         <td class="right"><button>Button</button></td>
+*       </tr>
+*     </tbody>
+*   </table>
+* </div>
+*/
+.responsive-header {
+  overflow-x: auto;
+}
