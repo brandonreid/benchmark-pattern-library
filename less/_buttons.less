@@ -66,6 +66,19 @@ button {
     box-shadow: inset 0 3px 5px rgba(0,0,0,.25);
     transform: translateY(1px);
   }
+  &.flush {
+    padding: 0;
+    border: none;
+  }
+  &.flush-sides {
+    padding-left: 0;
+    padding-right: 0;
+    border-left-width: 0px;
+    border-right-width: 0px;
+  }
+  &.flush-icon:before {
+    margin: 0;
+  }
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
@@ -210,16 +223,6 @@ button.text {
   border-color: transparent;
   color: @clr-link;
   box-shadow: none;
-  &.flush {
-    padding: 0;
-    border: none;
-  }
-  &.flush-sides {
-    padding-left: 0;
-    padding-right: 0;
-    border-left-width: 0px;
-    border-right-width: 0px;
-  }
   &:hover,
   &:focus {
     color: darken(@clr-link, 10);
@@ -250,13 +253,6 @@ button.clear {
   border-color: transparent;
   color: @clr-remove;
   box-shadow: none;
-  &.flush {
-    padding: 0;
-    border: none;
-  }
-  &.flush-icon:before {
-    margin: 0;
-  }
   &:hover,
   &:focus {
     color: @clr-red;
@@ -409,12 +405,6 @@ a {
     vertical-align: middle;
     padding: 0.25em 0.75em;
     border: 1px solid transparent;
-    &.flush-sides {
-      padding-left: 0;
-      padding-right: 0;
-      border-left-width: 0;
-      border-right-width: 0;
-    }
     & + button,
     & + &,
     & + tooltip-container + button,
