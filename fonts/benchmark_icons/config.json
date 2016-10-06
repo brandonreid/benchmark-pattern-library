@@ -67,6 +67,12 @@
       ]
     },
     {
+      "uid": "598a5f2bcf3521d1615de8e1881ccd17",
+      "css": "time",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
       "uid": "c9bef3dc67fea47e94c4a5030ea64dad",
       "css": "survey",
       "code": 57349,
