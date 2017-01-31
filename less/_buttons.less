@@ -399,18 +399,25 @@ button {
 * <button>Button to Compare With</button>
 * <a href="#0" class="button-spacing flush-sides">Link w/ Button Spacing & Flushed Sides</a>
 */
-a {
-  &.button-spacing {
-    line-height: 1.6em;
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0.25em 0.75em;
-    border: 1px solid transparent;
-    & + button,
-    & + &,
-    & + tooltip-container + button,
-    & + tooltip-container + & {
-      margin-left: 0.75em;
-    }
+a.button-spacing {
+  line-height: 1.6em;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.25em 0.75em;
+  border: 1px solid transparent;
+  & + button,
+  & + &,
+  & + tooltip-container + button,
+  & + tooltip-container + & {
+    margin-left: 0.75em;
+  }
+  &.flush-sides {
+    padding-left: 0;
+    padding-right: 0;
+    border-left-width: 0px;
+    border-right-width: 0px;
+  }
+  &.flush-icon:before {
+    margin: 0;
   }
 }
