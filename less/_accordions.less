@@ -14,37 +14,37 @@
 * @hideCode
 * @example
 * <accordion class="panel-group">
-*   <accordion-group _ngcontent-hbp-11="" class="panel-open">
-*     <div class="panel panel-default">
-*       <div class="panel-heading">
-*         <h4 class="panel-title">
-*           <a class="accordion-toggle" href="#0" tabindex="0">
+*   <accordion-group class="panel-open">
+*     <div class="panel card panel-default">
+*       <div class="panel-heading card-header">
+*         <div class="panel-title card-title">
+*           <div class="accordion-toggle" role="button">
 *             <div accordion-heading="">
 *               Dynamic Group Header - 1
 *             </div>
-*           </a>
-*         </h4>
+*           </div>
+*         </div>
 *       </div>
 *       <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
-*         <div class="panel-body">
+*         <div class="panel-body card-block">
 *           Dynamic Group Body - 1
 *         </div>
 *       </div>
 *     </div>
 *   </accordion-group>
-*   <accordion-group>
-*     <div class="panel panel-default">
-*       <div class="panel-heading">
-*         <h4 class="panel-title">
-*           <a class="accordion-toggle" href="#0" tabindex="0">
+*   <accordion-group class="panel-open">
+*     <div class="panel card panel-default">
+*       <div class="panel-heading card-header">
+*         <div class="panel-title card-title">
+*           <div class="accordion-toggle" role="button">
 *             <div accordion-heading="">
 *               Dynamic Group Header - 2
 *             </div>
-*           </a>
-*         </h4>
+*           </div>
+*         </div>
 *       </div>
-*       <div class="panel-collapse collapse" style="display: none;">
-*         <div class="panel-body">
+*       <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
+*         <div class="panel-body card-block">
 *           Dynamic Group Body - 2
 *         </div>
 *       </div>
@@ -64,6 +64,11 @@ accordion-group {
 }
 
 .panel {
+  // reset .card styles
+  background-color: transparent;
+  box-shadow: none;
+  min-height: auto;
+  width: auto;
   .panel-heading {
     background-color: @clr-shade;
     border: 1px solid @clr-frame;
@@ -77,7 +82,7 @@ accordion-group {
         box-shadow: 0 5px 2px -4px fadeOut(black, 80);
       }
     }
-    .panel-title > a {
+    .accordion-toggle {
       // all heading text ends up in here
       font-size: 1rem;
       font-weight: normal;
@@ -156,12 +161,12 @@ accordion-group {
 * @hideCode
 * @example
 * <accordion class="panel-group">
-*   <accordion-group _ngcontent-hbp-11="" class="panel-open">
-*     <div class="panel panel-default">
-*       <div class="panel-heading">
-*         <h4 class="panel-title">
-*           <a class="accordion-toggle" href="#0" tabindex="0">
-*             <div accordion-heading="" class="w-controls">
+*   <accordion-group>
+*     <div class="panel card panel-default">
+*       <div class="panel-heading card-header">
+*         <div class="panel-title card-title">
+*           <div class="accordion-toggle" role="button">
+*             <div class="w-controls">
 *               <p>Header Text</p>
 *               <div class="accordion-controls">
 *                 <button class="clear icon-remove flush">
@@ -169,11 +174,11 @@ accordion-group {
 *                 </button>
 *               </div>
 *             </div>
-*           </a>
-*         </h4>
+*           </div>
+*         </div>
 *       </div>
-*       <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
-*         <div class="panel-body">
+*       <div class="panel-collapse collapse in">
+*         <div class="panel-body card-block">
 *           Dynamic Group Body - 1
 *         </div>
 *       </div>
