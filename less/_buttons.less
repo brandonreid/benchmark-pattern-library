@@ -49,7 +49,7 @@ button {
   }
   & + button:not(.no-autospace),
   & + a.button-spacing:not(.no-autospace),
-  & + tooltip-container + button:not(.no-autospace) {
+  & + bs-tooltip-container + button:not(.no-autospace) {
     margin-left: 0.75em;
   }
   &:hover,
@@ -325,7 +325,7 @@ button.clear {
     position: relative;
     float: left;
     & + button,
-    & + tooltip-container + button {
+    & + bs-tooltip-container + button {
       margin-left: -1px;
     }
     &:not(:first-child):not(:last-child) {
@@ -407,8 +407,8 @@ a.button-spacing {
   border: 1px solid transparent;
   & + button,
   & + &,
-  & + tooltip-container + button,
-  & + tooltip-container + & {
+  & + bs-tooltip-container + button,
+  & + bs-tooltip-container + & {
     margin-left: 0.75em;
   }
   &.flush-sides {
