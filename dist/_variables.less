@@ -1,0 +1,66 @@
+// colors ------ DOCUMENTATION is in "--COLOR-PALETTE.less" because it's long.
+@clr-black: #1a1b21;
+@clr-text: #200538;
+@clr-link: #3b81c3;
+@clr-disabled: #888;
+@clr-frame: #bcbcbc;
+@clr-frame-lt: #dddddd;
+@clr-shade: #f8f8f8;
+@clr-shadow: rgba(0, 0, 0, 0.333);
+
+@clr-bg: #e5e7ec;
+@clr-title-bg: #2c3c4b; // general blue
+@clr-logo: @clr-orange;
+
+@clr-button: @clr-shade;
+@clr-primary: #325099;
+@clr-primary-border: #14388b;
+@clr-remove: #776E6E;
+
+@clr-red: #c21a15;
+@clr-yellow: #ffef3d;
+@clr-blue: #15a3c2;
+@clr-green: #1fa015;
+@clr-orange: #ffbc1a;
+
+@clr-gplus: #e04a39;
+@clr-yelp: #db5326;
+@clr-facebook: #335dab;
+@clr-foursquare: #2f7fc2;
+@clr-twitter: #55acee;
+
+@grade-a: @clr-green;
+@grade-b: #b4bf00;
+@grade-c: #e3cd00;
+@grade-d: average(@clr-yellow, @clr-red);
+@grade-f: @clr-red;
+
+// font families
+@font-family-base: "Lato", "Helvetica Neue", Arial, sans-serif;
+@font-family-headers: "Lato", "Helvetica Neue", Arial, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, serif; // used for quotes on details page and such.
+
+// breakpoints
+@md-bp: ~"(max-width: 800px)";
+@sm-bp: ~"(max-width: 480px)";
+
+// sidebar
+@sidebar-animation: width 300ms ease;
+
+// breadcrumbs
+@breadcrumb-separator: ">";
+@breadcrumb-color: @clr-text;
+
+// bootstrap tooltips
+@clr-tooltip: #151407;
+@tooltip-bg: @clr-tooltip;
+@tooltip-arrow-color: @clr-tooltip;
+
+// Reusables
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
