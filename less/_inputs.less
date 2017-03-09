@@ -18,7 +18,7 @@
 *
 * Inputs are full width by default, add the class `inline` for a shorter input. Otherwise you can constrain their width using the grid or setting a `max-width`.
 *
-* For __disabled__ inputs apply the class `disabled` to the __label__ above the input, otherwise clicking the label will force focus on the disabled input. If there is no label for some reason, apply `.disabled` to the input itself.
+* For __disabled__ inputs apply the class `disabled` to the __label__ above the input and apply the `disabled` attribute to the input itself.
 *
 * For error states, add the class `error` to the __label__ above the input. If there is no label, add the class to the input itself.
 *
@@ -45,7 +45,7 @@
 * <input type="text" class="inline" id="unique-id2" placeholder="Input Text">
 *
 * <label for="unique-id3" class="disabled">Disabled Input</label>
-* <input type="text" id="unique-id3" placeholder="Disabled">
+* <input disabled type="text" id="unique-id3" placeholder="Disabled">
 *
 * <label for="unique-id4" class="error">Input with an Error</label>
 * <input type="text" id="unique-id4" placeholder="Error">
@@ -117,7 +117,7 @@ textarea {
 * 1. An input with a standard button that only has an icon in it. Use the parent class `input-w-button`.
 * 2. An input with an inlaid button for search/filter inputs, etc. Use the parent class `input-w-inlay` with an `.inlay` button. For search fields, you'll likely want to make the `.inlay` have a `.icon-search`, then switch it to `.icon-remove` when text is in there so that the text can be cleared by clicking.
 *
-* When disabled, add the class `disabled` to the top level container so that the label, input and button are all made disabled.
+* When disabled, add the class `disabled` to the top level container so that the label, input and button are all made disabled. Also add the `disabled` attribute to the input so it can't be entered by tabbing (might also add to the button as well).
 *
 * When there's an error, add the class `error` to the top level container, just like disabled.
 *
@@ -142,8 +142,8 @@ textarea {
 *
 * <div class="input-w-button disabled">
 *   <label for="example2">Disabled Input with a Button</label>
-*   <input type="text" id="example2" placeholder="Text Input">
-*   <button class="icon-search">
+*   <input disabled type="text" id="example2" placeholder="Text Input">
+*   <button class="icon-search" disabled>
 *     <span class="sr-only">Search</span>
 *   </button>
 * </div>
@@ -256,6 +256,8 @@ textarea {
 /**
 * Make sure to add the class `input` to the containing label for radios & checkboxes.
 *
+* For disabling, add the `.disabled` class to the input and the `disabled` attribute to the input (so it can't be entered by tabbing).
+*
 * @section Radios & Checkboxes
 * @sectionof Inputs
 *
@@ -290,11 +292,11 @@ textarea {
 *
 * <h4>Disabled States</h4>
 * <label class="input disabled">
-*   <input type="checkbox" value="uniqueValue4">
+*   <input disabled type="checkbox" value="uniqueValue4">
 *   Disabled Option
 * </label>
 * <label class="input disabled">
-*   <input type="radio" name="uniqueRadioGroup2" id="uniqueRadio4" value="radio4">
+*   <input disabled type="radio" name="uniqueRadioGroup2" id="uniqueRadio4" value="radio4">
 *   Disabled Option
 * </label>
 *
