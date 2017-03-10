@@ -356,9 +356,9 @@
 /**
 * There are 3 modal sizes available.
 *
-* - __Small:__ Add the class `small-modal` to `.modal`.
+* - __Small:__ Add the class `small-modal` to `.modal-dialog`.
 * - __Standard:__ This size is default.
-* - __Large:__ Add the class `large-modal` to `.modal`.
+* - __Large:__ Add the class `large-modal` to `.modal-dialog`.
 *
 * ### Launch a test modal:
 *
@@ -367,8 +367,8 @@
 *  <button id="standard">Open Standard Modal</button>
 *  <button id="large">Open Large Modal</button>
 * 
-*   <div class="modal small-modal fade" id="smallModal" role="dialog" style="display: block;">
-*     <div class="modal-dialog undefined">
+*   <div class="modal fade" id="smallModal" role="dialog" style="display: block;">
+*     <div class="modal-dialog small-modal">
 *       <div class="modal-content">
 *         <div class="modal-header">
 *           <button class="close closeModal"><span>×</span></button>
@@ -391,7 +391,7 @@
 *     </div>
 *   </div>
 *   <div class="modal fade" id="standardModal" role="dialog" style="display: block;">
-*     <div class="modal-dialog undefined">
+*     <div class="modal-dialog">
 *       <div class="modal-content">
 *         <div class="modal-header">
 *           <button class="close closeModal"><span>×</span></button>
@@ -413,8 +413,8 @@
 *       </div>
 *     </div>
 *   </div>
-*   <div class="modal large-modal fade" id="largeModal" role="dialog" style="display: block;">
-*     <div class="modal-dialog undefined">
+*   <div class="modal fade" id="largeModal" role="dialog" style="display: block;">
+*     <div class="modal-dialog large-modal">
 *       <div class="modal-content">
 *         <div class="modal-header">
 *           <button class="close closeModal"><span>×</span></button>
@@ -462,10 +462,10 @@
 * @sectionof Modals
 */
 .modal {
-  &.small-modal .modal-dialog {
+  .small-modal.modal-dialog {
     max-width: 36em;
   }
-  &.large-modal .modal-dialog {
+  .large-modal.modal-dialog {
     max-width: 90em;
     width: 100%;
   }
