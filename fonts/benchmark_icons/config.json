@@ -497,6 +497,12 @@
       ]
     },
     {
+      "uid": "531bc468eecbb8867d822f1c11f1e039",
+      "css": "calendar",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
       "uid": "54dc1539c3676d7c8451baf1e32e6e32",
       "css": "close",
       "code": 59405,
