@@ -1,0 +1,121 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/rocky/projects/benchmark/pattern-library',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/rocky/.npm/benchmark-patterns/2.5.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/rocky/.npm correctMkdir not in flight; initializing
+10 info lifecycle benchmark-patterns@2.5.0~prepublish: benchmark-patterns@2.5.0
+11 silly lifecycle benchmark-patterns@2.5.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/rocky/.npm/benchmark-patterns/2.5.0/package.tgz',
+12 verbose tar pack   '/Users/rocky/projects/benchmark/pattern-library' ]
+13 verbose tarball /Users/rocky/.npm/benchmark-patterns/2.5.0/package.tgz
+14 verbose folder /Users/rocky/projects/benchmark/pattern-library
+15 verbose addLocalTarball adding from inside cache /Users/rocky/.npm/benchmark-patterns/2.5.0/package.tgz
+16 verbose correctMkdir /Users/rocky/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd benchmark-patterns@2.5.0
+18 verbose afterAdd /Users/rocky/.npm/benchmark-patterns/2.5.0/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/rocky/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/rocky/.npm/benchmark-patterns/2.5.0/package/package.json written
+21 silly publish { name: 'benchmark-patterns',
+21 silly publish   version: '2.5.0',
+21 silly publish   description: 'UI Patterns for Benchmark Intelligence',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/usebenchmark/pattern-library.git' },
+21 silly publish   author:
+21 silly publish    { name: 'Brandon Reid',
+21 silly publish      email: 'brandon@usebenchmark.com',
+21 silly publish      url: 'http://usebenchmark.com' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/usebenchmark/pattern-library/issues' },
+21 silly publish   homepage: 'https://github.com/usebenchmark/pattern-library',
+21 silly publish   devDependencies:
+21 silly publish    { bootstrap: '^3.3.6',
+21 silly publish      gulp: '^3.9.1',
+21 silly publish      'gulp-clean': '^0.3.2',
+21 silly publish      'gulp-confirm': '^1.0.4',
+21 silly publish      'gulp-connect': '^4.0.0',
+21 silly publish      'gulp-less': '^3.1.0',
+21 silly publish      'gulp-livingcss': '^1.1.0',
+21 silly publish      'gulp-shell': '^0.5.2',
+21 silly publish      'less-plugin-autoprefix': '^1.5.1',
+21 silly publish      'less-plugin-clean-css': '^1.5.1',
+21 silly publish      'run-sequence': '^1.2.1' },
+21 silly publish   readme: '# Benchmark Pattern Library\nUI Patterns for Benchmark Intelligence applications.\n\n[Live Library](http://usebenchmark.github.io/pattern-library)\n\n_^ Note that this library leverages the "shadow-dom" and will only really work in the chrome browser._\n\nThis library was built using [livingcss](https://github.com/straker/livingcss).\n\n## Getting Started\n  * `git clone https://github.com/usebenchmark/pattern-library.git`\n  * `npm install -g gulp` if you haven\'t before.\n  * `npm install`\n  * `gulp dev` to run a live reloading local instance on `localhost:7000`\n\n## Deploying to Github Pages\nRun `gulp deploy` from a clean master branch.\n\nOR....\n\n* Delete the gh-pages branch.\n* Create a temporary deployment branch: `git checkout -b temp-deploy`\n* Make sure you\'ve ran `gulp dev` and have a fresh build of `pattern_library`.\n* Remove `pattern_library` from `.gitignore`.\n* Add and commit the pattern library: `git add pattern_library && git commit -m "Deploy Pattern Library"`\n* Push to a new subtree gh-pages branch: `git subtree push --prefix pattern_library origin gh-pages`\n* The pattern library is now deployed at http://usebenchmark.github.io/pattern-library\n* Checkout your master branch again and delete the temporary deployment branch: `git checkout master && git branch -D temp-deploy`\n\n### Updating the NPM Package\n* Work with a clean master.\n* Update the version number in `package.json` and commit that to master.\n* Run `npm publish`.\n* Update the package in the Benchmark App or anywhere else it\'s deployed by running `npm update --save benchmark-patterns`.\n* [Here\'s the page where the NPM package is.](https://www.npmjs.com/package/benchmark-patterns)\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'b42d3e9aec0fec69e4bd623b7b9745f65b81e49f',
+21 silly publish   _id: 'benchmark-patterns@2.5.0',
+21 silly publish   _shasum: '9442cb0dcb9cc56e3b86bf376a928fc0d32d26f7',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name benchmark-patterns
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'benchmark-patterns',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'benchmark-patterns',
+26 silly mapToRegistry   name: 'benchmark-patterns',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/benchmark-patterns
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/rocky/.npm/benchmark-patterns/2.5.0/package.tgz
+30 verbose request uri https://registry.npmjs.org/benchmark-patterns
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 1:48:39 PM
+33 verbose request using bearer token for auth
+34 verbose request id cdede2af9f0a8a7c
+35 http request PUT https://registry.npmjs.org/benchmark-patterns
+36 http 403 https://registry.npmjs.org/benchmark-patterns
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Fri, 07 Jul 2017 20:48:40 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-lax8629-LAX',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1499460520.118253,VS0,VE785',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating /Users/rocky/.npm/registry.npmjs.org/benchmark-patterns on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 2.5.0." : benchmark-patterns
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid benchmark-patterns
+43 verbose cwd /Users/rocky/projects/benchmark/pattern-library
+44 error Darwin 16.6.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.10.1
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 2.5.0." : benchmark-patterns
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

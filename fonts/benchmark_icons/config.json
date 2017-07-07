@@ -503,6 +503,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "f3f90c8c89795da30f7444634476ea4f",
+      "css": "angle-left",
+      "code": 61700,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7bf14281af5633a597f85b061ef1cfb9",
+      "css": "angle-right",
+      "code": 61701,
+      "src": "fontawesome"
+    },
+    {
       "uid": "54dc1539c3676d7c8451baf1e32e6e32",
       "css": "close",
       "code": 59405,
