@@ -1,6 +1,6 @@
 {
   "name": "benchmark-patterns",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "UI Patterns for Benchmark Intelligence",
   "main": "index.js",
   "scripts": {
