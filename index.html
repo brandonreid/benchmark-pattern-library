@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html class="livingcss">
+<head>
+  <title>Benchmark Patterns</title>
+
+  <!-- Library CSS -->
+  <link rel="stylesheet" href="./css/library.css">
+
+  <!-- user styles -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body class="livingcss">
+  <!-- webcomponent -->
+  <template id="livingcssExampleTemplate">
+    <style>
+
+    @import "./dist/app.css";
+
+    :host {
+      display: block;
+    }
+    </style>
+
+    <div class="livingcss__example"></div>
+  </template>
+
+  <script>
+  (function(document) {
+    var proto = Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value: function() {
+          // create a shadow DOM to encapsulate user styles
+          var shadow = this.createShadowRoot();
+          var template = document.querySelector('#livingcssExampleTemplate');
+          var clone = document.importNode(template.content, true);
+
+          // add all childNodes of the element to the shadow DOM
+          while (this.childNodes.length > 0) {
+            clone.querySelector('.livingcss__example').appendChild(this.childNodes[0]);
+          }
+
+          shadow.appendChild(clone);
+        }
+      }
+    });
+
+    document.registerElement('livingcss-example', {prototype: proto});
+  })(document);
+  </script>
+  <!-- /webcomponent -->
+
+  <div class="livingcss__wrapper">
+
+    <header class="livingcss__header">
+      <div class="livingcss__header-title-container livingcss__inverse-text">
+        <h1 class="livingcss__container livingcss__header-title"><a href="">Benchmark Patterns</a></h1>
+      </div>
+
+    </header>
+
+    <div class="livingcss__container livingcss__content">
+
+      <main class="livingcss__main" role="main">
+
+        <article class="livingcss__article" id="buttons">
+          <h1 class="livingcss__article-title">Buttons</h1><div class="livingcss__section-description"></div>
+
+
+
+<section class="livingcss__section" id="buttons-default-button">
+  <h2>Default Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> For general actions and secondary actions.</p>
+<p>Buttons that follow other buttons automatically get left margin for nice spacing. If you don&#39;t want this behavior, add class <code>no-autospace</code> to any buttons that you don&#39;t want margin-left automatically applied.</p>
+<p>Add the class <code>danger</code> for buttons with irreversible/dangerous actions.</p></div>
+
+<livingcss-example><button>Default Button</button>
+<button class="disabled">Disabled Default Button</button>
+<div style="margin-top: 1em;">
+  <button>Button</button>
+  <button class="no-autospace">Button</button>
+  <button class="danger">Danger button</button>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button&gt;Default Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;disabled&quot;&gt;Disabled Default Button&lt;/button&gt;
+&lt;div style&#x3D;&quot;margin-top: 1em;&quot;&gt;
+  &lt;button&gt;Button&lt;/button&gt;
+  &lt;button class&#x3D;&quot;no-autospace&quot;&gt;Button&lt;/button&gt;
+  &lt;button class&#x3D;&quot;danger&quot;&gt;Danger button&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-key-button">
+  <h2>Key Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> Add an associated color to a button. For use with graph controls, where the button&#39;s color is associated with the color of a data point.</p>
+<p>Add the class <code>active</code> if the button is activated.</p>
+<p><strong>To set a color</strong>, name-space the button and style the <code>border-top-color</code> and <code>.active</code> <code>background-color</code>.
+You may also need to set the <code>.active</code> color to <code>#333</code> (or <code>@clr-text</code>) if the color you&#39;re using is too light for white text.</p>
+<p><em>Example:</em></p>
+<pre><code>button.my-button-class {
+  border-top-color: green;
+  &amp;.active,
+  &amp;:active {
+    background-color: green;
+  }
+}
+</code></pre></div>
+
+<livingcss-example><button class="key">Show Data Point</button>
+<button class="key active">Data Point Showing</button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;key&quot;&gt;Show Data Point&lt;/button&gt;
+&lt;button class&#x3D;&quot;key active&quot;&gt;Data Point Showing&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-primary-button">
+  <h2>Primary Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> Only for the &quot;next logical step&quot;, such as &quot;save&quot;, &quot;next&quot;, etc. Only one per view.</p>
+<p>The user should expect that they can reliably click this to progress without having to really read it.</p>
+<p>Add the class <code>danger</code> to make a red primary button. For when an action is irreversible/dangerous.</p></div>
+
+<livingcss-example><button class="primary">Primary Button</button>
+<button class="primary disabled">Disabled Primary Button</button>
+<button class="primary danger">Dangerous Primary Button</button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;primary&quot;&gt;Primary Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;primary disabled&quot;&gt;Disabled Primary Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;primary danger&quot;&gt;Dangerous Primary Button&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-special-action-button">
+  <h2>Special Action Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> Rarely used. Only for actions that trigger a journey, such as &quot;+ New Survey&quot;. Only 1 per view (if any).</p></div>
+
+<livingcss-example><button class="special-action">Special Action Button</button>
+<button class="special-action disabled">Disabled Special Action Button</button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;special-action&quot;&gt;Special Action Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;special-action disabled&quot;&gt;Disabled Special Action Button&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-text-button">
+  <h2>Text Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> Indicates a supporting action, typically inside of a tab or accordion menu.</p>
+<p>This may also be used for an icon only button, otherwise always accompany a text button with an icon to differentiate from a standard link.</p>
+<p>Add the class <code>flush</code> to remove button padding.</p>
+<p>Add the class <code>flush-sides</code> to remove only the left/right padding.</p></div>
+
+<livingcss-example><button class="text icon-add">Text Button</button>
+<button class="text icon-add disabled">Disabled Text Button</button>
+<button class="text icon-add flush">Flush Text Button</button>
+<button class="text icon-add flush-sides">Sides Flushed Text Button</button>
+<button class="text icon-add flush-icon"><span class="sr-only">Add</span></button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;text icon-add&quot;&gt;Text Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;text icon-add disabled&quot;&gt;Disabled Text Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;text icon-add flush&quot;&gt;Flush Text Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;text icon-add flush-sides&quot;&gt;Sides Flushed Text Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;text icon-add flush-icon&quot;&gt;&lt;span class&#x3D;&quot;sr-only&quot;&gt;Add&lt;/span&gt;&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-clear-button">
+  <h2>Clear Button</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> For &quot;remove&quot; or &quot;cancel&quot; actions.</p>
+<p>Add the class <code>flush</code> to remove button padding.</p>
+<p>Add the class <code>flush-icon</code> to remove the icon&#39;s default margin.</p></div>
+
+<livingcss-example><button class="clear">Cancel</button>
+<button class="clear disabled">Cancel</button>
+<button class="clear icon-remove flush-icon"><span class="sr-only">Remove</span></button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;clear&quot;&gt;Cancel&lt;/button&gt;
+&lt;button class&#x3D;&quot;clear disabled&quot;&gt;Cancel&lt;/button&gt;
+&lt;button class&#x3D;&quot;clear icon-remove flush-icon&quot;&gt;&lt;span class&#x3D;&quot;sr-only&quot;&gt;Remove&lt;/span&gt;&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-button-group">
+  <h2>Button Group</h2><div class="livingcss__section-description"><p><strong>Usage:</strong> For toggle controls.</p>
+<p>Add class <code>active</code> to the activated button option.</p></div>
+
+<livingcss-example><style>
+  button.option-one {border-top-color: blue;}
+  button.option-two.active {
+    background-color: purple;
+    border-top-color: purple;
+  }
+  button.option-three {border-top-color: forestgreen;}
+  button.option-four {border-top-color: brown;}
+</style>
+<div class="btn-group">
+  <button>Option 1</button>
+  <button>Option 2</button>
+  <button class="active">Option 3</button>
+  <button>Option 4</button>
+</div>
+<div style="margin-top: 1em;"></div>
+<div class="btn-group">
+  <button class="key option-one">Option 1</button>
+  <button class="key option-two active">Option 2</button>
+  <button class="key option-three">Option 3</button>
+  <button class="key option-four">Option 4</button>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;btn-group&quot;&gt;
+  &lt;button&gt;Option 1&lt;/button&gt;
+  &lt;button&gt;Option 2&lt;/button&gt;
+  &lt;button class&#x3D;&quot;active&quot;&gt;Option 3&lt;/button&gt;
+  &lt;button&gt;Option 4&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;btn-group&quot;&gt;
+  &lt;button class&#x3D;&quot;key option-one&quot;&gt;Option 1&lt;/button&gt;
+  &lt;button class&#x3D;&quot;key option-two active&quot;&gt;Option 2&lt;/button&gt;
+  &lt;button class&#x3D;&quot;key option-three&quot;&gt;Option 3&lt;/button&gt;
+  &lt;button class&#x3D;&quot;key option-four&quot;&gt;Option 4&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-button-sizes">
+  <h2>Button Sizes</h2><div class="livingcss__section-description"></div>
+
+<livingcss-example><button class="small">Small Button</button>
+<button>Normal</button>
+<button class="large">Large Button</button>
+<div style="margin-top: 1em;">
+  <button class="block">Block Button</button>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;small&quot;&gt;Small Button&lt;/button&gt;
+&lt;button&gt;Normal&lt;/button&gt;
+&lt;button class&#x3D;&quot;large&quot;&gt;Large Button&lt;/button&gt;
+&lt;button class&#x3D;&quot;block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="buttons-links">
+  <h2>Links</h2><div class="livingcss__section-description"><p>Remember that <a href="http://www.karlgroves.com/2013/05/14/links-are-not-buttons-neither-are-divs-and-spans/">links are not buttons</a>.</p>
+<p>Add the class <code>button-spacing</code> to add the same padding as buttons, for when links are inline with buttons. Add the class <code>flush-sides</code> to an <code>a.button-spacing</code> to flush the left and right padding.</p></div>
+
+<livingcss-example><a href="#0">Standard Link</a>
+<a href="#0" class="button-spacing">Link w/ Button Spacing</a>
+<button>Button to Compare With</button>
+<a href="#0" class="button-spacing flush-sides">Link w/ Button Spacing & Flushed Sides</a></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;a href&#x3D;&quot;#0&quot;&gt;Standard Link&lt;/a&gt;
+&lt;a href&#x3D;&quot;#0&quot; class&#x3D;&quot;button-spacing&quot;&gt;Link w/ Button Spacing&lt;/a&gt;
+&lt;button&gt;Button to Compare With&lt;/button&gt;
+&lt;a href&#x3D;&quot;#0&quot; class&#x3D;&quot;button-spacing flush-sides&quot;&gt;Link w/ Button Spacing &amp; Flushed Sides&lt;/a&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="accordions">
+          <h1 class="livingcss__article-title">Accordions</h1><div class="livingcss__section-description"><p>We use the <a href="https://valor-software.com/ng2-bootstrap/#/accordion">accordion from ng2-bootstrap</a> with our own custom styles.</p></div>
+
+
+
+<section class="livingcss__section" id="accordions-basic-accordions">
+  <h2>Basic Accordions</h2><div class="livingcss__section-description"><p><strong>Usage:</strong></p>
+<p>You may need to set a greater <code>max-height</code> (defaults to 25em) on <code>.panel-collapse.in</code> and <code>.panel-body</code> if your accordion content is really long.</p></div>
+
+<livingcss-example><accordion class="panel-group">
+  <accordion-group class="panel-open">
+    <div class="panel card panel-default">
+      <div class="panel-heading card-header">
+        <div class="panel-title card-title">
+          <div class="accordion-toggle" role="button">
+            <div accordion-heading="">
+              Dynamic Group Header - 1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
+        <div class="panel-body card-block">
+          Dynamic Group Body - 1
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+  <accordion-group class="panel-open">
+    <div class="panel card panel-default">
+      <div class="panel-heading card-header">
+        <div class="panel-title card-title">
+          <div class="accordion-toggle" role="button">
+            <div accordion-heading="">
+              Dynamic Group Header - 2
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-collapse collapse in" style="display: block; overflow: visible; height: auto;">
+        <div class="panel-body card-block">
+          Dynamic Group Body - 2
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion></livingcss-example>
+
+
+</section><section class="livingcss__section" id="accordions-accordions-with-buttons">
+  <h2>Accordions with Buttons</h2><div class="livingcss__section-description"><p>For accordions with buttons, add a custom <code>accordion-heading</code> inside the <code>&lt;accordion-group&gt;</code> element. Add the <code>.w-controls</code> class and the <code>.accordion-controls</code> container for your button controls.</p>
+<pre><code>&lt;div accordion-heading class=&quot;w-controls&quot;&gt;
+  &lt;p&gt;Header Text&lt;/p&gt;
+  &lt;div class=&quot;accordion-controls&quot;&gt;
+    &lt;button class=&quot;clear icon-remove flush&quot;&gt;
+      &lt;span class=&quot;sr-only&quot;&gt;Delete Item&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+
+<livingcss-example><accordion class="panel-group">
+  <accordion-group>
+    <div class="panel card panel-default">
+      <div class="panel-heading card-header">
+        <div class="panel-title card-title">
+          <div class="accordion-toggle" role="button">
+            <div class="w-controls">
+              <p>Header Text</p>
+              <div class="accordion-controls">
+                <button class="clear icon-remove flush">
+                  <span class="sr-only">Delete Item</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-collapse collapse in">
+        <div class="panel-body card-block">
+          Dynamic Group Body - 1
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion></livingcss-example>
+
+
+</section>        </article>
+        <article class="livingcss__article" id="cards">
+          <h1 class="livingcss__article-title">Cards</h1><div class="livingcss__section-description"><p>Cards are used to create area separation on the main stage of the app.</p>
+<p>Make sure to use cards inside the grid for proper spacing around.</p>
+<p>Add the class <code>flush</code> to <code>card-body</code> to clear the padding.</p></div>
+
+
+
+<section class="livingcss__section" id="cards-basic-card-markup">
+  <h2>Basic Card Markup</h2><div class="livingcss__section-description"><p>The <code>card-footer</code> is optional and meant for supportive information like disclaimers and related info links.</p></div>
+
+<livingcss-example><div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Card Header</h2>
+  </div>
+  <div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Column</p>
+      </div>
+      <div class="col-xs-12">
+        <p>Column</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <p><em>Some footer text.</em></p>
+  </div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;card&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header&quot;&gt;
+    &lt;h2 class&#x3D;&quot;card-title&quot;&gt;Card Header&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?&lt;/p&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.&lt;/p&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-xs-12&quot;&gt;
+        &lt;p&gt;Column&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-xs-12&quot;&gt;
+        &lt;p&gt;Column&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-footer&quot;&gt;
+    &lt;p&gt;&lt;em&gt;Some footer text.&lt;/em&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="cards-card-header-with-flag">
+  <h2>Card Header with Flag</h2><div class="livingcss__section-description"><p>When card content is related to a provider, add a flag to make this context clear.</p>
+<p><strong>Usage:</strong></p>
+<ul>
+<li>Add the class <code>flag</code> to <code>card-header</code>.</li>
+<li>Add a provider flag class (e.g. <code>flag-benchmark</code>) to <code>card-header</code>.</li>
+</ul>
+<p>Provider Flags Available:</p>
+<ul>
+<li><code>flag-benchmark</code></li>
+<li><code>flag-google</code></li>
+<li><code>flag-yelp</code></li>
+<li><code>flag-facebook</code></li>
+<li><code>flag-foursquare</code></li>
+<li><code>flag-twitter</code></li>
+</ul></div>
+
+<livingcss-example><div class="card">
+  <div class="card-header flag flag-benchmark">
+    <h2 class="card-title">Card Header</h2>
+  </div>
+  <div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+  </div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;card&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header flag flag-benchmark&quot;&gt;
+    &lt;h2 class&#x3D;&quot;card-title&quot;&gt;Card Header&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?&lt;/p&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="cards-card-header-with-supporting-information">
+  <h2>Card Header with Supporting Information</h2><div class="livingcss__section-description"><p>When a card needs supporting information to the right of the header, such as a date.</p>
+<p><strong>Usage:</strong></p>
+<ul>
+<li>Add the class <code>w-content</code> to <code>card-header</code>.</li>
+<li>Add a div in <code>card-header</code> for <code>card-header-content</code></li>
+<li>You&#39;ll likely want to override the <code>max-width</code> applied to the card-title. You want it to be as wide as possible without running into the content on the right, text that goes longer than that will be truncated with an ellipsis. To set the max-width, name-space the card and apply to the <code>card-title</code>: <code>max-width: ~&quot;calc(100% - 10em)&quot;;</code> where &quot;10em&quot; is a safe width away from the content on the right.</li>
+</ul></div>
+
+<livingcss-example><div class="card">
+  <div class="card-header w-content">
+    <h2 class="card-title">Card Header</h2>
+    <div class="card-header-content">
+      <span class="icon-info"></span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.</p>
+  </div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;card&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header w-content&quot;&gt;
+    &lt;h2 class&#x3D;&quot;card-title&quot;&gt;Card Header&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;card-header-content&quot;&gt;
+      &lt;span class&#x3D;&quot;icon-info&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus modi, quod recusandae voluptate itaque nemo laudantium asperiores odit repudiandae?&lt;/p&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, voluptatum.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="grid">
+          <h1 class="livingcss__article-title">Grid</h1><div class="livingcss__section-description"><p>We use a 24col Bootstrap grid. Learn more at the <a href="http://getbootstrap.com/css/#grid">Bootstrap docs</a>.</p>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li>We <strong>do not use</strong> <code>container</code> or <code>container-fluid</code>.</li>
+<li>Rows have a margin-top applied by default for proper spacing in the app&#39;s <code>&lt;main&gt;</code> container and to space cards nicely. Add the class <code>no-space</code> to the row if you need to strip this margin.</li>
+<li>Add the class <code>no-gutters</code> to the row if you need to strip all the column gutter spacing.</li>
+</ul></div>
+
+<livingcss-example><!-- Example specific styles. -->
+<style>
+  .row p {
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+  }
+</style>
+<!-- Grid Markup -->
+<div class="row">
+  <div class="col-sm-8"><p>8</p></div>
+  <div class="col-sm-8"><p>8</p></div>
+  <div class="col-sm-8"><p>8</p></div>
+</div>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-8"><p>8 offset by 8</p></div>
+</div>
+<div class="row no-gutters">
+  <div class="col-sm-12"><p>12</p></div>
+  <div class="col-sm-12"><p>12</p></div>
+</div>
+<div class="row no-space">
+  <div class="col-sm-12"><p>12</p></div>
+  <div class="col-sm-12"><p>12</p></div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;!-- Example specific styles. --&gt;
+&lt;style&gt;
+  .row p {
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+  }
+&lt;/style&gt;
+&lt;!-- Grid Markup --&gt;
+&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-sm-8&quot;&gt;&lt;p&gt;8&lt;/p&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-sm-8&quot;&gt;&lt;p&gt;8&lt;/p&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-sm-8&quot;&gt;&lt;p&gt;8&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row&quot;&gt;
+  &lt;div class&#x3D;&quot;col-xs-8 col-xs-offset-8&quot;&gt;&lt;p&gt;8 offset by 8&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row no-gutters&quot;&gt;
+  &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;&lt;p&gt;12&lt;/p&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;&lt;p&gt;12&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;row no-space&quot;&gt;
+  &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;&lt;p&gt;12&lt;/p&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;&lt;p&gt;12&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+        </article>
+        <article class="livingcss__article" id="icons">
+          <h1 class="livingcss__article-title">Icons</h1><div class="livingcss__section-description"><p>Use only as implied by the icon&#39;s name.</p>
+<p>Consistent use of icons in the form of a visual language is key to the user being able to successfully interpret them with as little cognitive load as possible. Otherwise just show them text if it becomes cryptic, the user should never have to guess.</p>
+<p>Add the class <code>flush-icon</code> to remove the default margin-right on an icon.</p>
+<p><code>icon-spinner</code> will automatically spin.</p>
+<p>To add to or modify the icon font, checkout <a href="https://github.com/usebenchmark/pattern-library/tree/master/fonts/benchmark_icons">the readme</a>.</p></div>
+
+<livingcss-example><style>
+  .example-icons p {
+    font-size: 1.5em;
+    display: inline-block;
+    width: 33%;
+    min-width: 210px;
+  }
+  .example-icons span {
+    font-family: "benchmark";
+    text-align: center;
+    display: inline-block;
+    width: 1.25em;
+    margin-right: 0.25em;
+  }
+</style>
+<div class="example-icons">
+  <p><span></span>icon-benchmark</p>
+  <p><span></span>icon-mark</p>
+  <p><span></span>icon-dashboard</p>
+  <p><span></span>icon-overview</p>
+  <p><span></span>icon-comments</p>
+  <p><span></span>icon-conversation</p>
+  <p><span></span>icon-sms-surveys</p>
+  <p><span></span>icon-time</p>
+  <p><span></span>icon-calendar</p>
+  <p><span></span>icon-survey</p>
+  <p><span></span>icon-location</p>
+  <p><span></span>icon-settings</p>
+  <p><span></span>icon-alert</p>
+  <p><span></span>icon-alert-empty</p>
+  <p><span></span>icon-user</p>
+  <p><span></span>icon-menu</p>
+  <p><span></span>icon-info</p>
+  <p><span></span>icon-intercom</p>
+  <p><span></span>icon-attention</p>
+  <p><span></span>icon-edit</p>
+  <p><span></span>icon-add</p>
+  <p><span></span>icon-search</p>
+  <p><span></span>icon-save</p>
+  <p><span></span>icon-print</p>
+  <p><span></span>icon-download</p>
+  <p><span></span>icon-close</p>
+  <p><span></span>icon-remove</p>
+  <p><span></span>icon-clear</p>
+  <p><span></span>icon-clear-text</p>
+  <p><span></span>icon-expand</p>
+  <p><span></span>icon-contract</p>
+  <p><span></span>icon-collapse</p>
+  <p><span></span>icon-expose</p>
+  <p><span></span>icon-go-to</p>
+  <p><span></span>icon-angle-left</p>
+  <p><span></span>icon-angle-right</p>
+  <p><span></span>icon-dropdown-angle</p>
+  <p><span></span>icon-down</p>
+  <p><span></span>icon-up</p>
+  <p><span></span>icon-level-down</p>
+  <p><span></span>icon-level-up</p>
+  <p><span></span>icon-spinner</p>
+  <p><span></span>icon-refresh</p>
+  <p><span></span>icon-like</p>
+  <p><span></span>icon-dislike</p>
+  <p><span></span>icon-facebook</p>
+  <p><span></span>icon-foursquare</p>
+  <p><span></span>icon-gplus</p>
+  <p><span></span>icon-twitter</p>
+  <p><span></span>icon-yelp</p>
+  <p><span></span>icon-linkedin</p>
+  <p><span></span>icon-github</p>
+  <p><span></span>icon-number</p>
+  <p><span></span>icon-accept</p>
+  <p><span></span>icon-star</p>
+  <p><span></span>icon-star-empty</p>
+  <p><span></span>icon-circle</p>
+  <p><span></span>icon-square</p>
+  <p><span></span>icon-drag</p>
+  <p><span></span>icon-checkbox</p>
+  <p><span></span>icon-check</p>
+  <p><span></span>icon-checkbox-empty</p>
+  <p><span></span>icon-radio</p>
+  <p><span></span>icon-text</p>
+  <p><span></span>icon-slider</p>
+  <p><span></span>icon-sign</p>
+  <p><span></span>icon-photo</p>
+</div></livingcss-example>
+
+
+        </article>
+        <article class="livingcss__article" id="inputs">
+          <h1 class="livingcss__article-title">Inputs</h1><div class="livingcss__section-description"></div>
+
+
+
+<section class="livingcss__section" id="inputs-text-inputs">
+  <h2>Text Inputs</h2><div class="livingcss__section-description"><p>These text input types are provided. Always provide a label above the input.</p>
+<p>Inputs are full width by default, add the class <code>inline</code> for a shorter input. Otherwise you can constrain their width using the grid or setting a <code>max-width</code>.</p>
+<p>For <strong>disabled</strong> inputs apply the class <code>disabled</code> to the <strong>label</strong> above the input and apply the <code>disabled</code> attribute to the input itself.</p>
+<p>For error states, add the class <code>error</code> to the <strong>label</strong> above the input. If there is no label, add the class to the input itself.</p></div>
+
+<livingcss-example><label for="unique-id">Text</label>
+<input type="text" id="unique-id" placeholder="Input Text">
+<label for="password-id">Password</label>
+<input type="password" id="password-id" placeholder="Input Password">
+<label for="date-id">Date</label>
+<input type="date" id="date-id" placeholder="Input Date">
+<label for="number-id">Number</label>
+<input type="number" id="number-id" placeholder="Input Number">
+<label for="email-id">Email</label>
+<input type="email" id="email-id" placeholder="Input Email Address">
+<label for="tel-id">Telephone Number</label>
+<input type="tel" id="email-id" placeholder="Input Telephone Number">
+<label for="textarea-id">Text Area</label>
+<textarea id="textarea-id" placeholder="Input Long Text"></textarea>
+
+<label for="unique-id2">Inline/Shorter Input</label>
+<input type="text" class="inline" id="unique-id2" placeholder="Input Text">
+
+<label for="unique-id3" class="disabled">Disabled Input</label>
+<input disabled type="text" id="unique-id3" placeholder="Disabled">
+
+<label for="unique-id4" class="error">Input with an Error</label>
+<input type="text" id="unique-id4" placeholder="Error"></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;label for&#x3D;&quot;unique-id&quot;&gt;Text&lt;/label&gt;
+&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;unique-id&quot; placeholder&#x3D;&quot;Input Text&quot;&gt;
+&lt;label for&#x3D;&quot;password-id&quot;&gt;Password&lt;/label&gt;
+&lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password-id&quot; placeholder&#x3D;&quot;Input Password&quot;&gt;
+&lt;label for&#x3D;&quot;date-id&quot;&gt;Date&lt;/label&gt;
+&lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;date-id&quot; placeholder&#x3D;&quot;Input Date&quot;&gt;
+&lt;label for&#x3D;&quot;number-id&quot;&gt;Number&lt;/label&gt;
+&lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;number-id&quot; placeholder&#x3D;&quot;Input Number&quot;&gt;
+&lt;label for&#x3D;&quot;email-id&quot;&gt;Email&lt;/label&gt;
+&lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email-id&quot; placeholder&#x3D;&quot;Input Email Address&quot;&gt;
+&lt;label for&#x3D;&quot;tel-id&quot;&gt;Telephone Number&lt;/label&gt;
+&lt;input type&#x3D;&quot;tel&quot; id&#x3D;&quot;email-id&quot; placeholder&#x3D;&quot;Input Telephone Number&quot;&gt;
+&lt;label for&#x3D;&quot;textarea-id&quot;&gt;Text Area&lt;/label&gt;
+&lt;textarea id&#x3D;&quot;textarea-id&quot; placeholder&#x3D;&quot;Input Long Text&quot;&gt;&lt;/textarea&gt;
+
+&lt;label for&#x3D;&quot;unique-id2&quot;&gt;Inline/Shorter Input&lt;/label&gt;
+&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;inline&quot; id&#x3D;&quot;unique-id2&quot; placeholder&#x3D;&quot;Input Text&quot;&gt;
+
+&lt;label for&#x3D;&quot;unique-id3&quot; class&#x3D;&quot;disabled&quot;&gt;Disabled Input&lt;/label&gt;
+&lt;input disabled type&#x3D;&quot;text&quot; id&#x3D;&quot;unique-id3&quot; placeholder&#x3D;&quot;Disabled&quot;&gt;
+
+&lt;label for&#x3D;&quot;unique-id4&quot; class&#x3D;&quot;error&quot;&gt;Input with an Error&lt;/label&gt;
+&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;unique-id4&quot; placeholder&#x3D;&quot;Error&quot;&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="inputs-inputs-with-buttons">
+  <h2>Inputs with Buttons</h2><div class="livingcss__section-description"><p>Two &quot;text input with a button&quot; types are available.</p>
+<ol>
+<li>An input with a standard button that only has an icon in it. Use the parent class <code>input-w-button</code>.</li>
+<li>An input with an inlaid button for search/filter inputs, etc. Use the parent class <code>input-w-inlay</code> with an <code>.inlay</code> button. For search fields, you&#39;ll likely want to make the <code>.inlay</code> have a <code>.icon-search</code>, then switch it to <code>.icon-remove</code> when text is in there so that the text can be cleared by clicking.</li>
+</ol>
+<p>When disabled, add the class <code>disabled</code> to the top level container so that the label, input and button are all made disabled. Also add the <code>disabled</code> attribute to the input so it can&#39;t be entered by tabbing (might also add to the button as well).</p>
+<p>When there&#39;s an error, add the class <code>error</code> to the top level container, just like disabled.</p></div>
+
+<livingcss-example><div class="input-w-button">
+  <label for="example">Input with a Button</label>
+  <input type="text" id="example" placeholder="Text Input">
+  <button class="icon-search">
+    <span class="sr-only">Search</span>
+  </button>
+</div>
+<div class="input-w-inlay">
+  <label for="example">Input with a Clear Button</label>
+  <input type="text" id="example" placeholder="Text Input">
+  <button class="inlay icon-remove">
+    <span class="sr-only">Clear Text</span>
+  </button>
+</div>
+
+<div class="input-w-button disabled">
+  <label for="example2">Disabled Input with a Button</label>
+  <input disabled type="text" id="example2" placeholder="Text Input">
+  <button class="icon-search" disabled>
+    <span class="sr-only">Search</span>
+  </button>
+</div>
+
+<div class="input-w-button error">
+  <label for="example3">Error on Input with a Button</label>
+  <input type="text" id="example3" placeholder="Text Input">
+  <button class="icon-search">
+    <span class="sr-only">Search</span>
+  </button>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;input-w-button&quot;&gt;
+  &lt;label for&#x3D;&quot;example&quot;&gt;Input with a Button&lt;/label&gt;
+  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;example&quot; placeholder&#x3D;&quot;Text Input&quot;&gt;
+  &lt;button class&#x3D;&quot;icon-search&quot;&gt;
+    &lt;span class&#x3D;&quot;sr-only&quot;&gt;Search&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;input-w-inlay&quot;&gt;
+  &lt;label for&#x3D;&quot;example&quot;&gt;Input with a Clear Button&lt;/label&gt;
+  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;example&quot; placeholder&#x3D;&quot;Text Input&quot;&gt;
+  &lt;button class&#x3D;&quot;inlay icon-remove&quot;&gt;
+    &lt;span class&#x3D;&quot;sr-only&quot;&gt;Clear Text&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;input-w-button disabled&quot;&gt;
+  &lt;label for&#x3D;&quot;example2&quot;&gt;Disabled Input with a Button&lt;/label&gt;
+  &lt;input disabled type&#x3D;&quot;text&quot; id&#x3D;&quot;example2&quot; placeholder&#x3D;&quot;Text Input&quot;&gt;
+  &lt;button class&#x3D;&quot;icon-search&quot; disabled&gt;
+    &lt;span class&#x3D;&quot;sr-only&quot;&gt;Search&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;input-w-button error&quot;&gt;
+  &lt;label for&#x3D;&quot;example3&quot;&gt;Error on Input with a Button&lt;/label&gt;
+  &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;example3&quot; placeholder&#x3D;&quot;Text Input&quot;&gt;
+  &lt;button class&#x3D;&quot;icon-search&quot;&gt;
+    &lt;span class&#x3D;&quot;sr-only&quot;&gt;Search&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="inputs-radios-%26-checkboxes">
+  <h2>Radios &amp; Checkboxes</h2><div class="livingcss__section-description"><p>Make sure to add the class <code>input</code> to the containing label for radios &amp; checkboxes.</p>
+<p>For disabling, add the <code>.disabled</code> class to the input and the <code>disabled</code> attribute to the input (so it can&#39;t be entered by tabbing).</p></div>
+
+<livingcss-example><h4>Radios</h4>
+<label class="input">
+  <input type="radio" name="uniqueRadioGroup" id="uniqueRadio1" value="radio1">
+  Option 1
+</label>
+<label class="input">
+  <input type="radio" name="uniqueRadioGroup" id="uniqueRadio2" value="radio2">
+  Option 1
+</label>
+<label class="input">
+  <input type="radio" name="uniqueRadioGroup" id="uniqueRadio3" value="radio3">
+  Option 1
+</label>
+
+<h4>Checkboxes</h4>
+<label class="input">
+  <input type="checkbox" value="uniqueValue1">
+  Option 1
+</label>
+<label class="input">
+  <input type="checkbox" value="uniqueValue2">
+  Option 2
+</label>
+<label class="input">
+  <input type="checkbox" value="uniqueValue3">
+  Option 3
+</label>
+
+<h4>Disabled States</h4>
+<label class="input disabled">
+  <input disabled type="checkbox" value="uniqueValue4">
+  Disabled Option
+</label>
+<label class="input disabled">
+  <input disabled type="radio" name="uniqueRadioGroup2" id="uniqueRadio4" value="radio4">
+  Disabled Option
+</label>
+
+<h4>Error States</h4>
+<label class="input error">
+  <input type="checkbox" value="uniqueValue5">
+  Option with Error
+</label>
+<label class="input error">
+  <input type="radio" name="uniqueRadioGroup3" id="uniqueRadio5" value="radio5">
+  Option with Error
+</label></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;h4&gt;Radios&lt;/h4&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;uniqueRadioGroup&quot; id&#x3D;&quot;uniqueRadio1&quot; value&#x3D;&quot;radio1&quot;&gt;
+  Option 1
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;uniqueRadioGroup&quot; id&#x3D;&quot;uniqueRadio2&quot; value&#x3D;&quot;radio2&quot;&gt;
+  Option 1
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;uniqueRadioGroup&quot; id&#x3D;&quot;uniqueRadio3&quot; value&#x3D;&quot;radio3&quot;&gt;
+  Option 1
+&lt;/label&gt;
+
+&lt;h4&gt;Checkboxes&lt;/h4&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;uniqueValue1&quot;&gt;
+  Option 1
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;uniqueValue2&quot;&gt;
+  Option 2
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input&quot;&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;uniqueValue3&quot;&gt;
+  Option 3
+&lt;/label&gt;
+
+&lt;h4&gt;Disabled States&lt;/h4&gt;
+&lt;label class&#x3D;&quot;input disabled&quot;&gt;
+  &lt;input disabled type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;uniqueValue4&quot;&gt;
+  Disabled Option
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input disabled&quot;&gt;
+  &lt;input disabled type&#x3D;&quot;radio&quot; name&#x3D;&quot;uniqueRadioGroup2&quot; id&#x3D;&quot;uniqueRadio4&quot; value&#x3D;&quot;radio4&quot;&gt;
+  Disabled Option
+&lt;/label&gt;
+
+&lt;h4&gt;Error States&lt;/h4&gt;
+&lt;label class&#x3D;&quot;input error&quot;&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;uniqueValue5&quot;&gt;
+  Option with Error
+&lt;/label&gt;
+&lt;label class&#x3D;&quot;input error&quot;&gt;
+  &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;uniqueRadioGroup3&quot; id&#x3D;&quot;uniqueRadio5&quot; value&#x3D;&quot;radio5&quot;&gt;
+  Option with Error
+&lt;/label&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="loading-indicator">
+          <h1 class="livingcss__article-title">Loading Indicator</h1><div class="livingcss__section-description"></div>
+
+<livingcss-example><div class="loader">
+  <div>
+    <span class="icon-mark"></span>
+    <span class="icon-mark"></span>
+    <span class="icon-mark"></span>
+  </div>
+  <span>Loading</span>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;loader&quot;&gt;
+  &lt;div&gt;
+    &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+    &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+    &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span&gt;Loading&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<section class="livingcss__section" id="loading-indicator-loading-cards">
+  <h2>Loading Cards</h2><div class="livingcss__section-description"><p>For when cards need time to load charts/data/etc. Cards with simple content do not need loading indicators as they should load on the first paint.</p>
+<p>The card&#39;s contents will automatically be hidden until the class <code>loaded</code> is added to the top level <code>.card.load</code>.</p></div>
+
+<livingcss-example><div class="card load"><!-- Add class .loaded to hide the loader and show content -->
+  <div class="card-header">
+    <h2 class="card-title">Card with Loading Indicator</h2>
+  </div>
+  <div class="card-body">
+    <div class="loader">
+      <div>
+        <span class="icon-mark"></span>
+        <span class="icon-mark"></span>
+        <span class="icon-mark"></span>
+      </div>
+      <span>Loading</span>
+    </div>
+    <p style="height:200px;">Card Body Content. Forced height to show that the indicator will center into whatever height of content is in the card-body.</p>
+  </div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;card load&quot;&gt;&lt;!-- Add class .loaded to hide the loader and show content --&gt;
+  &lt;div class&#x3D;&quot;card-header&quot;&gt;
+    &lt;h2 class&#x3D;&quot;card-title&quot;&gt;Card with Loading Indicator&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;div class&#x3D;&quot;loader&quot;&gt;
+      &lt;div&gt;
+        &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+        &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+        &lt;span class&#x3D;&quot;icon-mark&quot;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span&gt;Loading&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p style&#x3D;&quot;height:200px;&quot;&gt;Card Body Content. Forced height to show that the indicator will center into whatever height of content is in the card-body.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="modals">
+          <h1 class="livingcss__article-title">Modals</h1><div class="livingcss__section-description"><p>Basic modal markup.</p>
+<p>We use <a href="https://github.com/pleerock/ng2-modal">ng2-modal</a> for our modals. We use our own custom styles instead of bootstrap styles though.</p></div>
+
+<livingcss-example><!-- Demo Specific Styles -->
+<style>
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+</style>
+<!-- Modal Markup -->
+<div class="example-container">
+  <div class="modal in fade" role="dialog" style="display: block;">
+    <div class="modal-dialog undefined">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close"><span>×</span></button>
+          <modal-header>
+            <h1>Modal header</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+           Hello Modal!
+          </modal-content>
+        </div>
+        <div class="modal-footer">
+          <modal-footer>
+            <button class="clear">Close</button>
+            <button class="primary">Save</button>
+          </modal-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade in"></div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;!-- Demo Specific Styles --&gt;
+&lt;style&gt;
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+&lt;/style&gt;
+&lt;!-- Modal Markup --&gt;
+&lt;div class&#x3D;&quot;example-container&quot;&gt;
+  &lt;div class&#x3D;&quot;modal in fade&quot; role&#x3D;&quot;dialog&quot; style&#x3D;&quot;display: block;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog undefined&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+          &lt;button class&#x3D;&quot;close&quot;&gt;&lt;span&gt;×&lt;/span&gt;&lt;/button&gt;
+          &lt;modal-header&gt;
+            &lt;h1&gt;Modal header&lt;/h1&gt;
+          &lt;/modal-header&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+          &lt;modal-content&gt;
+           Hello Modal!
+          &lt;/modal-content&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+          &lt;modal-footer&gt;
+            &lt;button class&#x3D;&quot;clear&quot;&gt;Close&lt;/button&gt;
+            &lt;button class&#x3D;&quot;primary&quot;&gt;Save&lt;/button&gt;
+          &lt;/modal-footer&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;modal-backdrop fade in&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<section class="livingcss__section" id="modals-warnings-in-modals">
+  <h2>Warnings in Modals</h2><div class="livingcss__section-description"><p>For adding disclaimers, notices, warnings, etc. Form errors should appear above the form inputs, not in one of these.</p></div>
+
+<livingcss-example><!-- Demo Specific Styles -->
+<style>
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+</style>
+<!-- Modal Markup -->
+<div class="example-container">
+  <div class="modal in fade" role="dialog" style="display: block;">
+    <div class="modal-dialog undefined">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close"><span>×</span></button>
+          <modal-header>
+            <h1>Modal with a Warning</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+           <div class="modal-warning">
+             <p class="icon-attention">Here is a warning that you should know about.</p>
+           </div>
+           Hello Modal!
+          </modal-content>
+        </div>
+        <div class="modal-footer">
+          <modal-footer>
+            <button class="clear">Close</button>
+            <button class="primary">Save</button>
+          </modal-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade in"></div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;!-- Demo Specific Styles --&gt;
+&lt;style&gt;
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+&lt;/style&gt;
+&lt;!-- Modal Markup --&gt;
+&lt;div class&#x3D;&quot;example-container&quot;&gt;
+  &lt;div class&#x3D;&quot;modal in fade&quot; role&#x3D;&quot;dialog&quot; style&#x3D;&quot;display: block;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog undefined&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+          &lt;button class&#x3D;&quot;close&quot;&gt;&lt;span&gt;×&lt;/span&gt;&lt;/button&gt;
+          &lt;modal-header&gt;
+            &lt;h1&gt;Modal with a Warning&lt;/h1&gt;
+          &lt;/modal-header&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+          &lt;modal-content&gt;
+           &lt;div class&#x3D;&quot;modal-warning&quot;&gt;
+             &lt;p class&#x3D;&quot;icon-attention&quot;&gt;Here is a warning that you should know about.&lt;/p&gt;
+           &lt;/div&gt;
+           Hello Modal!
+          &lt;/modal-content&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+          &lt;modal-footer&gt;
+            &lt;button class&#x3D;&quot;clear&quot;&gt;Close&lt;/button&gt;
+            &lt;button class&#x3D;&quot;primary&quot;&gt;Save&lt;/button&gt;
+          &lt;/modal-footer&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;modal-backdrop fade in&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="modals-modal-with-a-menu">
+  <h2>Modal with a Menu</h2><div class="livingcss__section-description"><p>For settings modals that need different internal views.</p></div>
+
+<livingcss-example><!-- Demo Specific Styles -->
+<style>
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+</style>
+<!-- Modal Markup -->
+<div class="example-container">
+  <div class="modal in fade" role="dialog" style="display: block;">
+    <div class="modal-dialog undefined">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close"><span>×</span></button>
+          <modal-header>
+            <h1>Modal with a Menu</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+            <div class="modal-w-menu">
+              <div class="modal-menu">
+                <ul>
+                  <li><button>Option 1</button></li>
+                  <li><button class="active">Option 2</button></li>
+                  <li><button>Option 3</button></li>
+                  <li><button>Option 4</button></li>
+                </ul>
+              </div>
+              <div class="modal-menu-stage">
+                <div class="modal-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.</p>
+                </div>
+                <div class="modal-menu-footer">
+                  <button class="clear">Cancel</button>
+                  <button class="primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </modal-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade in"></div>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;!-- Demo Specific Styles --&gt;
+&lt;style&gt;
+  .example-container {
+    position: relative;
+  }
+  .modal { position: relative !important; }
+  .modal-backdrop { position: absolute !important; }
+&lt;/style&gt;
+&lt;!-- Modal Markup --&gt;
+&lt;div class&#x3D;&quot;example-container&quot;&gt;
+  &lt;div class&#x3D;&quot;modal in fade&quot; role&#x3D;&quot;dialog&quot; style&#x3D;&quot;display: block;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog undefined&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+          &lt;button class&#x3D;&quot;close&quot;&gt;&lt;span&gt;×&lt;/span&gt;&lt;/button&gt;
+          &lt;modal-header&gt;
+            &lt;h1&gt;Modal with a Menu&lt;/h1&gt;
+          &lt;/modal-header&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+          &lt;modal-content&gt;
+            &lt;div class&#x3D;&quot;modal-w-menu&quot;&gt;
+              &lt;div class&#x3D;&quot;modal-menu&quot;&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;button&gt;Option 1&lt;/button&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;button class&#x3D;&quot;active&quot;&gt;Option 2&lt;/button&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;button&gt;Option 3&lt;/button&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;button&gt;Option 4&lt;/button&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;modal-menu-stage&quot;&gt;
+                &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, et, repellendus! Obcaecati repellendus magni inventore ducimus dolor ea illo, ullam.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;modal-menu-footer&quot;&gt;
+                  &lt;button class&#x3D;&quot;clear&quot;&gt;Cancel&lt;/button&gt;
+                  &lt;button class&#x3D;&quot;primary&quot;&gt;Save&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/modal-content&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;modal-backdrop fade in&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="modals-modal-sizes">
+  <h2>Modal Sizes</h2><div class="livingcss__section-description"><p>There are 3 modal sizes available.</p>
+<ul>
+<li><strong>Small:</strong> Add the class <code>small-modal</code> to <code>.modal-dialog</code>.</li>
+<li><strong>Standard:</strong> This size is default.</li>
+<li><strong>Large:</strong> Add the class <code>large-modal</code> to <code>.modal-dialog</code>.</li>
+</ul>
+<h3 id="launch-a-test-modal-">Launch a test modal:</h3>
+<p><div id="modalTests">
+ <button id="small">Open Small Modal</button>
+ <button id="standard">Open Standard Modal</button>
+ <button id="large">Open Large Modal</button></p>
+<p>  <div class="modal fade" id="smallModal" role="dialog" style="display: block;">
+    <div class="modal-dialog small-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close closeModal"><span>×</span></button>
+          <modal-header>
+            <h1>Modal header</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+           Hello Modal!
+          </modal-content>
+        </div>
+        <div class="modal-footer">
+          <modal-footer>
+            <button class="clear closeModal">Close</button>
+            <button class="primary closeModal">Save</button>
+          </modal-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="standardModal" role="dialog" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close closeModal"><span>×</span></button>
+          <modal-header>
+            <h1>Modal header</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+           Hello Modal!
+          </modal-content>
+        </div>
+        <div class="modal-footer">
+          <modal-footer>
+            <button class="clear closeModal">Close</button>
+            <button class="primary closeModal">Save</button>
+          </modal-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="largeModal" role="dialog" style="display: block;">
+    <div class="modal-dialog large-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close closeModal"><span>×</span></button>
+          <modal-header>
+            <h1>Modal header</h1>
+          </modal-header>
+        </div>
+        <div class="modal-body">
+          <modal-content>
+           Hello Modal!
+          </modal-content>
+        </div>
+        <div class="modal-footer">
+          <modal-footer>
+            <button class="clear closeModal">Close</button>
+            <button class="primary closeModal">Save</button>
+          </modal-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade" id="m-backdrop"></div></p>
+<script>
+  $(document).ready(function() {
+    $('#small').click(function() {
+      $('#smallModal').addClass('in');
+      $('#m-backdrop').addClass('in');
+    });
+    $('#standard').click(function() {
+      $('#standardModal').addClass('in');
+      $('#m-backdrop').addClass('in');
+    });
+    $('#large').click(function() {
+      $('#largeModal').addClass('in');
+      $('#m-backdrop').addClass('in');
+    });
+    $('.closeModal').click(function() {
+      $('.in').removeClass('in');
+      $('#m-backdrop').removeClass('in');
+    });
+  }); 
+</script></div>
+
+
+
+</section>        </article>
+        <article class="livingcss__article" id="tables">
+          <h1 class="livingcss__article-title">Tables</h1><div class="livingcss__section-description"><p>Table markup is straight forward. You can make use of the <a href="#typography">helper classes</a> for general alignment.</p>
+<p>Add the class <code>empty</code> to a <code>&lt;th&gt;</code> that doesn&#39;t have a title.</p></div>
+
+<livingcss-example><table>
+  <thead>
+    <tr>
+      <th class="empty"></th>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Centered</th>
+      <th class="right">Right Aligned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td class="center">4</td>
+      <td class="right">5</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>b</td>
+      <td>c</td>
+      <td class="center">d</td>
+      <td class="right"><button>Button</button></td>
+    </tr>
+  </tbody>
+</table></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class&#x3D;&quot;empty&quot;&gt;&lt;/th&gt;
+      &lt;th&gt;Column 1&lt;/th&gt;
+      &lt;th&gt;Column 2&lt;/th&gt;
+      &lt;th&gt;Centered&lt;/th&gt;
+      &lt;th class&#x3D;&quot;right&quot;&gt;Right Aligned&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td class&#x3D;&quot;center&quot;&gt;4&lt;/td&gt;
+      &lt;td class&#x3D;&quot;right&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;a&lt;/td&gt;
+      &lt;td&gt;b&lt;/td&gt;
+      &lt;td&gt;c&lt;/td&gt;
+      &lt;td class&#x3D;&quot;center&quot;&gt;d&lt;/td&gt;
+      &lt;td class&#x3D;&quot;right&quot;&gt;&lt;button&gt;Button&lt;/button&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+
+<section class="livingcss__section" id="tables-responsive-tables">
+  <h2>Responsive Tables</h2><div class="livingcss__section-description"><p>Add a div container <code>.responsive-table</code> to make tables scrollable left &amp; right on small screens.</p></div>
+
+<livingcss-example><div class="responsive-table">
+  <table>
+    <thead>
+      <tr>
+        <th class="empty"></th>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Centered</th>
+        <th class="right">Right Aligned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td class="center">4</td>
+        <td class="right">5</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td class="center">d</td>
+        <td class="right"><button>Button</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div class&#x3D;&quot;responsive-table&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class&#x3D;&quot;empty&quot;&gt;&lt;/th&gt;
+        &lt;th&gt;Column 1&lt;/th&gt;
+        &lt;th&gt;Column 2&lt;/th&gt;
+        &lt;th&gt;Centered&lt;/th&gt;
+        &lt;th class&#x3D;&quot;right&quot;&gt;Right Aligned&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;3&lt;/td&gt;
+        &lt;td class&#x3D;&quot;center&quot;&gt;4&lt;/td&gt;
+        &lt;td class&#x3D;&quot;right&quot;&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;a&lt;/td&gt;
+        &lt;td&gt;b&lt;/td&gt;
+        &lt;td&gt;c&lt;/td&gt;
+        &lt;td class&#x3D;&quot;center&quot;&gt;d&lt;/td&gt;
+        &lt;td class&#x3D;&quot;right&quot;&gt;&lt;button&gt;Button&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="tooltips">
+          <h1 class="livingcss__article-title">Tooltips</h1><div class="livingcss__section-description"><p>We use <a href="http://v4-alpha.getbootstrap.com/components/tooltips/">Bootstrap Tooltips</a>, learn more by viewing their documentation. For the Benchmark App, we use the <a href="http://valor-software.com/ng2-bootstrap/#/tooltip">ng2-bootstrap tooltip directive</a>.</p></div>
+
+<livingcss-example><div class="tooltip" role="tooltip" style="position:relative;width:8em;opacity:1;">
+	<div class="tooltip-arrow" style="bottom: -5px; left: 50%; margin-left: -5px; border-width: 5px 5px 0; border-top-color: #000;"></div>
+	<div class="tooltip-inner">Tooltip on top</div>
+</div></livingcss-example>
+
+
+        </article>
+        <article class="livingcss__article" id="typography">
+          <h1 class="livingcss__article-title">Typography</h1><div class="livingcss__section-description"></div>
+
+
+
+<section class="livingcss__section" id="typography-fonts">
+  <h2>Fonts</h2><div class="livingcss__section-description"><p>Benchmark uses Lato as it&#39;s base font, and Georgia as a serif font for written speach like SMS &amp; Field Audit comments.</p></div>
+
+<livingcss-example><h4>Lato Styles Available:</h4>
+<ul>
+  <li><p>Lato Regular</p></li>
+  <li><p style="font-weight:bold;">Lato Bold</p></li>
+  <li><p style="font-style:italic;">Lato Italic</p></li>
+  <li><p style="font-weight:300;">Lato Light (font-weight: 300;)</p></li>
+</ul>
+<h4>Georgia Styles Available:</h4>
+<ul style="font-family:Georgia;">
+  <li><p style="font-family:Georgia;">Georgia Regular</p></li>
+  <li><p style="font-family:Georgia;font-weight:bold;">Georgia Bold</p></li>
+  <li><p style="font-family:Georgia;font-style:italic;">Georgia Italic</p></li>
+</ul></livingcss-example>
+
+
+</section><section class="livingcss__section" id="typography-paragraph-spacing">
+  <h2>Paragraph Spacing</h2><div class="livingcss__section-description"><p>Paragraphs &amp; header tags do not have margin unless they are followed by another paragraph or header.</p></div>
+
+<livingcss-example><style>
+  .box {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+    padding: 0 0.5em;
+  }
+  .box:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="box">
+  <h2>Header w/no Following Content</h2>
+</div>
+<div class="box">
+  <p>Here is a paragraph in a div with no following paragraph. Notice how no margin is applied to the bottom of this &lt;p&gt; tag.</p>
+</div>
+<div class="box">
+  <p>Here is a paragraph with another paragraph following it. Notice that natural paragraph spacing is added in the way of margin, but the bottom paragraph does not have bottom spacing.</p>
+  <p>This spacing technique allows paragraphs to fit nicely into containers, cards, tables, modals etc. The padding of the container can create the necessary spacing, although for this example no top or bottom padding has been applied.</p>
+</div>
+<div class="box">
+  <h2>Header Followed by Content</h2>
+  <p>Here is some text after a header. It has no bottom spacing unless it's followed by another paragraph or header. Things fit nicely into boxes by themselves, but also have nice typography when written in a document.</p>
+  <h3>Header After Content</h3>
+  <p>Some paragraph content after the second header. Otherwise the header above would have no bottom spacing and fit flush with the bottom of this here box.</p>
+</div></livingcss-example>
+
+
+</section><section class="livingcss__section" id="typography-helpers">
+  <h2>Helpers</h2><div class="livingcss__section-description"><p>A number of helper classes are provided for quick adjustment and alignment within a composition.</p></div>
+
+<livingcss-example><div style="text-align: right;">
+  <p class="left">Left align.</p>
+</div>
+<p class="center">Center</p>
+<p class="right">Right align.</p>
+<p class="large">Larger Font Size</p>
+<p class="small">Smaller Font Size</p>
+<div>
+  <h4 class="inline">Set to </h4>
+  <h4 class="inline">inline-block</h4>
+</div>
+<h4 class="flush">Remove all margin.</h4></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;div style&#x3D;&quot;text-align: right;&quot;&gt;
+  &lt;p class&#x3D;&quot;left&quot;&gt;Left align.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p class&#x3D;&quot;center&quot;&gt;Center&lt;/p&gt;
+&lt;p class&#x3D;&quot;right&quot;&gt;Right align.&lt;/p&gt;
+&lt;p class&#x3D;&quot;large&quot;&gt;Larger Font Size&lt;/p&gt;
+&lt;p class&#x3D;&quot;small&quot;&gt;Smaller Font Size&lt;/p&gt;
+&lt;div&gt;
+  &lt;h4 class&#x3D;&quot;inline&quot;&gt;Set to &lt;/h4&gt;
+  &lt;h4 class&#x3D;&quot;inline&quot;&gt;inline-block&lt;/h4&gt;
+&lt;/div&gt;
+&lt;h4 class&#x3D;&quot;flush&quot;&gt;Remove all margin.&lt;/h4&gt;</code></pre>
+</div>
+
+</section><section class="livingcss__section" id="typography-screen-reader-only">
+  <h2>Screen Reader Only</h2><div class="livingcss__section-description"><p>The <code>sr-only</code> class will hide text needed only for users of screen readers. This is useful for icon buttons and stuff screen readers would otherwise not be able to interact with.</p></div>
+
+<livingcss-example><button class="text icon-add"><span class="sr-only">Add Something</span></button></livingcss-example>
+
+<div class="livingcss__section-markup">
+  <pre class="livingcss__section-code"><code class="language-markup">&lt;button class&#x3D;&quot;text icon-add&quot;&gt;&lt;span class&#x3D;&quot;sr-only&quot;&gt;Add Something&lt;/span&gt;&lt;/button&gt;</code></pre>
+</div>
+
+</section>        </article>
+        <article class="livingcss__article" id="color-palette">
+          <h1 class="livingcss__article-title">Color Palette</h1><div class="livingcss__section-description"><p>Leverage these color variables in the app by importing the <code>_variables.less</code> file provided in the npm benchmark-patterns package.</p></div>
+
+<livingcss-example><style>
+  .chips:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .chip {
+    background-color: #fff;
+    width: 100%;
+    max-width: 20em;
+    float: left;
+    margin: 0 0.5em 1em;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.333);
+  }
+  .chip > div {
+    margin-right: 0.5em;
+    height: 5em;
+    width: 25%;
+    float: left;
+  }
+  .var:before {
+    content: "Variable: ";
+    font-weight: bold;
+  }
+  .hex {margin-top: 0;}
+  .hex:before {
+    content: "Hex: ";
+    font-weight: bold;
+  }
+  p.desc {
+    font-size: 0.75em;
+    margin-top: 0;
+    line-height: 1.2em;
+  }
+</style>
+
+<h4>General Colors</h4>
+<div class="chips">
+  <div class="chip">
+    <div style="background-color:#fff;border-right:1px solid #ddd;"></div>
+    <p class="var">white</p>
+    <p class="hex">#fff</p>
+    <p class="desc">No variable for white, just use browser default.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #1a1b21;"></div>
+    <p class="var">@clr-black</p>
+    <p class="hex">#1a1b21</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #e5e7ec;"></div>
+    <p class="var">@clr-bg</p>
+    <p class="hex">#e5e7ec</p>
+    <p class="desc">Main background color.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #f8f8f8;"></div>
+    <p class="var">@clr-shade</p>
+    <p class="hex">#f8f8f8</p>
+    <p class="desc">Shaded foregrounds, table headers, etc.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #bcbcbc;"></div>
+    <p class="var">@clr-frame</p>
+    <p class="hex">#bcbcbc</p>
+    <p class="desc">General borders.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #ddd;"></div>
+    <p class="var">@clr-frame-lt</p>
+    <p class="hex">#ddd</p>
+    <p class="desc">Dividers and borders that need to be lighter.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #888;"></div>
+    <p class="var">@clr-disabled</p>
+    <p class="hex">#888</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #777;"></div>
+    <p class="var">@clr-remove</p>
+    <p class="hex">#777</p>
+    <p class="desc">Remove/cancel/close buttons.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: rgba(0, 0, 0, 0.333);"></div>
+    <p class="var">@clr-shadow</p>
+    <p class="hex">rgba(0, 0, 0, 0.333)</p>
+    <p class="desc">General shadows. It is OK to make your own shadow though.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #3b81c3;"></div>
+    <p class="var">@clr-link</p>
+    <p class="hex">#3b81c3</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #2c3c4b;"></div>
+    <p class="var">@clr-title-bg</p>
+    <p class="hex">#2c3c4b</p>
+    <p class="desc">Card titles, modal headers, sidebar nav bg, etc.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #15a3c2;"></div>
+    <p class="var">@clr-blue</p>
+    <p class="hex">#15a3c2</p>
+    <p class="desc">Activated. Neutral sentiment.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #c21a15;"></div>
+    <p class="var">@clr-red</p>
+    <p class="hex">#c21a15</p>
+    <p class="desc">Negative, error, danger, etc.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #ffef3d;"></div>
+    <p class="var">@clr-yellow</p>
+    <p class="hex">#ffef3d</p>
+    <p class="desc">Warning, be careful, etc.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #1fa015;"></div>
+    <p class="var">@clr-green</p>
+    <p class="hex">#1fa015</p>
+    <p class="desc">Positive. Successful.</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #ffbc1a;"></div>
+    <p class="var">@clr-orange</p>
+    <p class="hex">#ffbc1a</p>
+    <p class="desc">Special buttons. Benchmark logo.</p>
+  </div>
+</div>
+<h4>Social Providers</h4>
+<div class="chips">
+  <div class="chip">
+    <div style="background-color: #e04a39;"></div>
+    <p class="var">@clr-gplus</p>
+    <p class="hex">#e04a39</p>
+    <p class="desc">Google Plus</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #db5326;"></div>
+    <p class="var">@clr-yelp</p>
+    <p class="hex">#db5326</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #335dab;"></div>
+    <p class="var">@clr-facebook</p>
+    <p class="hex">#335dab</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #2f7fc2;"></div>
+    <p class="var">@clr-foursquare</p>
+    <p class="hex">#2f7fc2</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #55acee;"></div>
+    <p class="var">@clr-twitter</p>
+    <p class="hex">#55acee</p>
+  </div>
+</div>
+<h4>Grades</h4>
+<div class="chips">
+  <div class="chip">
+    <div style="background-color: #1fa015;"></div>
+    <p class="var">@grade-a</p>
+    <p class="hex">#1fa015 (@clr-green)</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #b4bf00;"></div>
+    <p class="var">@grade-b</p>
+    <p class="hex">#b4bf00</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #e3cd00;"></div>
+    <p class="var">@grade-c</p>
+    <p class="hex">#e3cd00</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #e18429;"></div>
+    <p class="var">@grade-d</p>
+    <p class="hex">#e18429</p>
+  </div>
+  <div class="chip">
+    <div style="background-color: #c21a15;"></div>
+    <p class="var">@grade-f</p>
+    <p class="hex">#c21a15 (@clr-red)</p>
+  </div>
+</div></livingcss-example>
+
+
+        </article>
+        <article class="livingcss__article" id="modular-scale">
+          <h1 class="livingcss__article-title">Modular Scale</h1><div class="livingcss__section-description"><p>This is a modular scale based on a <a href="https://www.youtube.com/watch?v=ZlmLSwTW9Is">perfect 5th</a> harmonic. These numbers are available for you when choosing <code>px</code> or <code>em</code> unit spacing and sizes. Instead of randomly choosing <code>10px</code> or something, try using numbers from this list that have an intentional proportional relationship to something and let harmony reign in the kindom of benchmark devness.</p></div>
+
+<livingcss-example><table>
+	<thead>
+		<tr>
+			<th>Pixel Units</th>
+			<th>Em Units</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		  <td>922.643</td>
+		  <td>57.665</td>
+		</tr>
+		<tr>
+		  <td>691.983</td>
+		  <td>43.249</td>
+		</tr>
+		<tr>
+		  <td>615.095</td>
+		  <td>38.443</td>
+		</tr>
+		<tr>
+		  <td>461.322</td>
+		  <td>28.833</td>
+		</tr>
+		<tr>
+		  <td>410.063</td>
+		  <td>25.629</td>
+		</tr>
+		<tr>
+		  <td>307.548</td>
+		  <td>19.222</td>
+		</tr>
+		<tr>
+		  <td>273.375</td>
+		  <td>17.086</td>
+		</tr>
+		<tr>
+		  <td>205.032</td>
+		  <td>12.815</td>
+		</tr>
+		<tr>
+		  <td>182.250</td>
+		  <td>11.391</td>
+		</tr>
+		<tr>
+		  <td>136.688</td>
+		  <td>8.543</td>
+		</tr>
+		<tr>
+		  <td>121.500</td>
+		  <td>7.594</td>
+		</tr>
+		<tr>
+		  <td>91.125</td>
+		  <td>5.695</td>
+		</tr>
+		<tr>
+		  <td>81.000</td>
+		  <td>5.063</td>
+		</tr>
+		<tr>
+		  <td>60.750</td>
+		  <td>3.797</td>
+		</tr>
+		<tr>
+		  <td>54.000</td>
+		  <td>3.375</td>
+		</tr>
+		<tr>
+		  <td>40.500</td>
+		  <td>2.531</td>
+		</tr>
+		<tr>
+		  <td>36.000</td>
+		  <td>2.25 </td>
+		</tr>
+		<tr>
+		  <td>27.000</td>
+		  <td>1.688</td>
+		</tr>
+		<tr>
+		  <td>24.000</td>
+		  <td>1.5</td>
+		</tr>
+		<tr>
+		  <td>18.000</td>
+		  <td>1.125</td>
+		</tr>
+		<tr>
+		  <td>16.000</td>
+		  <td>1</td>
+		</tr>
+		<tr>
+		  <td>12.000</td>
+		  <td>0.75 </td>
+		</tr>
+		<tr>
+		  <td>10.667</td>
+		  <td>0.667</td>
+		</tr>
+		<tr>
+		  <td>8.000</td>
+		  <td>0.5</td>
+		</tr>
+		<tr>
+		  <td>7.111  </td>
+		  <td>0.444</td>
+		</tr>
+		<tr>
+		  <td>5.333</td>
+		  <td>0.333</td>
+		</tr>
+		<tr>
+		  <td>4.741</td>
+		  <td>0.296</td>
+		</tr>
+		<tr>
+		  <td>3.555</td>
+		  <td>0.222</td>
+		</tr>
+		<tr>
+		  <td>3.161</td>
+		  <td>0.198</td>
+		</tr>
+		<tr>
+		  <td>2.370</td>
+		  <td>0.148</td>
+		</tr>
+		<tr>
+		  <td>2.107</td>
+		  <td>0.132</td>
+		</tr>
+		<tr>
+		  <td>1.580</td>
+		  <td>0.099</td>
+		</tr>
+		<tr>
+		  <td>1.405</td>
+		  <td>0.088</td>
+		</tr>
+		<tr>
+		  <td>1.053</td>
+		  <td>0.066</td>
+		</tr>
+	</tbody>
+</table></livingcss-example>
+
+
+        </article>
+
+      </main>
+
+      <nav class="livingcss__nav">
+        <div class="livingcss__nav-container">
+          <a class="livingcss__nav-link" href="#buttons">Buttons</a>
+          <a class="livingcss__nav-link" href="#accordions">Accordions</a>
+          <a class="livingcss__nav-link" href="#cards">Cards</a>
+          <a class="livingcss__nav-link" href="#grid">Grid</a>
+          <a class="livingcss__nav-link" href="#icons">Icons</a>
+          <a class="livingcss__nav-link" href="#inputs">Inputs</a>
+          <a class="livingcss__nav-link" href="#loading-indicator">Loading Indicator</a>
+          <a class="livingcss__nav-link" href="#modals">Modals</a>
+          <a class="livingcss__nav-link" href="#tables">Tables</a>
+          <a class="livingcss__nav-link" href="#tooltips">Tooltips</a>
+          <a class="livingcss__nav-link" href="#typography">Typography</a>
+          <a class="livingcss__nav-link" href="#color-palette">Color Palette</a>
+          <a class="livingcss__nav-link" href="#modular-scale">Modular Scale</a>
+        </div>
+      </nav>
+
+    </div>
+
+    <footer class="livingcss__footer livingcss__inverse-text">
+      <div class="livingcss__container">Application Patterns for <a href="usebenchmark.com">Benchmark Intelligence</a></div>
+    </footer>
+
+  </div>
+
+  <!-- prism -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/prism/1.4.1/themes/prism.css">
+  <script src="https://cdn.jsdelivr.net/prism/1.4.1/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/prism/1.4.1/components/prism-markup.min.js"></script>
+  <!-- /prism -->
+
+  <!-- user scripts -->
+  <!-- /user scripts -->
+
+  <script>
+  (function(window, document) {
+    /**
+     * Set the active nav link
+     * @param {Element} link - Link to make active.
+     */
+    function setActiveLink(link) {
+      if (link) {
+        // remove previously active link
+        var activeLink = document.querySelector('.livingcss__nav .livingcss__nav-link--active');
+  
+        if (activeLink) {
+          activeLink.classList.remove('livingcss__nav-link--active');
+        }
+  
+        link.classList.add('livingcss__nav-link--active');
+      }
+    }
+  
+    // set active link when
+    var nav = document.querySelector('.livingcss__nav');
+    var sections = document.querySelectorAll('article.livingcss__article');
+    var sectionPositions = [];
+  
+    // set the current link based on the hash
+    var currentLink = document.querySelector('.livingcss__nav-link[href="' + window.location.hash + '"]');
+    setActiveLink(currentLink);
+  
+    // save section positions for scrolling
+    for (var i = 0; i < sections.length; i++) {
+      var section = sections[i];
+      var pos = section.getBoundingClientRect().top + window.scrollY -
+        parseInt(getComputedStyle(section).marginTop, 10);
+  
+      sectionPositions.push(pos);
+    }
+  
+    // click link
+    nav.addEventListener('click', function(e) {
+      if (e.target.nodeName === 'A') {
+        setActiveLink(e.target);
+      }
+    });
+  
+    // move active link and affix sidebar
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+  
+      // fix the sidebar nav
+      if (nav.getBoundingClientRect().top <= 0 && y > 50) {
+        nav.classList.add('livingcss__nav--fixed');
+      }
+      else {
+        nav.classList.remove('livingcss__nav--fixed');
+      }
+  
+      // window is scrolled to the very bottom so set last section as active
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+        var activeSection = document.querySelector('.livingcss__nav .livingcss__nav-link:last-child');
+        setActiveLink(activeSection);
+      }
+      // look for which section is being viewed
+      else {
+        for (var i = 0; i < sections.length; i++) {
+          if (y >= sectionPositions[i] &&
+              (sectionPositions[i+1] ? y < sectionPositions[i+1] : true)) {
+            var id = sections[i].getAttribute('id');
+            var activeSection = document.querySelector('.livingcss__nav .livingcss__nav-link[href="#'+id+'"]');
+            setActiveLink(activeSection);
+          }
+        }
+      }
+    });
+  
+    // open mobile drawer
+    var menu = document.querySelector('.livingcss__menu');
+    if (menu) {
+      menu.addEventListener('click', function(e) {
+        document.body.classList.toggle('livingcss__main-nav--open')
+      });
+    }
+  })(window, document);
+  </script>
+</body>
+</html>
